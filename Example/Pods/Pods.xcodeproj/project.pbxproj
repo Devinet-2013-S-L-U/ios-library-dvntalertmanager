@@ -3562,7 +3562,8 @@
 			children = (
 				9BDF7375225A4F7600FEE560 /* Localizable.strings */,
 			);
-			path = Translations;
+			name = Translations;
+			path = DVNTAlertManager/Assets/Translations;
 			sourceTree = "<group>";
 		};
 		9E0413CB1CB23952FA5526E8A26A0E6F /* Resources */ = {

@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.frameworks       = 'UIKit'
   s.source_files     = 'DVNTAlertManager/Classes/**/*'
   s.exclude_files    = 'DVNTAlertManager/**/*.plist'
-  s.resource_bundles = { 'DVNTAlertManagerResources' => ['DVNTAlertManager/Translations/*.strings'] }
+  s.resource_bundles = { 'DVNTAlertManagerResources' => ['DVNTAlertManager/Assets/**/*.strings'] }
   
   s.dependency 'MaterialComponents', '~>81.0.0'
   s.dependency 'DVNTStringExtension', '~>1.0.0'
