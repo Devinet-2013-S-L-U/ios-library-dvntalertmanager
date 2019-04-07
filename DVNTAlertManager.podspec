@@ -18,6 +18,6 @@ Pod::Spec.new do |s|
   s.resource_bundles = { 'DVNTAlertManagerResources' => ['DVNTAlertManager/Assets/**/*.strings'] }
   
   s.dependency 'MaterialComponents', '~>81.0.0'
-  s.dependency 'DVNTStringExtension', '~>1.0.0'
+  s.dependency 'DVNTStringExtension', '~>1.0.3'
   s.dependency 'DVNTUIWindowExtension', '~>1.0.2'
 end

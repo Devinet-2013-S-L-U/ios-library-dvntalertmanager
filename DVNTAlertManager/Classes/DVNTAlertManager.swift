@@ -157,18 +157,13 @@ public class DVNTAlertManager
                             let alertController = MDCAlertController(title: title, message: message)
                             alertController.buttonTitleColor = self.baseColor
                             alertController.buttonInkColor = self.inkColor
-                            
-                            
-                            let path = Bundle(for: DVNTAlertManager.self).path(forResource: "DVNTAlertManagerResources", ofType: "bundle")!
-                            let bundle = Bundle(path: path) ?? Bundle.main
-                            let text = NSLocalizedString("general_ok", bundle: bundle, comment: "").capitalized
-                            print("TEXT: \(text)")
-                            
-                            alertController.addAction(MDCAlertAction(title:text))
+                            let buttonText = String.localize("general_ok", fromClass: DVNTAlertManager.self, forResource: "DVNTAlertManagerResources", ofType: "bundle").capitalized
+                            alertController.addAction(MDCAlertAction(title:buttonText))
                             currentViewController.present(alertController, animated: true, completion: nil)
                         }else{
                             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                            alertController.addAction(UIAlertAction(title: String.localize("general_ok").capitalized, style: .default))
+                            let buttonText = String.localize("general_ok", fromClass: DVNTAlertManager.self, forResource: "DVNTAlertManagerResources", ofType: "bundle").capitalized
+                            alertController.addAction(UIAlertAction(title: buttonText, style: .default))
                             currentViewController.present(alertController, animated: true, completion: nil)
                         }
                     }
@@ -187,11 +182,13 @@ public class DVNTAlertManager
                             let alertController = MDCAlertController(title: title, message: message)
                             alertController.buttonTitleColor = self.baseColor
                             alertController.buttonInkColor = self.inkColor
-                            alertController.addAction(MDCAlertAction(title: String.localize("general_ok").capitalized) { (action) in buttonTouched(0) })
+                            let buttonText = String.localize("general_ok", fromClass: DVNTAlertManager.self, forResource: "DVNTAlertManagerResources", ofType: "bundle").capitalized
+                            alertController.addAction(MDCAlertAction(title: buttonText) { (action) in buttonTouched(0) })
                             currentViewController.present(alertController, animated: true, completion: nil)
                         }else{
                             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                            alertController.addAction(UIAlertAction(title: String.localize("general_ok").capitalized, style: .default) { (action) in buttonTouched(0) })
+                            let buttonText = String.localize("general_ok", fromClass: DVNTAlertManager.self, forResource: "DVNTAlertManagerResources", ofType: "bundle").capitalized
+                            alertController.addAction(UIAlertAction(title: buttonText, style: .default) { (action) in buttonTouched(0) })
                             currentViewController.present(alertController, animated: true, completion: nil)
                         }
                     }
