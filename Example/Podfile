@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'DVNTAlertManager_Example' do
+  pod 'DVNTAlertManager', :path => '../'
+
+  target 'DVNTAlertManager_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
