@@ -1,9 +1,9 @@
 /* 
   Localizable.strings
-  DVNTAlertManager
+  Pods
 
   Created by Raúl Vidal Muiños on 07/04/2019.
   
 */
 
-"general_ok"                    = "aceptar";
+"general_ok"                    = "ok";

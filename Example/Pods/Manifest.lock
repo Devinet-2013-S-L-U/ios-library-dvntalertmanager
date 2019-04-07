@@ -544,7 +544,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DVNTAlertManager: e01f5034067f0baaeb8f922b90f95e3b8a3e8f55
+  DVNTAlertManager: 44378c860551eae27cbacf9495f7b2cc91c8a6ee
   DVNTStringExtension: cebce74f7625bbd9abe978f885c9c99dc4422c7a
   DVNTUIWindowExtension: 9ba5edb6357f57213e372c823cb84b7ace1c1799
   MaterialComponents: 9ef60e1abd89463ac018ca6d354be41fd5df059a

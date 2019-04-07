@@ -159,7 +159,7 @@ public class DVNTAlertManager
                             alertController.buttonInkColor = self.inkColor
                             
                             
-                            let path = Bundle(for: DVNTAlertManager.self).path(forResource: "DVNTAlertManager", ofType: "bundle")!
+                            let path = Bundle(for: DVNTAlertManager.self).path(forResource: "DVNTAlertManagerResources", ofType: "bundle")!
                             let bundle = Bundle(path: path) ?? Bundle.main
                             let text = NSLocalizedString("general_ok", bundle: bundle, comment: "").capitalized
                             print("TEXT: \(text)")

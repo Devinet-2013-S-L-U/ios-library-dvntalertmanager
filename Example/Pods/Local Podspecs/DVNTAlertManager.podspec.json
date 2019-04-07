@@ -28,6 +28,12 @@
   },
   "frameworks": "UIKit",
   "source_files": "DVNTAlertManager/Classes/**/*",
+  "resource_bundles": {
+    "MyResources": [
+      "DVNTAlertManager/Resources/*.lproj/*.{xib,strings}"
+    ]
+  },
+  "preserve_paths": "DVNTAlertManager/Resources/*.lproj",
   "exclude_files": "DVNTAlertManager/**/*.plist",
   "dependencies": {
     "MaterialComponents": [
