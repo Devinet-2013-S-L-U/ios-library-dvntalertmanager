@@ -18,21 +18,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="RcM-fk-ysI">
-                                <rect key="frame" x="0.0" y="305.5" width="375" height="76"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="RcM-fk-ysI">
+                                <rect key="frame" x="0.0" y="241.5" width="375" height="204"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9S-oH-m4E">
-                                        <rect key="frame" x="114" y="0.0" width="147" height="30"/>
-                                        <state key="normal" title="Show iOS styled alert"/>
+                                        <rect key="frame" x="131.5" y="0.0" width="112" height="30"/>
+                                        <state key="normal" title="Show alert (iOS)"/>
                                         <connections>
                                             <action selector="showIOSStyledAlertButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="iBE-f7-vLh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9KO-v4-A7K">
-                                        <rect key="frame" x="98.5" y="46" width="178" height="30"/>
-                                        <state key="normal" title="Show Material styled alert"/>
+                                        <rect key="frame" x="116" y="46" width="143" height="30"/>
+                                        <state key="normal" title="Show alert (Material)"/>
                                         <connections>
                                             <action selector="showMaterialStyledAlertButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Yke-bJ-QwI"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLP-v2-h0B">
+                                        <rect key="frame" x="67.5" y="92" width="240" height="20"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="aut-yt-jBf"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xR9-Cy-4Er">
+                                        <rect key="frame" x="90" y="128" width="195" height="30"/>
+                                        <state key="normal" title="Show loading indicator (iOS)"/>
+                                        <connections>
+                                            <action selector="showiOSLoadingIndicator:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="mZo-zG-M18"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXR-8q-Cw1">
+                                        <rect key="frame" x="74.5" y="174" width="226" height="30"/>
+                                        <state key="normal" title="Show loading indicator (Material)"/>
+                                        <connections>
+                                            <action selector="showMaterialLoadingIndicator:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ufj-hS-pmy"/>
                                         </connections>
                                     </button>
                                 </subviews>

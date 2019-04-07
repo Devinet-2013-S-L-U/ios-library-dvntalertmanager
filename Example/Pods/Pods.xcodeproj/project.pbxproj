@@ -555,6 +555,7 @@
 		9AD31E58DAD624450638D75D3A39B14A /* ic_color_lens@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54D1EE8ABB2BBDF0765190426DD757BC /* ic_color_lens@3x.png */; };
 		9B2BCB0E9139838C0188358188A89732 /* MDCTextInputControllerUnderline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2054794D0365301858F479394F3B64AF /* MDCTextInputControllerUnderline.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B5F5DAE27A814545716341E00052B56 /* MDCDialogTransitionController.h in Headers */ = {isa = PBXBuildFile; fileRef = EAAA89B0C5EC2F3655D092AD36D10DB2 /* MDCDialogTransitionController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9B94A95C225A241500226D5F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B94A95E225A241500226D5F /* Localizable.strings */; };
 		9C14D00A2437B96C2BF63B68E9C51B5C /* MDCSnackbarColorThemer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5444FC86AAA49E1B9DF9AF7703CA3A90 /* MDCSnackbarColorThemer.m */; };
 		9C6AB7BA1CF7AD949F8BC09D2DB3B240 /* MDCOverlayObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C95070DA6D7F3A9527748D0E14C658F /* MDCOverlayObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C6D16C30122B66F5DB29DF79D16369B /* MDCShadowElevations.h in Headers */ = {isa = PBXBuildFile; fileRef = 3540E83BA39BF28B0EB4F554CB374C15 /* MDCShadowElevations.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1114,7 +1115,7 @@
 		03B827DFDA75248993516B3D078C7EE9 /* DVNTStringExtension-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DVNTStringExtension-prefix.pch"; sourceTree = "<group>"; };
 		03D96EA9E0B0829957B7CE5CE0D07927 /* MDCButtonBarTypographyThemer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCButtonBarTypographyThemer.m; path = components/ButtonBar/src/TypographyThemer/MDCButtonBarTypographyThemer.m; sourceTree = "<group>"; };
 		03E93283930E07EC1B4B50734335DA2F /* MDCTextInputControllerBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextInputControllerBase.h; path = components/TextFields/src/MDCTextInputControllerBase.h; sourceTree = "<group>"; };
-		045AEC3F3793292F56A4AAB1674AA5D7 /* MaterialIcons_ic_more_horiz.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MaterialIcons_ic_more_horiz.bundle; path = "MaterialComponents-MaterialIcons_ic_more_horiz.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		045AEC3F3793292F56A4AAB1674AA5D7 /* MaterialIcons_ic_more_horiz.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaterialIcons_ic_more_horiz.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		0498553F890DEA0ECA66F771AE4105D0 /* ic_chevron_right@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "ic_chevron_right@2x.png"; path = "components/private/Icons/icons/ic_chevron_right/src/MaterialIcons_ic_chevron_right.bundle/ic_chevron_right@2x.png"; sourceTree = "<group>"; };
 		04B8C91764D1F6EE8BD0A8037EEF4B27 /* UIViewController+MaterialDialogs.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MaterialDialogs.m"; path = "components/Dialogs/src/UIViewController+MaterialDialogs.m"; sourceTree = "<group>"; };
 		053F128DC7BA98882092EEEF8C19B7BE /* ic_info@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "ic_info@2x.png"; path = "components/private/Icons/icons/ic_info/src/MaterialIcons_ic_info.bundle/ic_info@2x.png"; sourceTree = "<group>"; };
@@ -1155,13 +1156,13 @@
 		0E67F8B27A755B544023404D4F80986B /* MDCFeatureHighlightDismissGestureRecognizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCFeatureHighlightDismissGestureRecognizer.m; path = components/FeatureHighlight/src/private/MDCFeatureHighlightDismissGestureRecognizer.m; sourceTree = "<group>"; };
 		0EB0B125352EAC584D4CCD2A646E4182 /* MaterialCollectionsStrings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MaterialCollectionsStrings.h; path = components/Collections/src/private/MaterialCollectionsStrings.h; sourceTree = "<group>"; };
 		0EF9B4BEB259EFBFACDDC68E56E8553E /* MaterialButtons+TypographyThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MaterialButtons+TypographyThemer.h"; path = "components/Buttons/src/TypographyThemer/MaterialButtons+TypographyThemer.h"; sourceTree = "<group>"; };
-		0F02A2C8ED1A24C82C41C483303E4CE4 /* MotionInterchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MotionInterchange.framework; path = MotionInterchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F02A2C8ED1A24C82C41C483303E4CE4 /* MotionInterchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MotionInterchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F17279EB029F37E0CCF846E2A925EE6 /* MaterialIcons+ic_reorder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MaterialIcons+ic_reorder.h"; path = "components/private/Icons/icons/ic_reorder/src/MaterialIcons+ic_reorder.h"; sourceTree = "<group>"; };
 		0F44AB86DDB66F0BCA92DF3E61B9FBDC /* MDCLayoutMetrics.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCLayoutMetrics.m; path = components/private/UIMetrics/src/MDCLayoutMetrics.m; sourceTree = "<group>"; };
 		0F99C432860145A320286B806F26E45F /* MDCFeatureHighlightAnimationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCFeatureHighlightAnimationController.m; path = components/FeatureHighlight/src/private/MDCFeatureHighlightAnimationController.m; sourceTree = "<group>"; };
 		0F9B58E06932F8E9A960E53D1B97E155 /* UIFont+MaterialTypographyPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIFont+MaterialTypographyPrivate.m"; path = "components/Typography/src/private/UIFont+MaterialTypographyPrivate.m"; sourceTree = "<group>"; };
 		0FECAE8115CC56E0E45311CCDA38C764 /* MDCItemBarStyle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCItemBarStyle.m; path = components/Tabs/src/private/MDCItemBarStyle.m; sourceTree = "<group>"; };
-		100E4E7E3EA79A4A463B720D9DF64B89 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		100E4E7E3EA79A4A463B720D9DF64B89 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		101D260C5F5168CDA9D9CB0E091FE6C4 /* MDCKeyboardWatcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCKeyboardWatcher.h; path = components/private/KeyboardWatcher/src/MDCKeyboardWatcher.h; sourceTree = "<group>"; };
 		106C55D2536F070DDC078E61DF336670 /* MDCActionSheetController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCActionSheetController.h; path = components/ActionSheet/src/MDCActionSheetController.h; sourceTree = "<group>"; };
 		1081F81589F1C42AE7D36ED7B64B565F /* MDCAppBarContainerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCAppBarContainerViewController.m; path = components/AppBar/src/MDCAppBarContainerViewController.m; sourceTree = "<group>"; };
@@ -1172,7 +1173,7 @@
 		11BF70687F55154289045C21F37DA008 /* MDCCollectionGridBackgroundView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCCollectionGridBackgroundView.h; path = components/Collections/src/private/MDCCollectionGridBackgroundView.h; sourceTree = "<group>"; };
 		11DE65DA50D2F5E0C1FA47EE408A04E7 /* MDCCurvedRectShapeGenerator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCCurvedRectShapeGenerator.m; path = components/ShapeLibrary/src/MDCCurvedRectShapeGenerator.m; sourceTree = "<group>"; };
 		129E471E3E80C0802818C5A72FDD8CED /* MDFTextAccessibility-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MDFTextAccessibility-umbrella.h"; sourceTree = "<group>"; };
-		12A892A2210D8AB709C6A4157D659512 /* MaterialIcons_ic_color_lens.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MaterialIcons_ic_color_lens.bundle; path = "MaterialComponents-MaterialIcons_ic_color_lens.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12A892A2210D8AB709C6A4157D659512 /* MaterialIcons_ic_color_lens.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaterialIcons_ic_color_lens.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		133AA1A585DB8D3C7B43B5D47183F980 /* MDCChipView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCChipView.h; path = components/Chips/src/MDCChipView.h; sourceTree = "<group>"; };
 		13576CD316D1ECC28E364D53D18D9244 /* MDCTextButtonColorThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextButtonColorThemer.h; path = components/Buttons/src/ColorThemer/MDCTextButtonColorThemer.h; sourceTree = "<group>"; };
 		13873E0979D41ECD14A25B8E1637668B /* ic_radio_button_unchecked.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = ic_radio_button_unchecked.png; path = components/private/Icons/icons/ic_radio_button_unchecked/src/MaterialIcons_ic_radio_button_unchecked.bundle/ic_radio_button_unchecked.png; sourceTree = "<group>"; };
@@ -1280,7 +1281,7 @@
 		2BE19F36F2EE4D658E8FD735DB88EB1E /* MaterialApplication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MaterialApplication.h; path = components/private/Application/src/MaterialApplication.h; sourceTree = "<group>"; };
 		2BF6EAB10231FD7AE58F9268070543EA /* MDCFontScaler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCFontScaler.h; path = components/Typography/src/MDCFontScaler.h; sourceTree = "<group>"; };
 		2C06720A2541FD2A23B829B9B0A51BEC /* MDCCard.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCCard.m; path = components/Cards/src/MDCCard.m; sourceTree = "<group>"; };
-		2C2EF3491D844854A28D638697442E65 /* MaterialIcons_ic_help_outline.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MaterialIcons_ic_help_outline.bundle; path = "MaterialComponents-MaterialIcons_ic_help_outline.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C2EF3491D844854A28D638697442E65 /* MaterialIcons_ic_help_outline.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaterialIcons_ic_help_outline.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C42CCCD5C73738C5BAAE412AB58A451 /* ic_settings@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "ic_settings@2x.png"; path = "components/private/Icons/icons/ic_settings/src/MaterialIcons_ic_settings.bundle/ic_settings@2x.png"; sourceTree = "<group>"; };
 		2C6831223F86CC6E58A5D0E880337CC2 /* MDCFlexibleHeaderColorThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCFlexibleHeaderColorThemer.h; path = components/FlexibleHeader/src/ColorThemer/MDCFlexibleHeaderColorThemer.h; sourceTree = "<group>"; };
 		2C7E899AC2FFA8FCF184C874BF5A8417 /* MDCHeaderStackViewColorThemer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCHeaderStackViewColorThemer.m; path = components/HeaderStackView/src/ColorThemer/MDCHeaderStackViewColorThemer.m; sourceTree = "<group>"; };
@@ -1291,14 +1292,14 @@
 		2E2572A27BBA7F9179E8551F5BCE9355 /* DVNTUIWindowExtension.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DVNTUIWindowExtension.xcconfig; sourceTree = "<group>"; };
 		2E35125F27C523FFAEB9CA4E8EF5514B /* MDCSheetBehavior.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCSheetBehavior.m; path = components/BottomSheet/src/private/MDCSheetBehavior.m; sourceTree = "<group>"; };
 		2E6A619F9D1D0FC91A2D7B2FD5866FE9 /* MaterialCards+ColorThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MaterialCards+ColorThemer.h"; path = "components/Cards/src/ColorThemer/MaterialCards+ColorThemer.h"; sourceTree = "<group>"; };
-		2F891852BF30F9E639A88BEB960AD38D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		2F891852BF30F9E639A88BEB960AD38D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2FE3C1AAFDFC970568059B6ED5CA3C79 /* UIImage+MaterialRTL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MaterialRTL.m"; path = "Sources/UIImage+MaterialRTL.m"; sourceTree = "<group>"; };
 		3095FC9AFA4821D3A9AFAF6DFD280EAD /* ic_check@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "ic_check@2x.png"; path = "components/private/Icons/icons/ic_check/src/MaterialIcons_ic_check.bundle/ic_check@2x.png"; sourceTree = "<group>"; };
 		31581C1E124E80DF0BAAFF0EA7A1A970 /* MDCChipCollectionViewFlowLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCChipCollectionViewFlowLayout.m; path = components/Chips/src/MDCChipCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		325B1AA10F66A249842681E94EA3E641 /* MDCFlexibleHeaderView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCFlexibleHeaderView.m; path = components/FlexibleHeader/src/MDCFlexibleHeaderView.m; sourceTree = "<group>"; };
 		329A4F51487D6E60B12EA9DBFE5A3DE0 /* MDCListThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCListThemer.h; path = components/List/src/ListThemer/MDCListThemer.h; sourceTree = "<group>"; };
 		329B11F78BAE909C28C78150F95201F4 /* MotionAnimator-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MotionAnimator-umbrella.h"; sourceTree = "<group>"; };
-		32A51281F2D498B1D0F98D018DA7E7CD /* Pods_DVNTAlertManager_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_DVNTAlertManager_Example.framework; path = "Pods-DVNTAlertManager_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32A51281F2D498B1D0F98D018DA7E7CD /* Pods_DVNTAlertManager_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DVNTAlertManager_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32EA002CB824F4F0EF74D5CBE3337EFE /* MDCAlertScheme.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCAlertScheme.h; path = components/Dialogs/src/DialogThemer/MDCAlertScheme.h; sourceTree = "<group>"; };
 		3305C380128F6CF7E28525EB68910E73 /* MDCThumbView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCThumbView.m; path = components/private/ThumbTrack/src/MDCThumbView.m; sourceTree = "<group>"; };
 		33565EA84032D851E062F0C5F24C55A1 /* MotionInterchange-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MotionInterchange-dummy.m"; sourceTree = "<group>"; };
@@ -1330,7 +1331,7 @@
 		3CF05AC665C2DDC9099571E202C48FD8 /* MaterialNavigationBar+ColorThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MaterialNavigationBar+ColorThemer.h"; path = "components/NavigationBar/src/ColorThemer/MaterialNavigationBar+ColorThemer.h"; sourceTree = "<group>"; };
 		3D300E42F92C46A15D702E0315FD99DF /* MDCButtonShapeThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCButtonShapeThemer.h; path = components/Buttons/src/ShapeThemer/MDCButtonShapeThemer.h; sourceTree = "<group>"; };
 		3D551D2E9EB1774B1A1388211AE0CDD5 /* MaterialTabs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MaterialTabs.h; path = components/Tabs/src/MaterialTabs.h; sourceTree = "<group>"; };
-		3DACC4F0187A2D5E0B6E0499B519CAC3 /* MaterialIcons_ic_check.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MaterialIcons_ic_check.bundle; path = "MaterialComponents-MaterialIcons_ic_check.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DACC4F0187A2D5E0B6E0499B519CAC3 /* MaterialIcons_ic_check.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaterialIcons_ic_check.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E367A02FD17EC9ADB2C2AAD3E3239AA /* MaterialThemes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MaterialThemes.h; path = components/Themes/src/MaterialThemes.h; sourceTree = "<group>"; };
 		3E4BDB722DF94D161A003CA4BC623DFB /* ResourceBundle-MaterialIcons_ic_info-MaterialComponents-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MaterialIcons_ic_info-MaterialComponents-Info.plist"; sourceTree = "<group>"; };
 		3E54E704E70608EED1A4E477D2C6395F /* MDCOverlayAnimationObserver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCOverlayAnimationObserver.h; path = components/private/Overlay/src/private/MDCOverlayAnimationObserver.h; sourceTree = "<group>"; };
@@ -1338,7 +1339,7 @@
 		3F755A4E1E77AD2015DA3816EF6A8533 /* MDCFeatureHighlightDismissGestureRecognizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCFeatureHighlightDismissGestureRecognizer.h; path = components/FeatureHighlight/src/private/MDCFeatureHighlightDismissGestureRecognizer.h; sourceTree = "<group>"; };
 		3FDBF3D678E7510A8805D08C543D3E35 /* MDFTextAccessibility-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MDFTextAccessibility-prefix.pch"; sourceTree = "<group>"; };
 		4093A794C766CC98FF2C8164F2FD041F /* UIView+MaterialRTL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+MaterialRTL.m"; path = "Sources/UIView+MaterialRTL.m"; sourceTree = "<group>"; };
-		40CBA86C328E1F544E927887BC9382C6 /* DVNTStringExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DVNTStringExtension.framework; path = DVNTStringExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40CBA86C328E1F544E927887BC9382C6 /* DVNTStringExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DVNTStringExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4100D44AD33BB62010B7017C5F1A4793 /* MDCCollectionViewTextCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCCollectionViewTextCell.h; path = components/CollectionCells/src/MDCCollectionViewTextCell.h; sourceTree = "<group>"; };
 		411EB61BFCFD13CAF321AAC7994DE80E /* MaterialBottomAppBar+ColorThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MaterialBottomAppBar+ColorThemer.h"; path = "components/BottomAppBar/src/ColorThemer/MaterialBottomAppBar+ColorThemer.h"; sourceTree = "<group>"; };
 		414B797CDB70A7F27D344F571285CCCC /* MDCAppBarTypographyThemer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCAppBarTypographyThemer.m; path = components/AppBar/src/TypographyThemer/MDCAppBarTypographyThemer.m; sourceTree = "<group>"; };
@@ -1381,7 +1382,7 @@
 		4A1E46E6A391B7C08D1496868078A771 /* MDMSpringTimingCurve.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDMSpringTimingCurve.h; path = src/MDMSpringTimingCurve.h; sourceTree = "<group>"; };
 		4A8EF2EF0F2D36C6E54AF376428F6EDE /* MDMRepetitionTraits.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDMRepetitionTraits.h; path = src/MDMRepetitionTraits.h; sourceTree = "<group>"; };
 		4A92161A661EC5E71918897774A2442A /* MaterialComponents-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MaterialComponents-prefix.pch"; sourceTree = "<group>"; };
-		4AD1CB840BECD6CECBA3B9ACED8B63D2 /* MDFTextAccessibility.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MDFTextAccessibility.framework; path = MDFTextAccessibility.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AD1CB840BECD6CECBA3B9ACED8B63D2 /* MDFTextAccessibility.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MDFTextAccessibility.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1E63E00F6A47976EF17E2D067F6E7E /* MDCTypographyUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTypographyUtilities.h; path = components/Typography/src/private/MDCTypographyUtilities.h; sourceTree = "<group>"; };
 		4B9ECBA06C60D07F9077FBBD9B949E8E /* MDCActionSheetItemTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCActionSheetItemTableViewCell.m; path = components/ActionSheet/src/private/MDCActionSheetItemTableViewCell.m; sourceTree = "<group>"; };
 		4BF47455E9DE7A483801F282308115E5 /* MDCFlexibleHeaderTopSafeArea.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCFlexibleHeaderTopSafeArea.m; path = components/FlexibleHeader/src/private/MDCFlexibleHeaderTopSafeArea.m; sourceTree = "<group>"; };
@@ -1400,7 +1401,7 @@
 		4E8A20DE1BB2846059C5C120C1EC6E50 /* MDCBottomDrawerPresentationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCBottomDrawerPresentationController.h; path = components/NavigationDrawer/src/MDCBottomDrawerPresentationController.h; sourceTree = "<group>"; };
 		4EBD3C93F3E9D2B25368C29E3401899B /* MDFColorCalculations.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDFColorCalculations.h; path = src/private/MDFColorCalculations.h; sourceTree = "<group>"; };
 		4ED03AD475DB3641675011E295269116 /* MDCTextInputArt.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextInputArt.h; path = components/TextFields/src/private/MDCTextInputArt.h; sourceTree = "<group>"; };
-		4ED44E21DA08F82EDA24F715CF619ECC /* MaterialIcons_ic_radio_button_unchecked.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MaterialIcons_ic_radio_button_unchecked.bundle; path = "MaterialComponents-MaterialIcons_ic_radio_button_unchecked.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4ED44E21DA08F82EDA24F715CF619ECC /* MaterialIcons_ic_radio_button_unchecked.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaterialIcons_ic_radio_button_unchecked.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F99564E3FB949EC669DF575714B5D7D /* MDCThumbTrack+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MDCThumbTrack+Private.h"; path = "components/private/ThumbTrack/src/private/MDCThumbTrack+Private.h"; sourceTree = "<group>"; };
 		4FFD9F4FC1074CDDBEC0085830E06890 /* MotionAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MotionAnimator.h; path = src/MotionAnimator.h; sourceTree = "<group>"; };
 		5070DF4B836FB02270A2A7A634F17698 /* MDCBottomDrawerHeaderMask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCBottomDrawerHeaderMask.h; path = components/NavigationDrawer/src/private/MDCBottomDrawerHeaderMask.h; sourceTree = "<group>"; };
@@ -1456,9 +1457,9 @@
 		5EE83F6B325F2B88DE0B8C342C853314 /* MDCSnackbarAlignment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCSnackbarAlignment.h; path = components/Snackbar/src/MDCSnackbarAlignment.h; sourceTree = "<group>"; };
 		5F788BA1EE5E17B36DAF60FCA87BB6C1 /* MDCMaskedTransitionMotionForContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCMaskedTransitionMotionForContext.h; path = components/MaskedTransition/src/private/MDCMaskedTransitionMotionForContext.h; sourceTree = "<group>"; };
 		5FDDC0A59F66075B1B0FD56B01C951C4 /* MDFTextAccessibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDFTextAccessibility.h; path = src/MDFTextAccessibility.h; sourceTree = "<group>"; };
-		5FFFE8AF2CC92581F3B2CA745FA356AF /* MotionAnimator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MotionAnimator.framework; path = MotionAnimator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FFFE8AF2CC92581F3B2CA745FA356AF /* MotionAnimator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MotionAnimator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6037661FCBBD376C3BEF2411DBDADDB2 /* MDCFlexibleHeaderView+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MDCFlexibleHeaderView+Private.h"; path = "components/FlexibleHeader/src/private/MDCFlexibleHeaderView+Private.h"; sourceTree = "<group>"; };
-		60A438CFC3E8D2AA9888D1DA22A5C8F9 /* MDFInternationalization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MDFInternationalization.framework; path = MDFInternationalization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60A438CFC3E8D2AA9888D1DA22A5C8F9 /* MDFInternationalization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MDFInternationalization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		612383B19F15EAAA536D301012CC307D /* NSLocale+MaterialRTL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLocale+MaterialRTL.h"; path = "Sources/NSLocale+MaterialRTL.h"; sourceTree = "<group>"; };
 		61E1EDC5379284110E2D190975DBD5EB /* MDCCornerTreatment+CornerTypeInitalizer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MDCCornerTreatment+CornerTypeInitalizer.h"; path = "components/ShapeLibrary/src/MDCCornerTreatment+CornerTypeInitalizer.h"; sourceTree = "<group>"; };
 		6232A434FC13C50D5C2E4545C97833AA /* MDCCornerTreatment+CornerTypeInitalizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MDCCornerTreatment+CornerTypeInitalizer.m"; path = "components/ShapeLibrary/src/MDCCornerTreatment+CornerTypeInitalizer.m"; sourceTree = "<group>"; };
@@ -1472,7 +1473,7 @@
 		641EB549136DBC3A573CFD18B486649E /* MDCActivityIndicatorMotionSpec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCActivityIndicatorMotionSpec.h; path = components/ActivityIndicator/src/private/MDCActivityIndicatorMotionSpec.h; sourceTree = "<group>"; };
 		647B6FE69FFE1EEE87B0F453A9BB2D6B /* MDCRaisedButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCRaisedButton.m; path = components/Buttons/src/MDCRaisedButton.m; sourceTree = "<group>"; };
 		64AF4FEA1EA5FB6F9BF3E2E3C0B8B296 /* MDCButtonScheme.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCButtonScheme.m; path = components/Buttons/src/ButtonThemer/MDCButtonScheme.m; sourceTree = "<group>"; };
-		64CA94F287C77A65C9D68132B4187092 /* MaterialIcons_ic_check_circle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MaterialIcons_ic_check_circle.bundle; path = "MaterialComponents-MaterialIcons_ic_check_circle.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64CA94F287C77A65C9D68132B4187092 /* MaterialIcons_ic_check_circle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaterialIcons_ic_check_circle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		6515340A76DE0B1266CCADC7B5AF80FC /* MDCOverlayObserverTransition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCOverlayObserverTransition.m; path = components/private/Overlay/src/private/MDCOverlayObserverTransition.m; sourceTree = "<group>"; };
 		652EE5BAA960F62B1A4AF2C2B6695A7D /* MDCLibraryInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCLibraryInfo.m; path = components/LibraryInfo/src/MDCLibraryInfo.m; sourceTree = "<group>"; };
 		6571A52EE999038AB40AF2FDAEB650D6 /* MDCBottomDrawerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCBottomDrawerViewController.m; path = components/NavigationDrawer/src/MDCBottomDrawerViewController.m; sourceTree = "<group>"; };
@@ -1499,7 +1500,7 @@
 		6BDBCA9BB4BD0A2754C7670D3C6B398A /* MaterialComponents.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MaterialComponents.xcconfig; sourceTree = "<group>"; };
 		6BE78325FE5C7A3BEFCFA64A6286D263 /* MaterialCollections.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MaterialCollections.h; path = components/Collections/src/MaterialCollections.h; sourceTree = "<group>"; };
 		6C39F56E8157056C09B514A3EC7EA9CE /* UIViewController+MaterialBottomSheet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MaterialBottomSheet.m"; path = "components/BottomSheet/src/UIViewController+MaterialBottomSheet.m"; sourceTree = "<group>"; };
-		6C638E865A6C424316D059012E6506AE /* DVNTAlertManager.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = DVNTAlertManager.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		6C638E865A6C424316D059012E6506AE /* DVNTAlertManager.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = DVNTAlertManager.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6C78F9BA852D3901B24C5231F8E3BE09 /* MDCItemBarCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCItemBarCell.h; path = components/Tabs/src/private/MDCItemBarCell.h; sourceTree = "<group>"; };
 		6CE1AEF6695712C135C2AD97560F9DC1 /* DVNTStringExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DVNTStringExtension.swift; path = DVNTStringExtension/Classes/DVNTStringExtension.swift; sourceTree = "<group>"; };
 		6DA0E49C3DE406109F5D35F8C21EBA04 /* DVNTStringExtension-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DVNTStringExtension-Info.plist"; sourceTree = "<group>"; };
@@ -1549,7 +1550,7 @@
 		7A37DD230A8A9E79232F3CE419F036FD /* DVNTUIWindowExtension-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DVNTUIWindowExtension-dummy.m"; sourceTree = "<group>"; };
 		7A610FFFADD77B8233A5EBAF1E3615A1 /* MDCHeaderStackViewColorThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCHeaderStackViewColorThemer.h; path = components/HeaderStackView/src/ColorThemer/MDCHeaderStackViewColorThemer.h; sourceTree = "<group>"; };
 		7A83A588241380526F92054BF9D06B1A /* MDCTextInputControllerFloatingPlaceholder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextInputControllerFloatingPlaceholder.h; path = components/TextFields/src/MDCTextInputControllerFloatingPlaceholder.h; sourceTree = "<group>"; };
-		7A8584747BFEFC5DF4F29DF85758C454 /* MaterialIcons_ic_info.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MaterialIcons_ic_info.bundle; path = "MaterialComponents-MaterialIcons_ic_info.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A8584747BFEFC5DF4F29DF85758C454 /* MaterialIcons_ic_info.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaterialIcons_ic_info.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B40950108A0C8B10BFDC963BDC76083 /* MDCCollectionViewStyler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCCollectionViewStyler.m; path = components/Collections/src/private/MDCCollectionViewStyler.m; sourceTree = "<group>"; };
 		7BFCB84DCDB1789D9F431EB51C81EA5F /* MDCTextFieldPositioningDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextFieldPositioningDelegate.h; path = components/TextFields/src/MDCTextFieldPositioningDelegate.h; sourceTree = "<group>"; };
 		7BFFB59AAFF337573C4BF9E91DEB5A23 /* MDMRepetition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDMRepetition.m; path = src/MDMRepetition.m; sourceTree = "<group>"; };
@@ -1622,13 +1623,13 @@
 		8FE305FCF3D304441B96636E86057E6E /* MDMTransitionController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDMTransitionController.h; path = src/MDMTransitionController.h; sourceTree = "<group>"; };
 		90A9F8744366DCE90150179206CD8B56 /* MDCRoundedCornerTreatment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCRoundedCornerTreatment.m; path = components/ShapeLibrary/src/MDCRoundedCornerTreatment.m; sourceTree = "<group>"; };
 		90F5CBE025B4D58BDDFFC52C97707601 /* MDCOverlayObserverTransition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCOverlayObserverTransition.h; path = components/private/Overlay/src/private/MDCOverlayObserverTransition.h; sourceTree = "<group>"; };
-		90FC6E65FC3936A076195A84DF9BC573 /* DVNTUIWindowExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DVNTUIWindowExtension.framework; path = DVNTUIWindowExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90FC6E65FC3936A076195A84DF9BC573 /* DVNTUIWindowExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DVNTUIWindowExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9102DD8C326F8D2155B73DB6CDB12180 /* MDCMaskedTransitionMotionForContext.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCMaskedTransitionMotionForContext.m; path = components/MaskedTransition/src/private/MDCMaskedTransitionMotionForContext.m; sourceTree = "<group>"; };
 		913E4CFF72492D0F4000DA45C4AFD6C2 /* MDCAlertControllerThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCAlertControllerThemer.h; path = components/Dialogs/src/DialogThemer/MDCAlertControllerThemer.h; sourceTree = "<group>"; };
 		91729BF91FC2B6A995034F2649E2ABE3 /* MaterialComponents-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MaterialComponents-dummy.m"; sourceTree = "<group>"; };
 		91C87DB9B87D48544A7D0FEA84E209CB /* MDCButtonBarColorThemer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCButtonBarColorThemer.m; path = components/ButtonBar/src/ColorThemer/MDCButtonBarColorThemer.m; sourceTree = "<group>"; };
 		9274DC47B567D74A7D2E4F462FCB5D4A /* MDCOutlinedButtonColorThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCOutlinedButtonColorThemer.h; path = components/Buttons/src/ColorThemer/MDCOutlinedButtonColorThemer.h; sourceTree = "<group>"; };
-		94762177FB8E393B4D5886E8408302C8 /* MaterialIcons_ic_reorder.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MaterialIcons_ic_reorder.bundle; path = "MaterialComponents-MaterialIcons_ic_reorder.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		94762177FB8E393B4D5886E8408302C8 /* MaterialIcons_ic_reorder.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaterialIcons_ic_reorder.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		94894DE24A07D09E17386558D75CD05D /* MDCAppBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCAppBar.h; path = components/AppBar/src/MDCAppBar.h; sourceTree = "<group>"; };
 		94B4BE0541B472F19D95365090F367FE /* MDCCollectionViewFlowLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCCollectionViewFlowLayout.h; path = components/Collections/src/MDCCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		9522B82273476DD4F5DB6E302EBD8E5B /* MDCItemBarStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCItemBarStyle.h; path = components/Tabs/src/private/MDCItemBarStyle.h; sourceTree = "<group>"; };
@@ -1655,13 +1656,17 @@
 		9B470754C8AE7848240A957CFE20F783 /* MDFInternationalization-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MDFInternationalization-dummy.m"; sourceTree = "<group>"; };
 		9B62861B5405B0F6D0724763D1AFE259 /* MDCContainedButtonThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCContainedButtonThemer.h; path = components/Buttons/src/ButtonThemer/MDCContainedButtonThemer.h; sourceTree = "<group>"; };
 		9B914AB181554A38931BEECC4DE0B362 /* CAMediaTimingFunction+MotionAnimator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CAMediaTimingFunction+MotionAnimator.m"; path = "src/private/CAMediaTimingFunction+MotionAnimator.m"; sourceTree = "<group>"; };
+		9B94A95D225A241500226D5F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9B94A95F225A243400226D5F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9B94A960225A244200226D5F /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9B94A961225A245300226D5F /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9C3AAE2F0C923130D8E3F20C960220BE /* MDCCollectionViewLayoutAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCCollectionViewLayoutAttributes.h; path = components/CollectionLayoutAttributes/src/MDCCollectionViewLayoutAttributes.h; sourceTree = "<group>"; };
 		9C5B102A6BABB15695A1EFCE8176EDD0 /* MDCBottomSheetController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCBottomSheetController.m; path = components/BottomSheet/src/MDCBottomSheetController.m; sourceTree = "<group>"; };
 		9C8F4D77BF50C2257D8623F7683729D4 /* MaterialProgressView+ColorThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MaterialProgressView+ColorThemer.h"; path = "components/ProgressView/src/ColorThemer/MaterialProgressView+ColorThemer.h"; sourceTree = "<group>"; };
 		9CA83C0A256092A3A80719980877D859 /* MDCFloatingButton+Animation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MDCFloatingButton+Animation.m"; path = "components/Buttons/src/MDCFloatingButton+Animation.m"; sourceTree = "<group>"; };
 		9CD3F1D26F325525861DE5BD028477EE /* MDCBottomNavigationBar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCBottomNavigationBar.h; path = components/BottomNavigation/src/MDCBottomNavigationBar.h; sourceTree = "<group>"; };
 		9D7603C7B468D58992F9A865BF1F94E4 /* MDCSnackbarMessageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCSnackbarMessageView.h; path = components/Snackbar/src/MDCSnackbarMessageView.h; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DAA794A164FD9B525FBD36FD4AB29D2 /* ic_reorder@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "ic_reorder@2x.png"; path = "components/private/Icons/icons/ic_reorder/src/MaterialIcons_ic_reorder.bundle/ic_reorder@2x.png"; sourceTree = "<group>"; };
 		9DB8F759C450D48B482C666FE5085212 /* MDCOverlayWindow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCOverlayWindow.m; path = components/OverlayWindow/src/MDCOverlayWindow.m; sourceTree = "<group>"; };
 		9DC9884D482AD44A746F478841880521 /* CABasicAnimation+MotionAnimator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CABasicAnimation+MotionAnimator.m"; path = "src/private/CABasicAnimation+MotionAnimator.m"; sourceTree = "<group>"; };
@@ -1740,7 +1745,7 @@
 		B102A53671657EEDCC9B50EACF4794AC /* MDCThumbTrack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCThumbTrack.h; path = components/private/ThumbTrack/src/MDCThumbTrack.h; sourceTree = "<group>"; };
 		B1737140EE07044F592185FEDFE2585F /* MDCListScheme.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCListScheme.h; path = components/List/src/ListThemer/MDCListScheme.h; sourceTree = "<group>"; };
 		B2414B2BBF19CC886359667C69504295 /* MaterialTabs+ColorThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MaterialTabs+ColorThemer.h"; path = "components/Tabs/src/ColorThemer/MaterialTabs+ColorThemer.h"; sourceTree = "<group>"; };
-		B2AB52E215CE9CC89AECDF4A09EB9908 /* DVNTAlertManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DVNTAlertManager.framework; path = DVNTAlertManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2AB52E215CE9CC89AECDF4A09EB9908 /* DVNTAlertManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DVNTAlertManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39FF7FE731C90E35344C2C618736B55 /* MDCLayoutMetrics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCLayoutMetrics.h; path = components/private/UIMetrics/src/MDCLayoutMetrics.h; sourceTree = "<group>"; };
 		B3CB60F8D99ABFD43ABD01C518688DD0 /* MDCTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextField.h; path = components/TextFields/src/MDCTextField.h; sourceTree = "<group>"; };
 		B403578B67E7A4A9DB0ABBCDA1C9CE2E /* MaterialTabs+TypographyThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MaterialTabs+TypographyThemer.h"; path = "components/Tabs/src/TypographyThemer/MaterialTabs+TypographyThemer.h"; sourceTree = "<group>"; };
@@ -1789,7 +1794,7 @@
 		C12DA9B3DDC649327ACA4025990108B1 /* MDCLegacyColorScheme.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCLegacyColorScheme.m; path = components/schemes/Color/src/MDCLegacyColorScheme.m; sourceTree = "<group>"; };
 		C146EDA3E63FDCDE1B1012040C0B255C /* MDCFeatureHighlightTypographyThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCFeatureHighlightTypographyThemer.h; path = components/FeatureHighlight/src/TypographyThemer/MDCFeatureHighlightTypographyThemer.h; sourceTree = "<group>"; };
 		C1872E3AF42899D55A39574BE98A066B /* MDCAlertColorThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCAlertColorThemer.h; path = components/Dialogs/src/ColorThemer/MDCAlertColorThemer.h; sourceTree = "<group>"; };
-		C1D91222D62949D86D7AB69046E744E5 /* MotionTransitioning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MotionTransitioning.framework; path = MotionTransitioning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1D91222D62949D86D7AB69046E744E5 /* MotionTransitioning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MotionTransitioning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F682B9DD23413A7EF1CEEF010091E1 /* MDMAnimationTraits.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDMAnimationTraits.h; path = src/MDMAnimationTraits.h; sourceTree = "<group>"; };
 		C1FFE61E3B734F3401BE3DA72FAE3390 /* MDCMaskedTransition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCMaskedTransition.h; path = components/MaskedTransition/src/private/MDCMaskedTransition.h; sourceTree = "<group>"; };
 		C26FC476A29EFDF6B7E06E6A04B5350F /* MDCSnackbarMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCSnackbarMessage.m; path = components/Snackbar/src/MDCSnackbarMessage.m; sourceTree = "<group>"; };
@@ -1800,7 +1805,7 @@
 		C3123324AD14EB16F99D2EFAF0FF7B0E /* MaterialAnimationTiming.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MaterialAnimationTiming.h; path = components/AnimationTiming/src/MaterialAnimationTiming.h; sourceTree = "<group>"; };
 		C3924A821C9D65DAE3D65B32922D9D5C /* MDMViewControllerTransitionController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDMViewControllerTransitionController.m; path = src/private/MDMViewControllerTransitionController.m; sourceTree = "<group>"; };
 		C3B6C14D9C47C41FD5200D6319CAE650 /* MaterialComponents-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MaterialComponents-Info.plist"; sourceTree = "<group>"; };
-		C3EC92D483FC5C95B64F5723EF5373C7 /* MaterialIcons_ic_chevron_right.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MaterialIcons_ic_chevron_right.bundle; path = "MaterialComponents-MaterialIcons_ic_chevron_right.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3EC92D483FC5C95B64F5723EF5373C7 /* MaterialIcons_ic_chevron_right.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaterialIcons_ic_chevron_right.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40524A9D84F15E66B8EDE032E79D98D /* MDCListColorThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCListColorThemer.h; path = components/List/src/ColorThemer/MDCListColorThemer.h; sourceTree = "<group>"; };
 		C4A71FEDC045594EFF042E74E2ED46E2 /* MDCLegacyTonalPalette.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCLegacyTonalPalette.m; path = components/schemes/Color/src/MDCLegacyTonalPalette.m; sourceTree = "<group>"; };
 		C4C2EC02D78A905B025120ED1E0CC824 /* MDCCollectionStringResources.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCCollectionStringResources.h; path = components/Collections/src/private/MDCCollectionStringResources.h; sourceTree = "<group>"; };
@@ -1816,7 +1821,7 @@
 		C8925959632382D4EDD89651FE079D20 /* MDCSlider_Subclassable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCSlider_Subclassable.h; path = components/Slider/src/private/MDCSlider_Subclassable.h; sourceTree = "<group>"; };
 		C8A25264D79C60442EF2574269D5DC1B /* MaterialFeatureHighlight+TypographyThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MaterialFeatureHighlight+TypographyThemer.h"; path = "components/FeatureHighlight/src/TypographyThemer/MaterialFeatureHighlight+TypographyThemer.h"; sourceTree = "<group>"; };
 		C8B38C3864339114A3E8AEB5B0B7AA44 /* MDCMultilineTextInputDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCMultilineTextInputDelegate.h; path = components/TextFields/src/MDCMultilineTextInputDelegate.h; sourceTree = "<group>"; };
-		C8E85CC24BE75FBB63BA7791290E843B /* MaterialIcons_ic_settings.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MaterialIcons_ic_settings.bundle; path = "MaterialComponents-MaterialIcons_ic_settings.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8E85CC24BE75FBB63BA7791290E843B /* MaterialIcons_ic_settings.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaterialIcons_ic_settings.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9399C35EB94695FB17E7F3128AEE5B1 /* UIFont+MaterialTypography.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIFont+MaterialTypography.h"; path = "components/Typography/src/UIFont+MaterialTypography.h"; sourceTree = "<group>"; };
 		C93DACAB11EFAE50547FC96626AAD3D7 /* MDCAlertControllerView+Private.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "MDCAlertControllerView+Private.m"; path = "components/Dialogs/src/private/MDCAlertControllerView+Private.m"; sourceTree = "<group>"; };
 		C9A3AEE137B60E3376239315195A640E /* MaterialList+TypographyThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MaterialList+TypographyThemer.h"; path = "components/List/src/TypographyThemer/MaterialList+TypographyThemer.h"; sourceTree = "<group>"; };
@@ -1839,7 +1844,7 @@
 		CE0CD51AB382369C5A20B12C31AABF21 /* MDMMotionCurve.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDMMotionCurve.m; path = src/MDMMotionCurve.m; sourceTree = "<group>"; };
 		CE92243D1D3E54587312091AC1124659 /* MaterialSnackbar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MaterialSnackbar.h; path = components/Snackbar/src/MaterialSnackbar.h; sourceTree = "<group>"; };
 		CEE3703C5D6E0163EEE253001A8CF829 /* MotionInterchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MotionInterchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEEB4F4B309F121A2C4E092BA62D43B6 /* MaterialComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MaterialComponents.framework; path = MaterialComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEEB4F4B309F121A2C4E092BA62D43B6 /* MaterialComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaterialComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF54F1C835F4774477D256D4977C5BD /* MDCSnackbarTypographyThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCSnackbarTypographyThemer.h; path = components/Snackbar/src/TypographyThemer/MDCSnackbarTypographyThemer.h; sourceTree = "<group>"; };
 		CF345C04C7359C089E0E06DD688AA339 /* MDCCardsColorThemer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCCardsColorThemer.m; path = components/Cards/src/ColorThemer/MDCCardsColorThemer.m; sourceTree = "<group>"; };
 		D0FF8AF8DFBF969FA6FC072D139BE900 /* MDCBottomSheetPresentationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCBottomSheetPresentationController.m; path = components/BottomSheet/src/MDCBottomSheetPresentationController.m; sourceTree = "<group>"; };
@@ -1847,7 +1852,7 @@
 		D152C4CC050A58F76D2F00B6BF10F3F4 /* DVNTAlertManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DVNTAlertManager-umbrella.h"; sourceTree = "<group>"; };
 		D2C9D16C5D23AB0FB9E4C092690D1B6E /* UIView+MaterialRTL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+MaterialRTL.h"; path = "Sources/UIView+MaterialRTL.h"; sourceTree = "<group>"; };
 		D2EF7997620076BEC8E7B216DD5DEAD7 /* MDMTransitionPresentationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDMTransitionPresentationController.m; path = src/MDMTransitionPresentationController.m; sourceTree = "<group>"; };
-		D2F0E6294162E8EE5330419EC7259AEA /* MaterialIcons_ic_arrow_back.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MaterialIcons_ic_arrow_back.bundle; path = "MaterialComponents-MaterialIcons_ic_arrow_back.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2F0E6294162E8EE5330419EC7259AEA /* MaterialIcons_ic_arrow_back.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaterialIcons_ic_arrow_back.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3078ECC3A587FBE20B76690A2C8F03C /* MDCCurvedRectShapeGenerator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCCurvedRectShapeGenerator.h; path = components/ShapeLibrary/src/MDCCurvedRectShapeGenerator.h; sourceTree = "<group>"; };
 		D31D9F1E80B34099439DF46138CE3297 /* MDCPaletteExpansions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCPaletteExpansions.h; path = components/Palettes/src/private/MDCPaletteExpansions.h; sourceTree = "<group>"; };
 		D322992A231163A68C08A51EA7D6F362 /* MDMTransitionContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDMTransitionContext.h; path = src/MDMTransitionContext.h; sourceTree = "<group>"; };
@@ -2615,7 +2620,6 @@
 				22B259EC5F2BE1363412C71DB2B43E30 /* DVNTUIWindowExtension.swift */,
 				11E94E7DBE3EADA24C24DBC3BC38C883 /* Support Files */,
 			);
-			name = DVNTUIWindowExtension;
 			path = DVNTUIWindowExtension;
 			sourceTree = "<group>";
 		};
@@ -2676,7 +2680,6 @@
 				4093A794C766CC98FF2C8164F2FD041F /* UIView+MaterialRTL.m */,
 				4B772E4EF3C24410EE9D9D99B582B90A /* Support Files */,
 			);
-			name = MDFInternationalization;
 			path = MDFInternationalization;
 			sourceTree = "<group>";
 		};
@@ -2696,7 +2699,6 @@
 				6CE1AEF6695712C135C2AD97560F9DC1 /* DVNTStringExtension.swift */,
 				577FD8E5C255E08CA1D11B43058AB3C8 /* Support Files */,
 			);
-			name = DVNTStringExtension;
 			path = DVNTStringExtension;
 			sourceTree = "<group>";
 		};
@@ -2751,6 +2753,7 @@
 				B0C8627B8026233565910CC123DCC4AE /* DVNTAlertManager-Info.plist */,
 				249E7214B5BA29F53CD15285F51C08AB /* DVNTAlertManager-prefix.pch */,
 				D152C4CC050A58F76D2F00B6BF10F3F4 /* DVNTAlertManager-umbrella.h */,
+				9B94A95E225A241500226D5F /* Localizable.strings */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/DVNTAlertManager";
@@ -2937,7 +2940,6 @@
 				839D1900F5E9CC9435B7B336D71E21F5 /* NSArray+MDFUtils.m */,
 				ED2F4ACD9C55A5D847D697AEC31BCD27 /* Support Files */,
 			);
-			name = MDFTextAccessibility;
 			path = MDFTextAccessibility;
 			sourceTree = "<group>";
 		};
@@ -3097,7 +3099,6 @@
 				4FFD9F4FC1074CDDBEC0085830E06890 /* MotionAnimator.h */,
 				3DA304095D4377768E970F4A44E36512 /* Support Files */,
 			);
-			name = MotionAnimator;
 			path = MotionAnimator;
 			sourceTree = "<group>";
 		};
@@ -3233,7 +3234,6 @@
 				E4BD57251D0071D5E9F1D55B90BFBF1C /* Themes */,
 				9E35C88595ACCE4013F271153BAFC086 /* Typography */,
 			);
-			name = MaterialComponents;
 			path = MaterialComponents;
 			sourceTree = "<group>";
 		};
@@ -3625,7 +3625,6 @@
 				AE4C75E997BAFDA7779BA6D25A89ED2C /* MotionInterchange.h */,
 				0E04278291008E7AD87766785D99916A /* Support Files */,
 			);
-			name = MotionInterchange;
 			path = MotionInterchange;
 			sourceTree = "<group>";
 		};
@@ -3913,7 +3912,6 @@
 				1B05E4D7074CA882C8E8F6692E029B92 /* UIViewController+TransitionController.m */,
 				245E3B42A53A9BA3BF3A84BCC162615B /* Support Files */,
 			);
-			name = MotionTransitioning;
 			path = MotionTransitioning;
 			sourceTree = "<group>";
 		};
@@ -5357,7 +5355,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1020;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -5365,6 +5363,9 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				es,
+				ca,
+				"es-419",
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = 0514CD78E661263862A9BC50F432121D /* Products */;
@@ -5554,6 +5555,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B94A95C225A241500226D5F /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6227,6 +6229,20 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		9B94A95E225A241500226D5F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B94A95D225A241500226D5F /* en */,
+				9B94A95F225A243400226D5F /* es */,
+				9B94A960225A244200226D5F /* ca */,
+				9B94A961225A245300226D5F /* es-419 */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		00096E7D71CA0629DE836384A49234C0 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -6854,6 +6870,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -7187,6 +7204,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -7236,8 +7254,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
