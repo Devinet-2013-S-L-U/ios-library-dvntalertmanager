@@ -1,0 +1,16 @@
+PODS:
+  - DVNTAlertManager (0.1.0)
+
+DEPENDENCIES:
+  - DVNTAlertManager (from `../`)
+
+EXTERNAL SOURCES:
+  DVNTAlertManager:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DVNTAlertManager: c102af0d62b934d726fbd7b65a69a1cdd662ffd9
+
+PODFILE CHECKSUM: 56ef91c8481ca6af7d3b081f01f125eb22e550db
+
+COCOAPODS: 1.7.0.beta.3

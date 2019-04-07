@@ -1,0 +1,769 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A5D596D705E75BB28610725856D0483 /* Pods-DVNTAlertManager_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9497E85E0383D359D83D99BCB7783B23 /* Pods-DVNTAlertManager_Example-dummy.m */; };
+		22E51C4523B08F266EE56417BC6ED514 /* DVNTAlertManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F5195B436D0079A79DD60490A8BE2811 /* DVNTAlertManager-dummy.m */; };
+		361B19F8E119A3F0B35820500726EA35 /* Pods-DVNTAlertManager_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B194E7951737F9621D42B46F4BE5A3B /* Pods-DVNTAlertManager_Tests-dummy.m */; };
+		3C05ED464952A48C7B3F50ED30D0D921 /* DVNTAlertManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8326F9A653E64828A161C09EF1A63B5D /* DVNTAlertManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4350E5195A7506697286C80A02491E89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		62C117A2518660A53F058A438A618ADC /* Pods-DVNTAlertManager_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A5E3FA5DD726A345347B77E24C314C8 /* Pods-DVNTAlertManager_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		81ABD382E98F27E34373293D3858A15E /* Pods-DVNTAlertManager_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E6446A68CD6F5892DE1E98BDCBC0B937 /* Pods-DVNTAlertManager_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A490D5D10A4A5FDE7E0DD69D0AD4D324 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		C1575648CA33172A019CBAC8AC3D9CAE /* DVNTAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C717F1877945B44F9CD3FC4AF53FCEC0 /* DVNTAlertManager.swift */; };
+		EDDD940CADA5C9F10293FD0855A950E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		407141CC6923E1A8682D802381109C5B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0EB2F8EAC221A8AA0F4E0E03F4B27678;
+			remoteInfo = DVNTAlertManager;
+		};
+		E34F66097F56340E62E1EA9566637CE4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC94DAC07E0229BF24A301125B8EAC7E;
+			remoteInfo = "Pods-DVNTAlertManager_Example";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		049CF01099CFAB85DD47F0A9F3B86476 /* Pods-DVNTAlertManager_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DVNTAlertManager_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		0765FD4F201236B6A3105E92EEADE4AD /* Pods-DVNTAlertManager_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DVNTAlertManager_Tests.modulemap"; sourceTree = "<group>"; };
+		1A6FA82AF2B6C080E93A811C7B76D04E /* Pods-DVNTAlertManager_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DVNTAlertManager_Example-Info.plist"; sourceTree = "<group>"; };
+		2A5E3FA5DD726A345347B77E24C314C8 /* Pods-DVNTAlertManager_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DVNTAlertManager_Example-umbrella.h"; sourceTree = "<group>"; };
+		2B194E7951737F9621D42B46F4BE5A3B /* Pods-DVNTAlertManager_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DVNTAlertManager_Tests-dummy.m"; sourceTree = "<group>"; };
+		4D6CAB1D73401ED2C6C3002CA12C68E8 /* DVNTAlertManager.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = DVNTAlertManager.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		61EBA2B7A0E252A128BA10B212D7C0D2 /* Pods-DVNTAlertManager_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DVNTAlertManager_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6B129314754EC9586035A57687E73FAB /* Pods_DVNTAlertManager_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DVNTAlertManager_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D93FCCB15709685481D2E2C87C50658 /* Pods-DVNTAlertManager_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DVNTAlertManager_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		7F1F37322EFFCCD94914640D2C25D52B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8326F9A653E64828A161C09EF1A63B5D /* DVNTAlertManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DVNTAlertManager-umbrella.h"; sourceTree = "<group>"; };
+		83B3CCEDC5C89844097BC007D9901B9B /* Pods-DVNTAlertManager_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DVNTAlertManager_Example.release.xcconfig"; sourceTree = "<group>"; };
+		8447163BD06AEDA50AFC3422505ECD84 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8BB7B5251FECEBB6F01325C96FD7E1C5 /* Pods-DVNTAlertManager_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DVNTAlertManager_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		8F72A4FDEBDB1FD60B8A776CDFBD0A46 /* DVNTAlertManager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DVNTAlertManager-Info.plist"; sourceTree = "<group>"; };
+		907341DE0A0318BBE741B1BEC3C97167 /* Pods-DVNTAlertManager_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DVNTAlertManager_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		9497E85E0383D359D83D99BCB7783B23 /* Pods-DVNTAlertManager_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DVNTAlertManager_Example-dummy.m"; sourceTree = "<group>"; };
+		97E25D2E611B3D5BF6BCAC63D47CCE95 /* Pods_DVNTAlertManager_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DVNTAlertManager_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AC8BF51D6091954A293E53BFE06CAB86 /* Pods-DVNTAlertManager_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DVNTAlertManager_Example-frameworks.sh"; sourceTree = "<group>"; };
+		B61443FA834E9CEB2EC05B0248CC0A68 /* DVNTAlertManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DVNTAlertManager-prefix.pch"; sourceTree = "<group>"; };
+		BF80F672158137BB9BCA29CA47B22254 /* DVNTAlertManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = DVNTAlertManager.modulemap; sourceTree = "<group>"; };
+		C717F1877945B44F9CD3FC4AF53FCEC0 /* DVNTAlertManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DVNTAlertManager.swift; path = DVNTAlertManager/Classes/DVNTAlertManager.swift; sourceTree = "<group>"; };
+		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D7FB2FD1CF1A1E026E36760A3C92ED74 /* Pods-DVNTAlertManager_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DVNTAlertManager_Example.modulemap"; sourceTree = "<group>"; };
+		DCE056B0A8FEA558FA26F32A70E9A463 /* DVNTAlertManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DVNTAlertManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0E1FEBB29B0191FF95DDDA0FB5EF83D /* Pods-DVNTAlertManager_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DVNTAlertManager_Tests-Info.plist"; sourceTree = "<group>"; };
+		E303861C95A0D1F603B46465CD0CD88C /* Pods-DVNTAlertManager_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DVNTAlertManager_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		E6446A68CD6F5892DE1E98BDCBC0B937 /* Pods-DVNTAlertManager_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DVNTAlertManager_Tests-umbrella.h"; sourceTree = "<group>"; };
+		EF9ABA6AED13FE6F6775D413320C2F06 /* Pods-DVNTAlertManager_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DVNTAlertManager_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F2AB236D07E219CD2D915F050A204EAB /* DVNTAlertManager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DVNTAlertManager.xcconfig; sourceTree = "<group>"; };
+		F5195B436D0079A79DD60490A8BE2811 /* DVNTAlertManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DVNTAlertManager-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		50433435C12F5DD1202A6B4122429E16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDDD940CADA5C9F10293FD0855A950E3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7174FED05F054A2C5B69094E029EA309 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A490D5D10A4A5FDE7E0DD69D0AD4D324 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4D326006EBDA025047358342923637D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4350E5195A7506697286C80A02491E89 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		094689763CE44CE486778039C44DE06A /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				29003868133FE470AEB13589D1692A0A /* DVNTAlertManager */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		170C7FEE8EC46C87A92A2895D597B048 /* Pods-DVNTAlertManager_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0765FD4F201236B6A3105E92EEADE4AD /* Pods-DVNTAlertManager_Tests.modulemap */,
+				61EBA2B7A0E252A128BA10B212D7C0D2 /* Pods-DVNTAlertManager_Tests-acknowledgements.markdown */,
+				049CF01099CFAB85DD47F0A9F3B86476 /* Pods-DVNTAlertManager_Tests-acknowledgements.plist */,
+				2B194E7951737F9621D42B46F4BE5A3B /* Pods-DVNTAlertManager_Tests-dummy.m */,
+				E0E1FEBB29B0191FF95DDDA0FB5EF83D /* Pods-DVNTAlertManager_Tests-Info.plist */,
+				E6446A68CD6F5892DE1E98BDCBC0B937 /* Pods-DVNTAlertManager_Tests-umbrella.h */,
+				E303861C95A0D1F603B46465CD0CD88C /* Pods-DVNTAlertManager_Tests.debug.xcconfig */,
+				907341DE0A0318BBE741B1BEC3C97167 /* Pods-DVNTAlertManager_Tests.release.xcconfig */,
+			);
+			name = "Pods-DVNTAlertManager_Tests";
+			path = "Target Support Files/Pods-DVNTAlertManager_Tests";
+			sourceTree = "<group>";
+		};
+		23AF9651CDD985532090E46638982202 /* Pods-DVNTAlertManager_Example */ = {
+			isa = PBXGroup;
+			children = (
+				D7FB2FD1CF1A1E026E36760A3C92ED74 /* Pods-DVNTAlertManager_Example.modulemap */,
+				EF9ABA6AED13FE6F6775D413320C2F06 /* Pods-DVNTAlertManager_Example-acknowledgements.markdown */,
+				7D93FCCB15709685481D2E2C87C50658 /* Pods-DVNTAlertManager_Example-acknowledgements.plist */,
+				9497E85E0383D359D83D99BCB7783B23 /* Pods-DVNTAlertManager_Example-dummy.m */,
+				AC8BF51D6091954A293E53BFE06CAB86 /* Pods-DVNTAlertManager_Example-frameworks.sh */,
+				1A6FA82AF2B6C080E93A811C7B76D04E /* Pods-DVNTAlertManager_Example-Info.plist */,
+				2A5E3FA5DD726A345347B77E24C314C8 /* Pods-DVNTAlertManager_Example-umbrella.h */,
+				8BB7B5251FECEBB6F01325C96FD7E1C5 /* Pods-DVNTAlertManager_Example.debug.xcconfig */,
+				83B3CCEDC5C89844097BC007D9901B9B /* Pods-DVNTAlertManager_Example.release.xcconfig */,
+			);
+			name = "Pods-DVNTAlertManager_Example";
+			path = "Target Support Files/Pods-DVNTAlertManager_Example";
+			sourceTree = "<group>";
+		};
+		29003868133FE470AEB13589D1692A0A /* DVNTAlertManager */ = {
+			isa = PBXGroup;
+			children = (
+				C717F1877945B44F9CD3FC4AF53FCEC0 /* DVNTAlertManager.swift */,
+				B8E7A45DA2F4F0E9DAA13BE9D7F48947 /* Pod */,
+				A9170293188E20CF77A6A59DBA0E22AE /* Support Files */,
+			);
+			name = DVNTAlertManager;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		74C6899262A7E95EC7ABA63C3EBD57B4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DCE056B0A8FEA558FA26F32A70E9A463 /* DVNTAlertManager.framework */,
+				97E25D2E611B3D5BF6BCAC63D47CCE95 /* Pods_DVNTAlertManager_Example.framework */,
+				6B129314754EC9586035A57687E73FAB /* Pods_DVNTAlertManager_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		835EDAF1651B292792C6FB2F26D2A256 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				23AF9651CDD985532090E46638982202 /* Pods-DVNTAlertManager_Example */,
+				170C7FEE8EC46C87A92A2895D597B048 /* Pods-DVNTAlertManager_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		A9170293188E20CF77A6A59DBA0E22AE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BF80F672158137BB9BCA29CA47B22254 /* DVNTAlertManager.modulemap */,
+				F2AB236D07E219CD2D915F050A204EAB /* DVNTAlertManager.xcconfig */,
+				F5195B436D0079A79DD60490A8BE2811 /* DVNTAlertManager-dummy.m */,
+				8F72A4FDEBDB1FD60B8A776CDFBD0A46 /* DVNTAlertManager-Info.plist */,
+				B61443FA834E9CEB2EC05B0248CC0A68 /* DVNTAlertManager-prefix.pch */,
+				8326F9A653E64828A161C09EF1A63B5D /* DVNTAlertManager-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/DVNTAlertManager";
+			sourceTree = "<group>";
+		};
+		B8E7A45DA2F4F0E9DAA13BE9D7F48947 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				4D6CAB1D73401ED2C6C3002CA12C68E8 /* DVNTAlertManager.podspec */,
+				7F1F37322EFFCCD94914640D2C25D52B /* LICENSE */,
+				8447163BD06AEDA50AFC3422505ECD84 /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				094689763CE44CE486778039C44DE06A /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				74C6899262A7E95EC7ABA63C3EBD57B4 /* Products */,
+				835EDAF1651B292792C6FB2F26D2A256 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B055D0CFEA43187E72B03DED11F5662 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1EEC7A7CC4D21E78E86EE2DD53C23A3C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81ABD382E98F27E34373293D3858A15E /* Pods-DVNTAlertManager_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D89D11A7F239F910D41115EAE6619ABC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62C117A2518660A53F058A438A618ADC /* Pods-DVNTAlertManager_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBE7A1FC812628019B245B9C47B618C4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C05ED464952A48C7B3F50ED30D0D921 /* DVNTAlertManager-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0EB2F8EAC221A8AA0F4E0E03F4B27678 /* DVNTAlertManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A2134E815E111C581688C597E9FC1E0 /* Build configuration list for PBXNativeTarget "DVNTAlertManager" */;
+			buildPhases = (
+				FBE7A1FC812628019B245B9C47B618C4 /* Headers */,
+				8B84597C7D024E398239D7E898B49FB2 /* Sources */,
+				7174FED05F054A2C5B69094E029EA309 /* Frameworks */,
+				FEC320C8FA49FD2D07EDDAE7C1539465 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DVNTAlertManager;
+			productName = DVNTAlertManager;
+			productReference = DCE056B0A8FEA558FA26F32A70E9A463 /* DVNTAlertManager.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AC94DAC07E0229BF24A301125B8EAC7E /* Pods-DVNTAlertManager_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A13CE92EA9E68747DB7AE25A69D68AFE /* Build configuration list for PBXNativeTarget "Pods-DVNTAlertManager_Example" */;
+			buildPhases = (
+				D89D11A7F239F910D41115EAE6619ABC /* Headers */,
+				B40A2771C18BF89E5D9652379F272733 /* Sources */,
+				50433435C12F5DD1202A6B4122429E16 /* Frameworks */,
+				7ED44DB50801FCD402CFFCC4DD95FDF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D5DF76FA3DC32502954D7C2599022C40 /* PBXTargetDependency */,
+			);
+			name = "Pods-DVNTAlertManager_Example";
+			productName = "Pods-DVNTAlertManager_Example";
+			productReference = 97E25D2E611B3D5BF6BCAC63D47CCE95 /* Pods_DVNTAlertManager_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DE1989D7274158EE7B7D261E56A70B22 /* Pods-DVNTAlertManager_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66D95B492A6F31F41195FF634ABE5AC3 /* Build configuration list for PBXNativeTarget "Pods-DVNTAlertManager_Tests" */;
+			buildPhases = (
+				1EEC7A7CC4D21E78E86EE2DD53C23A3C /* Headers */,
+				DFDBFB216C9B59662389430F3C825D5A /* Sources */,
+				B4D326006EBDA025047358342923637D /* Frameworks */,
+				6398E9ED4B4C71C98D4F257D4257E5F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7532625CFFBBA6F919DC62C618CB5590 /* PBXTargetDependency */,
+			);
+			name = "Pods-DVNTAlertManager_Tests";
+			productName = "Pods-DVNTAlertManager_Tests";
+			productReference = 6B129314754EC9586035A57687E73FAB /* Pods_DVNTAlertManager_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 74C6899262A7E95EC7ABA63C3EBD57B4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0EB2F8EAC221A8AA0F4E0E03F4B27678 /* DVNTAlertManager */,
+				AC94DAC07E0229BF24A301125B8EAC7E /* Pods-DVNTAlertManager_Example */,
+				DE1989D7274158EE7B7D261E56A70B22 /* Pods-DVNTAlertManager_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6398E9ED4B4C71C98D4F257D4257E5F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ED44DB50801FCD402CFFCC4DD95FDF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FEC320C8FA49FD2D07EDDAE7C1539465 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8B84597C7D024E398239D7E898B49FB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22E51C4523B08F266EE56417BC6ED514 /* DVNTAlertManager-dummy.m in Sources */,
+				C1575648CA33172A019CBAC8AC3D9CAE /* DVNTAlertManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B40A2771C18BF89E5D9652379F272733 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A5D596D705E75BB28610725856D0483 /* Pods-DVNTAlertManager_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFDBFB216C9B59662389430F3C825D5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				361B19F8E119A3F0B35820500726EA35 /* Pods-DVNTAlertManager_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7532625CFFBBA6F919DC62C618CB5590 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-DVNTAlertManager_Example";
+			target = AC94DAC07E0229BF24A301125B8EAC7E /* Pods-DVNTAlertManager_Example */;
+			targetProxy = E34F66097F56340E62E1EA9566637CE4 /* PBXContainerItemProxy */;
+		};
+		D5DF76FA3DC32502954D7C2599022C40 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DVNTAlertManager;
+			target = 0EB2F8EAC221A8AA0F4E0E03F4B27678 /* DVNTAlertManager */;
+			targetProxy = 407141CC6923E1A8682D802381109C5B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		01C8E483FE1887E24B4D12819E68840D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2AB236D07E219CD2D915F050A204EAB /* DVNTAlertManager.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DVNTAlertManager/DVNTAlertManager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DVNTAlertManager/DVNTAlertManager-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DVNTAlertManager/DVNTAlertManager.modulemap";
+				PRODUCT_MODULE_NAME = DVNTAlertManager;
+				PRODUCT_NAME = DVNTAlertManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0D25636176D55977D1AFBE50C39234EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2AB236D07E219CD2D915F050A204EAB /* DVNTAlertManager.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DVNTAlertManager/DVNTAlertManager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DVNTAlertManager/DVNTAlertManager-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/DVNTAlertManager/DVNTAlertManager.modulemap";
+				PRODUCT_MODULE_NAME = DVNTAlertManager;
+				PRODUCT_NAME = DVNTAlertManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5084A4D342F00B01D1D41C2F7A4C6F43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E303861C95A0D1F603B46465CD0CD88C /* Pods-DVNTAlertManager_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-DVNTAlertManager_Tests/Pods-DVNTAlertManager_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-DVNTAlertManager_Tests/Pods-DVNTAlertManager_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8A4EDE799AA25CCDFBAB16DA63E3D508 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BB7B5251FECEBB6F01325C96FD7E1C5 /* Pods-DVNTAlertManager_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-DVNTAlertManager_Example/Pods-DVNTAlertManager_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-DVNTAlertManager_Example/Pods-DVNTAlertManager_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8BC5EB7276E815A157A76B9610386A36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83B3CCEDC5C89844097BC007D9901B9B /* Pods-DVNTAlertManager_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-DVNTAlertManager_Example/Pods-DVNTAlertManager_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-DVNTAlertManager_Example/Pods-DVNTAlertManager_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9AA0B3FC463754C48ED2BDD53C1D9E7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 907341DE0A0318BBE741B1BEC3C97167 /* Pods-DVNTAlertManager_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-DVNTAlertManager_Tests/Pods-DVNTAlertManager_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-DVNTAlertManager_Tests/Pods-DVNTAlertManager_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AB4D69770D8ACE3A05E80BB3502666F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		F232B5ECA11A71BFA199A229B323F454 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB4D69770D8ACE3A05E80BB3502666F6 /* Debug */,
+				F232B5ECA11A71BFA199A229B323F454 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66D95B492A6F31F41195FF634ABE5AC3 /* Build configuration list for PBXNativeTarget "Pods-DVNTAlertManager_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5084A4D342F00B01D1D41C2F7A4C6F43 /* Debug */,
+				9AA0B3FC463754C48ED2BDD53C1D9E7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A2134E815E111C581688C597E9FC1E0 /* Build configuration list for PBXNativeTarget "DVNTAlertManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01C8E483FE1887E24B4D12819E68840D /* Debug */,
+				0D25636176D55977D1AFBE50C39234EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A13CE92EA9E68747DB7AE25A69D68AFE /* Build configuration list for PBXNativeTarget "Pods-DVNTAlertManager_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A4EDE799AA25CCDFBAB16DA63E3D508 /* Debug */,
+				8BC5EB7276E815A157A76B9610386A36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

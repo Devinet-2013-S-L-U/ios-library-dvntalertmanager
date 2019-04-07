@@ -1,42 +1,19 @@
-#
-# Be sure to run `pod lib lint DVNTAlertManager.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
-  s.name             = 'DVNTAlertManager'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of DVNTAlertManager.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
-  s.homepage         = 'https://github.com/Raúl Vidal Muiños/DVNTAlertManager'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Raúl Vidal Muiños' => 'raul.vidal@devinet.es' }
-  s.source           = { :git => 'https://github.com/Raúl Vidal Muiños/DVNTAlertManager.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.ios.deployment_target = '8.0'
-
-  s.source_files = 'DVNTAlertManager/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'DVNTAlertManager' => ['DVNTAlertManager/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.name             = 'DVNTAlertManager'
+  s.version          = '1.0.0'
+  s.summary          = 'An amazing library that allows you to easily create Alerts.'
+  s.description      = 'This library allows you to create different kinds of alerts easily using different designs (iOS default style or Meterial).'
+  s.homepage         = 'https://www.devinet.es'
+  s.license          = { :type => 'Copyright (c) 2019 Devinet 2013, S.L.U.', :file => 'LICENSE' }
+  s.author           = { 'Raúl Vidal Muiños' => 'contacto@devinet.es' }
+  s.social_media_url = 'https://twitter.com/devinet_es'
+  s.platform         = :ios, '9.3'
+  s.ios.deployment_target = '9.3'
+  s.swift_versions   = ['3.0', '4.0', '4.1', '4.2', '5.0']
+  s.source           = { :git => 'https://bitbucket.org/Devinet_Team/ios-library-dvntalertmanager.git', :tag => s.version.to_s }
+  s.frameworks       = 'UIKit'
+  s.source_files     = 'DVNTAlertManager/Classes/**/*'
+  s.exclude_files    = 'DVNTAlertManager/**/*.plist'
+  
 end

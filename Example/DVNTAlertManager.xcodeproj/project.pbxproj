@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		002FBBA82D538AAAC1501BAC /* Pods_DVNTAlertManager_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DVNTAlertManager_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		34B016E8FA7AD9D0DE88FAEC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		34B016E8FA7AD9D0DE88FAEC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* DVNTAlertManager_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DVNTAlertManager_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,11 +40,11 @@
 		607FACE51AFB9204008FA782 /* DVNTAlertManager_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DVNTAlertManager_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		7F8BDE400151DF544438A080 /* DVNTAlertManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = DVNTAlertManager.podspec; path = ../DVNTAlertManager.podspec; sourceTree = "<group>"; };
+		7F8BDE400151DF544438A080 /* DVNTAlertManager.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DVNTAlertManager.podspec; path = ../DVNTAlertManager.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8393016F175C991906111A6A /* Pods-DVNTAlertManager_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DVNTAlertManager_Example.release.xcconfig"; path = "Target Support Files/Pods-DVNTAlertManager_Example/Pods-DVNTAlertManager_Example.release.xcconfig"; sourceTree = "<group>"; };
 		94E259CC18BE6798B1CAD3F8 /* Pods-DVNTAlertManager_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DVNTAlertManager_Example.debug.xcconfig"; path = "Target Support Files/Pods-DVNTAlertManager_Example/Pods-DVNTAlertManager_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		9C31CE0F26FA1010B7D2E42F /* Pods-DVNTAlertManager_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DVNTAlertManager_Tests.debug.xcconfig"; path = "Target Support Files/Pods-DVNTAlertManager_Tests/Pods-DVNTAlertManager_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		A4F25889BD844285235D0453 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		A4F25889BD844285235D0453 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B98DE870AE051A3D6403D73C /* Pods_DVNTAlertManager_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DVNTAlertManager_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD98BB6DE9D1A28871757F0 /* Pods-DVNTAlertManager_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DVNTAlertManager_Tests.release.xcconfig"; path = "Target Support Files/Pods-DVNTAlertManager_Tests/Pods-DVNTAlertManager_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,7 +156,6 @@
 				9C31CE0F26FA1010B7D2E42F /* Pods-DVNTAlertManager_Tests.debug.xcconfig */,
 				BBD98BB6DE9D1A28871757F0 /* Pods-DVNTAlertManager_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

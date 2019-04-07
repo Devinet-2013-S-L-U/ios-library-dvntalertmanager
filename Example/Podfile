@@ -2,10 +2,11 @@ use_frameworks!
 
 target 'DVNTAlertManager_Example' do
   pod 'DVNTAlertManager', :path => '../'
-
+  pod 'MaterialComponents', '~>81.0.0'
+  
   target 'DVNTAlertManager_Tests' do
     inherit! :search_paths
-
+    
     
   end
 end
