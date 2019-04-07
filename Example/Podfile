@@ -1,12 +1,9 @@
 use_frameworks!
 
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://bitbucket.org/Devinet_Team/ios-pod-repo.git'
+
 target 'DVNTAlertManager_Example' do
   pod 'DVNTAlertManager', :path => '../'
-  pod 'MaterialComponents', '~>81.0.0'
   
-  target 'DVNTAlertManager_Tests' do
-    inherit! :search_paths
-    
-    
-  end
 end

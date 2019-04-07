@@ -16,4 +16,7 @@ Pod::Spec.new do |s|
   s.source_files     = 'DVNTAlertManager/Classes/**/*'
   s.exclude_files    = 'DVNTAlertManager/**/*.plist'
   
+  s.dependency 'MaterialComponents', '~>81.0.0'
+  s.dependency 'DVNTStringExtension', '~>1.0.0'
+  s.dependency 'DVNTUIWindowExtension', '~>1.0.2'
 end
