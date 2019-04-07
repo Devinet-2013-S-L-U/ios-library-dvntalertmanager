@@ -14,6 +14,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://bitbucket.org/Devinet_Team/ios-library-dvntalertmanager.git', :tag => s.version.to_s }
   s.frameworks       = 'UIKit'
   s.source_files     = 'DVNTAlertManager/Classes/**/*'
+  s.resource_bundle  = { 'MyResources' => ['DVNTAlertManager/Resources/*.lproj/*.{xib,strings}'] }
+  s.preserve_paths   = 'DVNTAlertManager/Resources/*.lproj'
   s.exclude_files    = 'DVNTAlertManager/**/*.plist'
   
   s.dependency 'MaterialComponents', '~>81.0.0'

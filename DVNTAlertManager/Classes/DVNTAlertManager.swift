@@ -11,15 +11,15 @@ import DVNTUIWindowExtension
 import MaterialComponents.MaterialDialogs
 import MaterialComponents.MaterialActivityIndicator
 
-enum AlertStyleType
+public enum AlertStyleType
 {
     case iOS
     case Android
 }
 
-class DVNTAlertManager
+public class DVNTAlertManager
 {
-    let shared = DVNTAlertManager()
+    public static let shared = DVNTAlertManager()
     
     fileprivate var loadingView: UIView?
     fileprivate var inkColor: UIColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -33,29 +33,29 @@ class DVNTAlertManager
     
     // MARK: - Setters
     
-    func setAlertStyle(_ style: AlertStyleType)
+    public func setAlertStyle(_ style: AlertStyleType)
     {
         self.alertStyle = style
     }
     
-    func setBaseColor(_ color: UIColor)
+    public func setBaseColor(_ color: UIColor)
     {
         self.baseColor = color
     }
     
-    func setInkColor(_ color: UIColor)
+    public func setInkColor(_ color: UIColor)
     {
         self.inkColor = color
     }
     
-    func setLoadingViewBackgroundColor(_ color: UIColor)
+    public func setLoadingViewBackgroundColor(_ color: UIColor)
     {
         self.loadingViewBackgroundColor = color
     }
     
     // MARK: - Show alert methods
     
-    func showLoadingView(isUserinteractionEnabled: Bool)
+    public func showLoadingView(isUserinteractionEnabled: Bool)
     {
         if !self.isShowingLoadingView {
             DispatchQueue.main.async {
@@ -119,7 +119,7 @@ class DVNTAlertManager
         }
     }
     
-    func hideLoadingView()
+    public func hideLoadingView()
     {
         if self.isShowingLoadingView {
             if let keyWindow = UIApplication.shared.keyWindow, let loadingView = self.loadingView {
@@ -147,7 +147,7 @@ class DVNTAlertManager
         }
     }
     
-    func showBasicAlert(title: String, message: String)
+    public func showBasicAlert(title: String, message: String)
     {
         DispatchQueue.main.async {
             if let keyWindow = UIApplication.shared.keyWindow {
@@ -157,7 +157,14 @@ class DVNTAlertManager
                             let alertController = MDCAlertController(title: title, message: message)
                             alertController.buttonTitleColor = self.baseColor
                             alertController.buttonInkColor = self.inkColor
-                            alertController.addAction(MDCAlertAction(title:String.localize("general_ok").capitalized))
+                            
+                            
+                            let path = Bundle(for: DVNTAlertManager.self).path(forResource: "DVNTAlertManager", ofType: "bundle")!
+                            let bundle = Bundle(path: path) ?? Bundle.main
+                            let text = NSLocalizedString("general_ok", bundle: bundle, comment: "").capitalized
+                            print("TEXT: \(text)")
+                            
+                            alertController.addAction(MDCAlertAction(title:text))
                             currentViewController.present(alertController, animated: true, completion: nil)
                         }else{
                             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -170,7 +177,7 @@ class DVNTAlertManager
         }
     }
     
-    func showBasicAlertWithAction(title: String, message: String, buttonTouched: @escaping (Int) -> Void)
+    public func showBasicAlertWithAction(title: String, message: String, buttonTouched: @escaping (Int) -> Void)
     {
         DispatchQueue.main.async {
             if let keyWindow = UIApplication.shared.keyWindow {
@@ -193,7 +200,7 @@ class DVNTAlertManager
         }
     }
     
-    func showAlertWithTwoOptions(title: String, message: String, buttonActionText: String, cancelButtonText: String, buttonTouched: @escaping (Int) -> Void)
+    public func showAlertWithTwoOptions(title: String, message: String, buttonActionText: String, cancelButtonText: String, buttonTouched: @escaping (Int) -> Void)
     {
         DispatchQueue.main.async {
             if let keyWindow = UIApplication.shared.keyWindow {
@@ -218,7 +225,7 @@ class DVNTAlertManager
         }
     }
     
-    func showAlertWithThreeOptions(title: String, message: String, buttonActionText: String, buttonAction2Text: String, cancelButtonText: String, buttonTouched: @escaping (Int) -> Void)
+    public func showAlertWithThreeOptions(title: String, message: String, buttonActionText: String, buttonAction2Text: String, cancelButtonText: String, buttonTouched: @escaping (Int) -> Void)
     {
         DispatchQueue.main.async {
             if let keyWindow = UIApplication.shared.keyWindow {
@@ -245,7 +252,7 @@ class DVNTAlertManager
         }
     }
     
-    func showAlertWithTextField(title: String, message: String, textFieldPlaceholder: String, buttonActionText: String, cancelButtonText: String, buttonTouched: @escaping (String) -> Void)
+    public func showAlertWithTextField(title: String, message: String, textFieldPlaceholder: String, buttonActionText: String, cancelButtonText: String, buttonTouched: @escaping (String) -> Void)
     {
         DispatchQueue.main.async {
             if let keyWindow = UIApplication.shared.keyWindow {

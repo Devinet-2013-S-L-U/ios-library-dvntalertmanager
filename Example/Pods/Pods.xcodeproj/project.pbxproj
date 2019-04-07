@@ -555,7 +555,7 @@
 		9AD31E58DAD624450638D75D3A39B14A /* ic_color_lens@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54D1EE8ABB2BBDF0765190426DD757BC /* ic_color_lens@3x.png */; };
 		9B2BCB0E9139838C0188358188A89732 /* MDCTextInputControllerUnderline.h in Headers */ = {isa = PBXBuildFile; fileRef = 2054794D0365301858F479394F3B64AF /* MDCTextInputControllerUnderline.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B5F5DAE27A814545716341E00052B56 /* MDCDialogTransitionController.h in Headers */ = {isa = PBXBuildFile; fileRef = EAAA89B0C5EC2F3655D092AD36D10DB2 /* MDCDialogTransitionController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9B94A95C225A241500226D5F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B94A95E225A241500226D5F /* Localizable.strings */; };
+		9B94A964225A2C4D00226D5F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B94A966225A2C4D00226D5F /* Localizable.strings */; };
 		9C14D00A2437B96C2BF63B68E9C51B5C /* MDCSnackbarColorThemer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5444FC86AAA49E1B9DF9AF7703CA3A90 /* MDCSnackbarColorThemer.m */; };
 		9C6AB7BA1CF7AD949F8BC09D2DB3B240 /* MDCOverlayObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C95070DA6D7F3A9527748D0E14C658F /* MDCOverlayObserver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9C6D16C30122B66F5DB29DF79D16369B /* MDCShadowElevations.h in Headers */ = {isa = PBXBuildFile; fileRef = 3540E83BA39BF28B0EB4F554CB374C15 /* MDCShadowElevations.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1656,10 +1656,10 @@
 		9B470754C8AE7848240A957CFE20F783 /* MDFInternationalization-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MDFInternationalization-dummy.m"; sourceTree = "<group>"; };
 		9B62861B5405B0F6D0724763D1AFE259 /* MDCContainedButtonThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCContainedButtonThemer.h; path = components/Buttons/src/ButtonThemer/MDCContainedButtonThemer.h; sourceTree = "<group>"; };
 		9B914AB181554A38931BEECC4DE0B362 /* CAMediaTimingFunction+MotionAnimator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CAMediaTimingFunction+MotionAnimator.m"; path = "src/private/CAMediaTimingFunction+MotionAnimator.m"; sourceTree = "<group>"; };
-		9B94A95D225A241500226D5F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9B94A95F225A243400226D5F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9B94A960225A244200226D5F /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9B94A961225A245300226D5F /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9B94A965225A2C4D00226D5F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9B94A967225A2C5700226D5F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9B94A968225A2C5C00226D5F /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9B94A969225A2C6300226D5F /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9C3AAE2F0C923130D8E3F20C960220BE /* MDCCollectionViewLayoutAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCCollectionViewLayoutAttributes.h; path = components/CollectionLayoutAttributes/src/MDCCollectionViewLayoutAttributes.h; sourceTree = "<group>"; };
 		9C5B102A6BABB15695A1EFCE8176EDD0 /* MDCBottomSheetController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCBottomSheetController.m; path = components/BottomSheet/src/MDCBottomSheetController.m; sourceTree = "<group>"; };
 		9C8F4D77BF50C2257D8623F7683729D4 /* MaterialProgressView+ColorThemer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MaterialProgressView+ColorThemer.h"; path = "components/ProgressView/src/ColorThemer/MaterialProgressView+ColorThemer.h"; sourceTree = "<group>"; };
@@ -2753,7 +2753,6 @@
 				B0C8627B8026233565910CC123DCC4AE /* DVNTAlertManager-Info.plist */,
 				249E7214B5BA29F53CD15285F51C08AB /* DVNTAlertManager-prefix.pch */,
 				D152C4CC050A58F76D2F00B6BF10F3F4 /* DVNTAlertManager-umbrella.h */,
-				9B94A95E225A241500226D5F /* Localizable.strings */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/DVNTAlertManager";
@@ -3527,6 +3526,14 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		9B94A96A225A2DAB00226D5F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9B94A966225A2C4D00226D5F /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		9E0413CB1CB23952FA5526E8A26A0E6F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -4221,6 +4228,7 @@
 			children = (
 				7CE5FD87F0C1636F27113E930F161D68 /* DVNTAlertManager.swift */,
 				575AB3AB0B3E4B43E42E804ED49EC6A4 /* Pod */,
+				9B94A96A225A2DAB00226D5F /* Resources */,
 				4B19DD6AB963F346F27DD1222970CDA2 /* Support Files */,
 			);
 			name = DVNTAlertManager;
@@ -5355,7 +5363,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -5555,7 +5563,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B94A95C225A241500226D5F /* Localizable.strings in Resources */,
+				9B94A964225A2C4D00226D5F /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6230,13 +6238,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9B94A95E225A241500226D5F /* Localizable.strings */ = {
+		9B94A966225A2C4D00226D5F /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9B94A95D225A241500226D5F /* en */,
-				9B94A95F225A243400226D5F /* es */,
-				9B94A960225A244200226D5F /* ca */,
-				9B94A961225A245300226D5F /* es-419 */,
+				9B94A965225A2C4D00226D5F /* en */,
+				9B94A967225A2C5700226D5F /* es */,
+				9B94A968225A2C5C00226D5F /* ca */,
+				9B94A969225A2C6300226D5F /* es-419 */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
