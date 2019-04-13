@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   
   s.name             = 'DVNTAlertManager'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'An amazing library that allows you to easily create Alerts.'
   s.description      = 'This library allows you to create different kinds of alerts easily using different designs (iOS default style or Meterial).'
   s.homepage         = 'https://www.devinet.es'
@@ -19,5 +19,5 @@ Pod::Spec.new do |s|
   
   s.dependency 'MaterialComponents', '~>81.0.0'
   s.dependency 'DVNTStringExtension', '~>1.0.3'
-  s.dependency 'DVNTUIWindowExtension', '~>1.0.2'
+  s.dependency 'DVNTUIWindowExtension', '~>1.0.3'
 end
