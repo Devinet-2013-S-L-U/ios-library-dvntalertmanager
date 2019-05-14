@@ -36,21 +36,56 @@ public class DVNTAlertManager
     public func setAlertStyle(_ style: AlertStyleType)
     {
         self.alertStyle = style
+        self.loadingView = nil
     }
     
     public func setBaseColor(_ color: UIColor)
     {
         self.baseColor = color
+        
+        if let loadingView = self.loadingView {
+            if self.alertStyle == .Android {
+                for view in loadingView.subviews {
+                    if view is MDCActivityIndicator {
+                        let activityIndicator = view as! MDCActivityIndicator
+                        activityIndicator.cycleColors = [color, self.inkColor]
+                        break
+                    }
+                }
+            }else{
+                for view in loadingView.subviews {
+                    if view is UIActivityIndicatorView {
+                        let activityIndicator = view as! UIActivityIndicatorView
+                        activityIndicator.color = color
+                        break
+                    }
+                }
+            }
+        }
     }
     
     public func setInkColor(_ color: UIColor)
     {
         self.inkColor = color
+        
+        if let loadingView = self.loadingView, self.alertStyle == .Android {
+            for view in loadingView.subviews {
+                if view is MDCActivityIndicator {
+                    let activityIndicator = view as! MDCActivityIndicator
+                    activityIndicator.cycleColors = [self.baseColor, self.inkColor]
+                    break
+                }
+            }
+        }
     }
     
     public func setLoadingViewBackgroundColor(_ color: UIColor)
     {
         self.loadingViewBackgroundColor = color
+        
+        if let loadingView = self.loadingView {
+            loadingView.backgroundColor = color
+        }
     }
     
     // MARK: - Show alert methods
