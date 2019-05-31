@@ -141,6 +141,11 @@ static const CGFloat kActionTextAlpha = (CGFloat)0.87;
 
   self.view.backgroundColor = self.backgroundColor;
   self.tableView.frame = self.view.bounds;
+  self.view.preservesSuperviewLayoutMargins = YES;
+  if (@available(iOS 11.0, *)) {
+    self.view.insetsLayoutMarginsFromSafeArea = NO;
+    self.tableView.insetsLayoutMarginsFromSafeArea = NO;
+  }
   [self.view addSubview:self.tableView];
   [self.view addSubview:self.header];
 }
@@ -186,6 +191,12 @@ static const CGFloat kActionTextAlpha = (CGFloat)0.87;
   return MDCCeil(preferredHeight);
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+
+  [self.transitionController.trackingScrollView flashScrollIndicators];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 
@@ -228,6 +239,10 @@ static const CGFloat kActionTextAlpha = (CGFloat)0.87;
 - (void)setDismissOnBackgroundTap:(BOOL)dismissOnBackgroundTap {
   _transitionController.dismissOnBackgroundTap = dismissOnBackgroundTap;
   self.mdc_bottomSheetPresentationController.dismissOnBackgroundTap = dismissOnBackgroundTap;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+  return self.presentingViewController.supportedInterfaceOrientations;
 }
 
 /* Disable setter. Always use internal transition controller */

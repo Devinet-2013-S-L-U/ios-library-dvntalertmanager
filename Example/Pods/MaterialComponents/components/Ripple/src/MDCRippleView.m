@@ -17,9 +17,20 @@
 
 #import "MaterialMath.h"
 
-@interface MDCRippleView () <MDCRippleLayerDelegate>
+@interface MDCRippleView () <CALayerDelegate, MDCRippleLayerDelegate>
+
 @property(nonatomic, strong) MDCRippleLayer *activeRippleLayer;
 @property(nonatomic, strong) CAShapeLayer *maskLayer;
+
+@end
+
+@interface MDCRipplePendingAnimation : NSObject <CAAction>
+
+@property(nonatomic, weak) CALayer *animationSourceLayer;
+@property(nonatomic, strong) NSString *keyPath;
+@property(nonatomic, strong) id fromValue;
+@property(nonatomic, strong) id toValue;
+
 @end
 
 static const CGFloat kRippleDefaultAlpha = (CGFloat)0.16;
@@ -55,12 +66,13 @@ static const CGFloat kRippleFadeOutDelay = (CGFloat)0.15;
 
   // Use mask layer when the superview has a shadowPath.
   _maskLayer = [CAShapeLayer layer];
+  _maskLayer.delegate = self;
 }
 
 - (void)layoutSubviews {
   [super layoutSubviews];
+
   [self updateRippleStyle];
-  self.frame = CGRectStandardize(self.superview.bounds);
 }
 
 - (void)layoutSublayersOfLayer:(CALayer *)layer {
@@ -143,6 +155,9 @@ static const CGFloat kRippleFadeOutDelay = (CGFloat)0.15;
   rippleLayer.rippleLayerDelegate = self;
   rippleLayer.fillColor = self.rippleColor.CGColor;
   rippleLayer.frame = self.bounds;
+  if (self.rippleStyle == MDCRippleStyleUnbounded) {
+    rippleLayer.maximumRadius = self.maximumRadius;
+  }
   [self.layer addSublayer:rippleLayer];
   [rippleLayer startRippleAtPoint:point animated:animated completion:completion];
   self.activeRippleLayer = rippleLayer;
@@ -194,4 +209,48 @@ static const CGFloat kRippleFadeOutDelay = (CGFloat)0.15;
   }
 }
 
+#pragma mark - CALayerDelegate
+
+- (id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event {
+  if ([event isEqualToString:@"path"] || [event isEqualToString:@"shadowPath"]) {
+    // We have to create a pending animation because if we are inside a UIKit animation block we
+    // won't know any properties of the animation block until it is commited.
+    MDCRipplePendingAnimation *pendingAnim = [[MDCRipplePendingAnimation alloc] init];
+    pendingAnim.animationSourceLayer = self.superview.layer;
+    pendingAnim.fromValue = [layer.presentationLayer valueForKey:event];
+    pendingAnim.toValue = nil;
+    pendingAnim.keyPath = event;
+
+    return pendingAnim;
+  }
+  return nil;
+}
+
+@end
+
+@implementation MDCRipplePendingAnimation
+
+- (void)runActionForKey:(NSString *)event object:(id)anObject arguments:(NSDictionary *)dict {
+  if (![anObject isKindOfClass:[CAShapeLayer class]]) {
+    return;
+  }
+
+  // In order to synchronize our animation with UIKit animations we have to fetch the resizing
+  // animation created by UIKit and copy the configuration to our custom animation.
+  CAShapeLayer *layer = (CAShapeLayer *)anObject;
+  CAAnimation *boundsAction = [self.animationSourceLayer animationForKey:@"bounds.size"];
+  BOOL isBasicAnimation = [boundsAction isKindOfClass:[CABasicAnimation class]];
+  if (!isBasicAnimation) {
+    NSAssert(isBasicAnimation || !boundsAction,
+             @"This animation synchronization does not support a bounds size change that "
+             @"isn't of a CABasicAnimation type.");
+    return;
+  }
+  CABasicAnimation *animation = (CABasicAnimation *)[boundsAction copy];
+  animation.keyPath = self.keyPath;
+  animation.fromValue = self.fromValue;
+  animation.toValue = self.toValue;
+
+  [layer addAnimation:animation forKey:event];
+}
 @end
