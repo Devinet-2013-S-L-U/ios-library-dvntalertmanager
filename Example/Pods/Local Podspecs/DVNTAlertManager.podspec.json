@@ -39,10 +39,10 @@
 
     ],
     "DVNTStringExtension": [
-      "~>1.0.3"
+
     ],
     "DVNTUIWindowExtension": [
-      "~>1.0.4"
+
     ]
   },
   "swift_version": "5.0"

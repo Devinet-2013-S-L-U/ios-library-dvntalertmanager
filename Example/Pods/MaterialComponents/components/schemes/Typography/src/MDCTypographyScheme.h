@@ -93,8 +93,13 @@
 
  @warning This API will eventually be deprecated. Please use
  @c useCurrentContentSizeCategoryWhenApplied instead.
+
+ @note  The value of @c useCurrentContentSizeCategoryWhenApplied (if implemented) and @c
+ mdc_adjustsFontForContentSizeCategory must always be the same.
+
 */
-@property(nonatomic, readonly) BOOL mdc_adjustsFontForContentSizeCategory;
+@property(nonatomic, readonly) BOOL mdc_adjustsFontForContentSizeCategory __deprecated_msg(
+    "Use useCurrentContentSizeCategoryWhenApplied instead.");
 
 @optional
 
@@ -106,7 +111,8 @@
  the component.
 
  @note This flag will become required in the future as a replacement for
- @c mdc_adjustsFontForContentSizeCategory.
+ @c mdc_adjustsFontForContentSizeCategory. The value of this flag needs to be the same as @c
+ mdc_adjustsFontForContentSizeCategory.
  */
 @property(nonatomic, assign, readonly) BOOL useCurrentContentSizeCategoryWhenApplied;
 
@@ -178,7 +184,9 @@ typedef NS_ENUM(NSInteger, MDCTypographySchemeDefaults) {
  */
 - (nonnull instancetype)initWithDefaults:(MDCTypographySchemeDefaults)defaults;
 
-#pragma mark - To be deprecated
+@end
+
+@interface MDCTypographyScheme (ToBeDeprecated)
 
 /**
  @warning Will eventually be deprecated and removed. Please use

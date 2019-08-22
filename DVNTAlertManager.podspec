@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   
   s.name             = 'DVNTAlertManager'
-  s.version          = '1.0.5'
+  s.version          = '1.0.6'
   s.summary          = 'An amazing library that allows you to easily create Alerts.'
   s.description      = 'This library allows you to create different kinds of alerts easily using different designs (iOS default style or Meterial).'
   s.homepage         = 'https://www.devinet.es'
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.exclude_files    = 'DVNTAlertManager/**/*.plist'
   s.resource_bundles = { 'DVNTAlertManagerResources' => ['DVNTAlertManager/Assets/**/*.strings'] }
   
-  s.dependency 'MaterialComponents', '~>84.4.0'
+  s.dependency 'MaterialComponents', '~>88.0.0'
   s.dependency 'DVNTStringExtension', '~>1.0.3'
   s.dependency 'DVNTUIWindowExtension', '~>1.0.4'
 end

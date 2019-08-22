@@ -53,6 +53,8 @@ static CGFloat kTopHandleTopMargin = (CGFloat)5.0;
   if (self) {
     _topHandleHidden = YES;
     _maximumInitialDrawerHeight = 0;
+    _drawerShadowColor = [UIColor.blackColor colorWithAlphaComponent:(CGFloat)0.2];
+    _elevation = MDCShadowElevationNavDrawer;
   }
   return self;
 }
@@ -76,6 +78,10 @@ static CGFloat kTopHandleTopMargin = (CGFloat)5.0;
     bottomDrawerContainerViewController.maximumInitialDrawerHeight =
         self.maximumInitialDrawerHeight;
   }
+  bottomDrawerContainerViewController.shouldIncludeSafeAreaInContentHeight =
+      self.shouldIncludeSafeAreaInContentHeight;
+  bottomDrawerContainerViewController.elevation = self.elevation;
+  bottomDrawerContainerViewController.drawerShadowColor = self.drawerShadowColor;
   if ([self.presentedViewController isKindOfClass:[MDCBottomDrawerViewController class]]) {
     // If in fact the presentedViewController is an MDCBottomDrawerViewController,
     // we then know there is a content and an (optional) header view controller.
@@ -221,6 +227,14 @@ static CGFloat kTopHandleTopMargin = (CGFloat)5.0;
                                            withTransitionCoordinator:coordinator];
 }
 
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+  [super traitCollectionDidChange:previousTraitCollection];
+
+  if (self.traitCollectionDidChangeBlock) {
+    self.traitCollectionDidChangeBlock(self, previousTraitCollection);
+  }
+}
+
 - (void)setScrimColor:(UIColor *)scrimColor {
   _scrimColor = scrimColor;
   self.scrimView.backgroundColor = scrimColor;
@@ -234,6 +248,16 @@ static CGFloat kTopHandleTopMargin = (CGFloat)5.0;
 - (void)setTopHandleColor:(UIColor *)topHandleColor {
   _topHandleColor = topHandleColor;
   self.topHandle.backgroundColor = topHandleColor;
+}
+
+- (void)setElevation:(MDCShadowElevation)elevation {
+  _elevation = elevation;
+  self.bottomDrawerContainerViewController.elevation = elevation;
+}
+
+- (void)setDrawerShadowColor:(UIColor *)drawerShadowColor {
+  _drawerShadowColor = drawerShadowColor;
+  self.bottomDrawerContainerViewController.drawerShadowColor = drawerShadowColor;
 }
 
 - (BOOL)contentReachesFullscreen {

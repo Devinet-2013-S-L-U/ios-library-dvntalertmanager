@@ -125,6 +125,9 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
   BOOL _mdc_adjustsFontForContentSizeCategory;
 }
 
+@synthesize mdc_overrideBaseElevation = _mdc_overrideBaseElevation;
+@synthesize mdc_elevationDidChangeBlock = _mdc_elevationDidChangeBlock;
+
 @dynamic layer;
 
 + (Class)layerClass {
@@ -133,7 +136,9 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
 
 - (void)commonMDCChipViewInit {
   _minimumSize = kMDCChipMinimumSizeDefault;
+  self.rippleAllowsSelection = YES;
   self.isAccessibilityElement = YES;
+  _mdc_overrideBaseElevation = -1;
   _adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable = YES;
 }
 
@@ -235,6 +240,13 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
                                                 object:nil];
 }
 
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+  [super traitCollectionDidChange:previousTraitCollection];
+  if (self.traitCollectionDidChangeBlock) {
+    self.traitCollectionDidChangeBlock(self, previousTraitCollection);
+  }
+}
+
 - (void)setShapeGenerator:(id<MDCShapeGenerating>)shapeGenerator {
   if (shapeGenerator) {
     self.layer.cornerRadius = 0;
@@ -276,6 +288,14 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
   }
 }
 
+- (BOOL)rippleAllowsSelection {
+  return self.rippleView.allowsSelection;
+}
+
+- (void)setRippleAllowsSelection:(BOOL)allowsSelection {
+  self.rippleView.allowsSelection = allowsSelection;
+}
+
 #pragma mark - Dynamic Type Support
 
 - (BOOL)mdc_adjustsFontForContentSizeCategory {
@@ -297,14 +317,6 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
   }
 
   [self updateTitleFont];
-}
-
-- (void)mdc_setLegacyFontScaling:(BOOL)legacyScaling {
-  _adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable = legacyScaling;
-}
-
-- (BOOL)mdc_legacyFontScaling {
-  return _adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable;
 }
 
 - (void)contentSizeCategoryDidChange:(__unused NSNotification *)notification {
@@ -386,6 +398,10 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
   self.layer.shapedBorderWidth = [self borderWidthForState:self.state];
 }
 
+- (CGFloat)mdc_currentElevation {
+  return [self elevationForState:self.state];
+}
+
 - (CGFloat)elevationForState:(UIControlState)state {
   NSNumber *elevation = _elevations[@(state)];
   if (elevation == nil && state != UIControlStateNormal) {
@@ -405,8 +421,9 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
 
 - (void)updateElevation {
   CGFloat newElevation = [self elevationForState:self.state];
-  if (self.layer.elevation != newElevation) {
+  if (!MDCCGFloatEqual(self.layer.elevation, newElevation)) {
     self.layer.elevation = newElevation;
+    [self mdc_elevationDidChange];
   }
 }
 
@@ -432,7 +449,7 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
 
 - (void)updateInkColor {
   UIColor *inkColor = [self inkColorForState:self.state];
-  self.inkView.inkColor = inkColor ? inkColor : self.inkView.defaultInkColor;
+  self.inkView.inkColor = inkColor ?: self.inkView.defaultInkColor;
 }
 
 - (void)updateRippleColor {
@@ -517,7 +534,7 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
 
   // If we are automatically adjusting for Dynamic Type resize the font based on the text style
   if (self.mdc_adjustsFontForContentSizeCategory) {
-    if (titleFont.mdc_scalingCurve && !self.mdc_legacyFontScaling) {
+    if (titleFont.mdc_scalingCurve) {
       titleFont = [titleFont mdc_scaledFontForTraitEnvironment:self];
     } else if (self.adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable) {
       titleFont =
@@ -638,6 +655,10 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
       subview.frame = flippedRect;
     }
   }
+
+  [self updateBackgroundColor];
+  [self updateBorderColor];
+  [self updateShadowColor];
 }
 
 - (CGRect)contentRect {

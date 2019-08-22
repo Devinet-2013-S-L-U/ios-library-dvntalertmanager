@@ -284,7 +284,7 @@ public class DVNTAlertManager
         }
     }
     
-    public func showAlertWithTextField(title: String, message: String, textFieldPlaceholder: String, buttonActionText: String, cancelButtonText: String, buttonTouched: @escaping (String) -> Void)
+    public func showAlertWithTextField(title: String, message: String, textFieldPlaceholder: String, buttonActionText: String, cancelButtonText: String, buttonTouched: @escaping (Int, String?) -> Void)
     {
         DispatchQueue.main.async {
             if let keyWindow = UIApplication.shared.keyWindow {
@@ -295,14 +295,14 @@ public class DVNTAlertManager
                             textField.placeholder = textFieldPlaceholder
                         })
                         
-                        alertController.addAction(UIAlertAction(title: cancelButtonText, style: .cancel, handler: nil))
                         alertController.addAction(UIAlertAction(title: buttonActionText, style: .default, handler: { action in
                             if let text = alertController.textFields?.first?.text {
                                 if text.isEmpty == false {
-                                    buttonTouched(text)
+                                    buttonTouched(0, text)
                                 }
                             }
                         }))
+                        alertController.addAction(UIAlertAction(title: cancelButtonText, style: .cancel) { (action) in buttonTouched(1, nil) })
                         currentViewController.present(alertController, animated: true, completion: nil)
                     }
                 })

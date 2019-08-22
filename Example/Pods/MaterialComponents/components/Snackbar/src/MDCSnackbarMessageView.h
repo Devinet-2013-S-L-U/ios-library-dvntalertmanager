@@ -13,12 +13,15 @@
 // limitations under the License.
 
 #import <UIKit/UIKit.h>
+
 #import "MaterialButtons.h"
+#import "MaterialElevation.h"
+#import "MaterialShadowElevations.h"
 
 /**
  Class which provides the default implementation of a Snackbar.
  */
-@interface MDCSnackbarMessageView : UIView
+@interface MDCSnackbarMessageView : UIView <MDCElevatable, MDCElevationOverriding>
 
 /**
  The color for the background of the Snackbar message view.
@@ -57,6 +60,11 @@
  The array of action buttons of the snackbar.
  */
 @property(nonatomic, strong, nullable) NSMutableArray<MDCButton *> *actionButtons;
+
+/**
+ The elevation of the snackbar view.
+ */
+@property(nonatomic, assign) MDCShadowElevation elevation;
 
 /**
  The @c accessibilityLabel to apply to the message of the Snackbar.
@@ -102,6 +110,28 @@
  */
 @property(nonatomic, readwrite, setter=mdc_setAdjustsFontForContentSizeCategory:)
     BOOL mdc_adjustsFontForContentSizeCategory UI_APPEARANCE_SELECTOR;
+
+/**
+ Affects the fallback behavior for when a scaled font is not provided.
+
+ If enabled, the font size will adjust even if a scaled font has not been provided for
+ a given UIFont property on this component.
+
+ If disabled, the font size will only be adjusted if a scaled font has been provided.
+ This behavior most closely matches UIKit's.
+
+ Default value is YES, but this flag will eventually default to NO and then be deprecated
+ and deleted.
+ */
+@property(nonatomic, assign) BOOL adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable;
+
+/**
+ A block that is invoked when the MDCSnackbarMessageView receives a call to @c
+ traitCollectionDidChange:. The block is called after the call to the superclass.
+ */
+@property(nonatomic, copy, nullable) void (^traitCollectionDidChangeBlock)
+    (MDCSnackbarMessageView *_Nonnull messageView,
+     UITraitCollection *_Nullable previousTraitCollection);
 
 @end
 

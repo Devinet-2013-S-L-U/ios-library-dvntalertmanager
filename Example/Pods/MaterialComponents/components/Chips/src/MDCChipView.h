@@ -15,6 +15,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
 
+#import "MaterialElevation.h"
 #import "MaterialShadowElevations.h"
 #import "MaterialShapes.h"
 
@@ -34,7 +35,7 @@
  be left-aligned, and the accessory view will be right aligned. In the centered mode, all three will
  appear together in the center of the chip.
  */
-@interface MDCChipView : UIControl
+@interface MDCChipView : UIControl <MDCElevatable, MDCElevationOverriding>
 
 /*
  A UIImageView that leads the title label.
@@ -118,6 +119,18 @@
  */
 @property(nonatomic, assign) BOOL enableRippleBehavior;
 
+/**
+ Enabling the selection of the Chip on tap (when RippleBehavior is enabled).
+ When rippleAllowsSelection is enabled, tapping a chip automatically toggles the chip's selected
+ state (after a short ripple animation). When disabled, tapping a chip creates a momentary ripple
+ animation while the chip remains unselected.
+
+ @note: This property is ignored when RippleBehavior is disabled.
+
+ Defaults to: Yes.
+ */
+@property(nonatomic) BOOL rippleAllowsSelection;
+
 /*
  The color of the ink ripple.
  */
@@ -142,17 +155,6 @@
  */
 @property(nonatomic, readwrite, setter=mdc_setAdjustsFontForContentSizeCategory:)
     BOOL mdc_adjustsFontForContentSizeCategory UI_APPEARANCE_SELECTOR;
-
-/**
- Enable legacy font scaling curves for Dynamic Type.
-
- Legacy font scaling uses the older [UIFont mdc_fontSizedForMaterialTextStyle:scaledForDynamicType:
- category instead of the MDCFontScaler API.
-
- Default value is YES.
- */
-@property(nonatomic, readwrite, setter=mdc_setLegacyFontScaling:)
-    BOOL mdc_legacyFontScaling __deprecated;
 
 /**
  Affects the fallback behavior for when a scaled font is not provided.
@@ -181,6 +183,13 @@
  area for the Chip.
  */
 @property(nonatomic, assign) UIEdgeInsets hitAreaInsets;
+
+/**
+ A block that is invoked when the MDCChipView receives a call to @c
+ traitCollectionDidChange:. The block is called after the call to the superclass.
+ */
+@property(nonatomic, copy, nullable) void (^traitCollectionDidChangeBlock)
+    (MDCChipView *_Nonnull chip, UITraitCollection *_Nullable previousTraitCollection);
 
 /*
  A color used as the chip's @c backgroundColor for @c state.

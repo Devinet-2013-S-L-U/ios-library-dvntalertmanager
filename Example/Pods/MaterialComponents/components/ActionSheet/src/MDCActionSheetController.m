@@ -14,8 +14,9 @@
 
 #import "MDCActionSheetController.h"
 
-#import <MaterialComponents/MaterialMath.h>
-#import <MaterialComponents/MaterialTypography.h>
+#import "MaterialMath.h"
+#import "MaterialShadowElevations.h"
+#import "MaterialTypography.h"
 #import "private/MDCActionSheetHeaderView.h"
 #import "private/MDCActionSheetItemTableViewCell.h"
 
@@ -55,6 +56,8 @@ static const CGFloat kActionTextAlpha = (CGFloat)0.87;
                                                        handler:self.completionHandler];
   action.accessibilityIdentifier = self.accessibilityIdentifier;
   action.accessibilityLabel = self.accessibilityLabel;
+  action.titleColor = self.titleColor;
+  action.tintColor = self.tintColor;
   return action;
 }
 
@@ -65,12 +68,22 @@ static const CGFloat kActionTextAlpha = (CGFloat)0.87;
                                         UITableViewDataSource>
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) MDCActionSheetHeaderView *header;
+
+/**
+ Determines if a @c MDCActionSheetItemTableViewCell should add leading padding or not.
+
+ @note Defaults to @c NO.
+ */
+@property(nonatomic, assign) BOOL addLeadingPaddingToCell;
 @end
 
 @implementation MDCActionSheetController {
   NSMutableArray<MDCActionSheetAction *> *_actions;
+  UIColor *_inkColor;
 }
 
+@synthesize mdc_overrideBaseElevation = _mdc_overrideBaseElevation;
+@synthesize mdc_elevationDidChangeBlock = _mdc_elevationDidChangeBlock;
 @synthesize mdc_adjustsFontForContentSizeCategory = _mdc_adjustsFontForContentSizeCategory;
 
 + (instancetype)actionSheetControllerWithTitle:(NSString *)title message:(NSString *)message {
@@ -118,6 +131,7 @@ static const CGFloat kActionTextAlpha = (CGFloat)0.87;
     _actionTextColor = [UIColor.blackColor colorWithAlphaComponent:kActionTextAlpha];
     _actionTintColor = [UIColor.blackColor colorWithAlphaComponent:kActionImageAlpha];
     _imageRenderingMode = UIImageRenderingModeAlwaysTemplate;
+    _mdc_overrideBaseElevation = -1;
   }
 
   return self;
@@ -141,6 +155,7 @@ static const CGFloat kActionTextAlpha = (CGFloat)0.87;
 
   self.view.backgroundColor = self.backgroundColor;
   self.tableView.frame = self.view.bounds;
+  self.tableView.cellLayoutMarginsFollowReadableWidth = NO;
   self.view.preservesSuperviewLayoutMargins = YES;
   if (@available(iOS 11.0, *)) {
     self.view.insetsLayoutMarginsFromSafeArea = NO;
@@ -295,9 +310,12 @@ static const CGFloat kActionTextAlpha = (CGFloat)0.87;
   cell.actionFont = self.actionFont;
   cell.accessibilityIdentifier = action.accessibilityIdentifier;
   cell.inkColor = self.inkColor;
-  cell.tintColor = self.actionTintColor;
+  cell.rippleColor = self.rippleColor;
+  cell.enableRippleBehavior = self.enableRippleBehavior;
+  cell.tintColor = action.tintColor ?: self.actionTintColor;
   cell.imageRenderingMode = self.imageRenderingMode;
-  cell.actionTextColor = self.actionTextColor;
+  cell.addLeadingPadding = self.addLeadingPaddingToCell;
+  cell.actionTextColor = action.titleColor ?: self.actionTextColor;
   return cell;
 }
 
@@ -317,6 +335,23 @@ static const CGFloat kActionTextAlpha = (CGFloat)0.87;
 
 - (NSString *)message {
   return self.header.message;
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+  [super traitCollectionDidChange:previousTraitCollection];
+
+#if defined(__IPHONE_13_0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0)
+  if (@available(iOS 13.0, *)) {
+    if ([self.traitCollection
+            hasDifferentColorAppearanceComparedToTraitCollection:previousTraitCollection]) {
+      [self.tableView reloadData];
+    }
+  }
+#endif
+
+  if (self.traitCollectionDidChangeBlock) {
+    self.traitCollectionDidChangeBlock(self, previousTraitCollection);
+  }
 }
 
 - (void)setTitleFont:(UIFont *)titleFont {
@@ -416,9 +451,52 @@ static const CGFloat kActionTextAlpha = (CGFloat)0.87;
   [self.tableView reloadData];
 }
 
+- (void)setAlwaysAlignTitleLeadingEdges:(BOOL)alignTitles {
+  _alwaysAlignTitleLeadingEdges = alignTitles;
+  // Check to make sure at least one action has an image. If not then all actions will align already
+  // and we don't need to add padding.
+  self.addLeadingPaddingToCell = [self anyActionHasAnImage];
+  [self.tableView reloadData];
+}
+
+- (BOOL)anyActionHasAnImage {
+  for (MDCActionSheetAction *action in self.actions) {
+    if (action.image) {
+      return YES;
+    }
+  }
+  return NO;
+}
+
+- (UIColor *)inkColor {
+  return _inkColor;
+}
+
 - (void)setInkColor:(UIColor *)inkColor {
   _inkColor = inkColor;
   [self.tableView reloadData];
+}
+
+- (void)setRippleColor:(UIColor *)rippleColor {
+  if (_rippleColor == rippleColor || [_rippleColor isEqual:rippleColor]) {
+    return;
+  }
+  _rippleColor = rippleColor;
+
+  [self.tableView reloadData];
+}
+
+- (void)setEnableRippleBehavior:(BOOL)enableRippleBehavior {
+  if (_enableRippleBehavior == enableRippleBehavior) {
+    return;
+  }
+  _enableRippleBehavior = enableRippleBehavior;
+
+  [self.tableView reloadData];
+}
+
+- (CGFloat)mdc_currentElevation {
+  return MDCShadowElevationModalBottomSheet;
 }
 
 @end
