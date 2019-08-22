@@ -296,11 +296,7 @@ public class DVNTAlertManager
                         })
                         
                         alertController.addAction(UIAlertAction(title: buttonActionText, style: .default, handler: { action in
-                            if let text = alertController.textFields?.first?.text {
-                                if text.isEmpty == false {
-                                    buttonTouched(0, text)
-                                }
-                            }
+                            buttonTouched(0, alertController.textFields?.first?.text)
                         }))
                         alertController.addAction(UIAlertAction(title: cancelButtonText, style: .cancel) { (action) in buttonTouched(1, nil) })
                         currentViewController.present(alertController, animated: true, completion: nil)
