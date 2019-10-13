@@ -1,4 +1,4 @@
-// Copyright 2018-present the Material Components for iOS authors. All Rights Reserved.
+// Copyright 2019-present the Material Components for iOS authors. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,7 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "MDCLegacyFontScheme.h"
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@implementation MDCBasicFontScheme
+#import "MDCTextControl.h"
+
+/**
+ A base implementation of MDCTextControlStyle. This is only used for base text controls, i.e.
+ ones that are not filled or outlined.
+ */
+@interface MDCTextControlStyleBase : NSObject <MDCTextControlStyle>
 @end

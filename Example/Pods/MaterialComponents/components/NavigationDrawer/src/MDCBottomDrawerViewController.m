@@ -88,6 +88,10 @@
   return UIModalPresentationCustom;
 }
 
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+  return self.presentingViewController.supportedInterfaceOrientations;
+}
+
 - (void)setTrackingScrollView:(UIScrollView *)trackingScrollView {
   _trackingScrollView = trackingScrollView;
   if ([self.presentationController isKindOfClass:[MDCBottomDrawerPresentationController class]]) {
@@ -202,6 +206,15 @@
       bottomDrawerPresentationController.elevation = elevation;
       [self.view mdc_elevationDidChange];
     }
+  }
+}
+
+- (void)setShouldAlwaysExpandHeader:(BOOL)shouldAlwaysExpandHeader {
+  _shouldAlwaysExpandHeader = shouldAlwaysExpandHeader;
+  if ([self.presentationController isKindOfClass:[MDCBottomDrawerPresentationController class]]) {
+    MDCBottomDrawerPresentationController *bottomDrawerPresentationController =
+        (MDCBottomDrawerPresentationController *)self.presentationController;
+    bottomDrawerPresentationController.shouldAlwaysExpandHeader = shouldAlwaysExpandHeader;
   }
 }
 

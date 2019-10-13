@@ -32,6 +32,10 @@
 #import "MDCAppBarViewController+MaterialTheming.h"
 #import "MaterialAppBar+TypographyThemer.h"
 #import "MDCAppBarTypographyThemer.h"
+#import "MaterialBanner.h"
+#import "MDCBannerView.h"
+#import "MaterialBanner+Theming.h"
+#import "MDCBannerView+MaterialTheming.h"
 #import "MaterialBottomAppBar.h"
 #import "MDCBottomAppBarView.h"
 #import "MaterialBottomAppBar+ColorThemer.h"
@@ -317,7 +321,8 @@
 #import "MDCTextFieldColorThemer.h"
 #import "MaterialTextFields+ContainedInputView.h"
 #import "MDCBaseTextField.h"
-#import "MDCBaseTextFieldLayout.h"
+#import "MDCTextControlLabelBehavior.h"
+#import "MDCTextControlState.h"
 #import "MaterialTextFields+FontThemer.h"
 #import "MDCTextFieldFontThemer.h"
 #import "MaterialTextFields+Theming.h"
@@ -384,6 +389,9 @@
 #import "MaterialTypographyScheme.h"
 #import "MDCLegacyFontScheme.h"
 #import "MDCTypographyScheme.h"
+#import "MDCTypographyScheming.h"
+#import "MaterialTypographyScheme+BasicFontScheme.h"
+#import "MDCBasicFontScheme.h"
 
 FOUNDATION_EXPORT double MaterialComponentsVersionNumber;
 FOUNDATION_EXPORT const unsigned char MaterialComponentsVersionString[];
