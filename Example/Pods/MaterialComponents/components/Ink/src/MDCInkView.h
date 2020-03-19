@@ -62,16 +62,15 @@ typedef NS_ENUM(NSInteger, MDCInkStyle) {
 @property(nonatomic, assign) MDCInkStyle inkStyle;
 
 /** The foreground color of the ink. The default value is defaultInkColor. */
-@property(nonatomic, strong, nonnull) UIColor *inkColor UI_APPEARANCE_SELECTOR;
+@property(nonatomic, strong, null_resettable) UIColor *inkColor UI_APPEARANCE_SELECTOR;
 
 /** Default color used for ink if no color is specified. */
 @property(nonatomic, strong, readonly, nonnull) UIColor *defaultInkColor;
 
 /**
  Maximum radius of the ink. If the radius <= 0 then half the length of the diagonal of self.bounds
- is used. This value is ignored if @c inkStyle is set to |MDCInkStyleBounded|.
-
- Ignored if updated ink is used.
+ is used. This value is ignored if @c inkStyle is set to MDCInkStyleBounded and @c
+ usesLegacyInkLayer is set to NO.
  */
 @property(nonatomic, assign) CGFloat maxRippleRadius;
 

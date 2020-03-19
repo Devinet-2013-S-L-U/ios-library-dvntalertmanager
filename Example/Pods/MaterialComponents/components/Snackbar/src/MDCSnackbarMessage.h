@@ -15,6 +15,7 @@
 #import <UIKit/UIKit.h>
 
 @class MDCSnackbarMessageAction;
+@class MDCSnackbarMessageView;
 
 /**
  Called when a message is finished displaying, regardless of whether or not buttons were tapped.
@@ -70,7 +71,7 @@ extern NSString *__nonnull const MDCSnackbarMessageBoldAttributeName;
 + (nonnull instancetype)messageWithAttributedText:(nonnull NSAttributedString *)attributedText;
 
 /**
- Use the older legacy version of Snackbar. Default is YES.
+ Use the older legacy version of Snackbar. Default is NO.
  */
 @property(class, nonatomic, assign) BOOL usesLegacySnackbar;
 
@@ -157,6 +158,45 @@ extern NSString *__nonnull const MDCSnackbarMessageBoldAttributeName;
  Defaults to NO.
  */
 @property(nonatomic, assign) BOOL enableRippleBehavior;
+
+/**
+ Whether to focus on the Snackbar message when VoiceOver is enabled.
+ The message is announced but not focused when set to NO.
+
+ Note: Setting this to YES will ensure the entire snackbar message is read during VoiceOver, and
+ that the message persists until an action is made on the message.
+
+ Defaults to NO.
+ */
+@property(nonatomic) BOOL focusOnShow;
+
+/**
+ Element to focus on snackbar message dismiss. Focuses the first element on screen
+ after dismiss by default. The focus will change to the element only if the focus is on the snackbar
+ message.
+
+ Defaults to nil.
+ */
+@property(nonatomic, weak, nullable) UIView *elementToFocusOnDismiss;
+
+/**
+ A block that is invoked when the corresponding @c MDCSnackbarMessageView of the @c
+ MDCSnackbarMessage instance will be presented. Use this to customize @c MDCSnackbarMessageView
+ before presentation.
+ */
+@property(nonatomic, copy, nullable) void (^snackbarMessageWillPresentBlock)
+    (MDCSnackbarMessage *_Nonnull message, MDCSnackbarMessageView *_Nonnull messageView);
+
+/**
+ Whether the Snackbar message is transient and automatically dismisses after the provided @c
+ duration time or is not transient and will not dismiss automatically.
+
+ @note: If VoiceOver is turned on, a snackbar will not automatically dismiss if the snackbar has an
+ action, regardless of this property.
+
+ Defaults to YES.
+ */
+@property(nonatomic) BOOL automaticallyDismisses;
 
 @end
 

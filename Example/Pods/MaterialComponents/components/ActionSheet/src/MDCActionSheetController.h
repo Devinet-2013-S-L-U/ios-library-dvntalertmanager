@@ -18,6 +18,20 @@
 #import "MaterialElevation.h"
 
 @class MDCActionSheetAction;
+@class MDCActionSheetController;
+
+/**
+ Defines methods that allows the adopting delegate to respond to messages from an
+ @c MDCActionSheetController.
+ */
+@protocol MDCActionSheetControllerDelegate <NSObject>
+@optional
+
+/**
+ Tells the delegate that the action sheet was dismissed.
+ */
+- (void)actionSheetControllerDidDismiss:(nonnull MDCActionSheetController *)actionSheetController;
+@end
 
 /**
  MDCActionSheetController displays an alert message to the user, similar to
@@ -89,6 +103,11 @@ __attribute__((objc_subclassing_restricted)) @interface MDCActionSheetController
  @param action Will be added to the end of MDCActionSheetController.actions.
  */
 - (void)addAction:(nonnull MDCActionSheetAction *)action;
+
+/**
+ The object that acts as the delegate of the @c MDCActionSheetController
+*/
+@property(nonatomic, weak, nullable) id<MDCActionSheetControllerDelegate> delegate;
 
 /**
  The actions that the user can take in response to the action sheet.
@@ -182,18 +201,6 @@ __attribute__((objc_subclassing_restricted)) @interface MDCActionSheetController
 @property(nonatomic, strong, nullable) UIColor *actionTintColor;
 
 /**
- By setting this property to @c YES, the Ripple component will be used instead of Ink
- to display visual feedback to the user.
-
- @note This property will eventually be enabled by default, deprecated, and then deleted as part
- of our migration to Ripple. Learn more at
- https://github.com/material-components/material-components-ios/tree/develop/components/Ink#migration-guide-ink-to-ripple
-
- Defaults to NO.
- */
-@property(nonatomic, assign) BOOL enableRippleBehavior;
-
-/**
  The ripple color for the action items within an action sheet.
  */
 @property(nonatomic, strong, nullable) UIColor *rippleColor;
@@ -222,6 +229,13 @@ __attribute__((objc_subclassing_restricted)) @interface MDCActionSheetController
  The elevation of the action sheet. Defaults to @c MDCShadowElevationModalBottomSheet.
  */
 @property(nonatomic, assign) MDCShadowElevation elevation;
+
+/**
+ The inset or outset margins for the rectangle surrounding all of each action's content.
+
+ Defaults to @c UIEdgeInsetsZero.
+ */
+@property(nonatomic, assign) UIEdgeInsets contentEdgeInsets;
 
 /**
  Determines the alignment behavior of all title leading edges.
@@ -308,16 +322,18 @@ typedef void (^MDCActionSheetHandler)(MDCActionSheetAction *_Nonnull action);
  */
 @property(nonatomic, copy, nullable) UIColor *tintColor;
 
-@end
+/**
+ The color of the divider at the top of the action.
 
-@interface MDCActionSheetController (ToBeDeprecated)
+ @note Defaults to clear.
+ */
+@property(nonatomic, copy, nonnull) UIColor *dividerColor;
 
 /**
- The ink color for the action items within an action sheet.
- @warning This method will eventually be deprecated. Opt-in to Ripple by setting
- enableRippleBehavior to YES, and then use rippleColor instead. Learn more at
- https://github.com/material-components/material-components-ios/tree/develop/components/Ink#migration-guide-ink-to-ripple
+ Controls whether a divider is shown at the top of the action.
+
+ @note Defaults to @c NO.
  */
-@property(nonatomic, strong, nullable) UIColor *inkColor;
+@property(nonatomic, assign) BOOL showsDivider;
 
 @end

@@ -120,10 +120,12 @@
  If disabled, the font size will only be adjusted if a scaled font has been provided.
  This behavior most closely matches UIKit's.
 
- Default value is YES, but this flag will eventually default to NO and then be deprecated
- and deleted.
+ Default value is YES.
  */
-@property(nonatomic, assign) BOOL adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable;
+@property(nonatomic, assign)
+    BOOL adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable __deprecated_msg(
+        "Use UIFontMetrics and UIContentSizeCategoryAdjusting on iOS 11+ or MDCFontScaler on "
+        "earlier versions");
 
 /**
  A block that is invoked when the MDCSnackbarMessageView receives a call to @c
@@ -134,13 +136,3 @@
      UITraitCollection *_Nullable previousTraitCollection);
 
 @end
-
-// clang-format off
-@interface MDCSnackbarMessageView ()
-
-/** @see messsageTextColor */
-@property(nonatomic, strong, nullable) UIColor *snackbarMessageViewTextColor UI_APPEARANCE_SELECTOR
-__deprecated_msg("Use messsageTextColor instead.");
-
-@end
-// clang-format on

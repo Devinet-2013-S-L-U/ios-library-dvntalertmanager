@@ -19,7 +19,9 @@
 #import "MDCFlexibleHeaderView+ShiftBehavior.h"
 #import "MDCFlexibleHeaderView.h"
 #import "MaterialApplication.h"
+#import "MaterialAvailability.h"
 #import "MaterialUIMetrics.h"
+#import "private/MDCFlexibleHeaderHairline.h"
 #import "private/MDCFlexibleHeaderView+Private.h"
 
 @interface UIView ()
@@ -39,11 +41,11 @@ static inline UIStatusBarStyle StatusBarStyleOnBackgroundColor(UIColor *color) {
     return UIStatusBarStyleLightContent;
   }
 
-#if defined(__IPHONE_13_0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0)
+#if MDC_AVAILABLE_SDK_IOS(13_0)
   if (@available(iOS 13.0, *)) {
     return UIStatusBarStyleDarkContent;
   }
-#endif
+#endif  // MDC_AVAILABLE_SDK_IOS(13_0)
 
   return UIStatusBarStyleDefault;
 }
@@ -89,6 +91,11 @@ static char *const kKVOContextMDCFlexibleHeaderViewController =
  */
 @property(nonatomic, strong) UIView *topSafeAreaView;
 
+/**
+ Supports the behavior of showing a narrow line at the bottom edge of the flexible header view.
+ */
+@property(nonatomic, strong) MDCFlexibleHeaderHairline *hairline;
+
 @end
 
 @implementation MDCFlexibleHeaderViewController
@@ -126,6 +133,8 @@ static char *const kKVOContextMDCFlexibleHeaderViewController =
   headerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
   headerView.delegate = self;
   _headerView = headerView;
+
+  self.hairline = [[MDCFlexibleHeaderHairline alloc] initWithContainerView:_headerView];
 }
 
 - (void)loadView {
@@ -572,6 +581,19 @@ static char *const kKVOContextMDCFlexibleHeaderViewController =
   return _headerView.useAdditionalSafeAreaInsetsForWebKitScrollViews;
 }
 
+- (void)setPermitInferringTopSafeAreaFromTopLayoutGuideViewController:
+    (BOOL)permitInferringTopSafeAreaFromTopLayoutGuideViewController {
+  if (@available(iOS 11, *)) {
+    _permitInferringTopSafeAreaFromTopLayoutGuideViewController =
+        permitInferringTopSafeAreaFromTopLayoutGuideViewController;
+    [self fhv_inferTopSafeAreaSourceViewController];
+  } else {
+    NSAssert(
+        NO,
+        @"permitInferringTopSafeAreaFromTopLayoutGuideViewController is only supported on iOS 11+");
+  }
+}
+
 #pragma mark - Top safe area inset extraction
 
 - (BOOL)fhv_isViewControllerDescendantOfTopLayoutGuideViewController:(UIViewController *)child {
@@ -615,14 +637,18 @@ static char *const kKVOContextMDCFlexibleHeaderViewController =
   if (ancestor == nil) {
     ancestor = [self fhv_rootAncestorOfViewController:parent];
 
-    // Are we attempting to extract the top safe area inset from our top layout guide view
-    // controller?
-    if (self.topLayoutGuideAdjustmentEnabled && ancestor == self.topLayoutGuideViewController) {
-      // We can't use the provided ancestor because it's a child of the top layout guide view
-      // controller. Doing so would result in the top layout guide being infinitely increased.
-      // Let's use the top layout guide view controller's ancestor instead.
-      ancestor = [self
-          fhv_rootAncestorOfViewController:self.topLayoutGuideViewController.parentViewController];
+    // Use instance variable here instead of property, as property is marked as available only on
+    // iOS 11+.
+    if (_permitInferringTopSafeAreaFromTopLayoutGuideViewController) {
+      // On iOS 11, we can subtract the additional safe area insets to find the correct value.
+    } else {
+      // Are we attempting to extract the top safe area inset from our top layout guide view
+      // controller?
+      if (self.topLayoutGuideAdjustmentEnabled && ancestor == self.topLayoutGuideViewController) {
+        // We can't use the provided ancestor because it's a child of the top layout guide view
+        // controller. Doing so would result in the top layout guide being infinitely increased.
+        ancestor = nil;
+      }
     }
   }
 
@@ -630,12 +656,16 @@ static char *const kKVOContextMDCFlexibleHeaderViewController =
   // extract a top safe area inset from. Should we throw an assert?
   NSAssert(ancestor != nil,
            @"inferTopSafeAreaInsetFromViewController is true but we were unable to infer a view "
-           @"controller"
-           @" from which we could extract a safe area. Consider placing your view controller inside"
-           @" a container view controller.");
+           @"controller from which we could extract a safe area. Consider placing your view "
+           @"controller inside a container view controller.");
 
   if (_headerView.topSafeAreaSourceViewController != ancestor) {
     _headerView.topSafeAreaSourceViewController = ancestor;
+    _headerView.subtractsAdditionalSafeAreaInsets =
+        // Use instance variable here instead of property, as property is marked as available only
+        // on iOS 11+.
+        _permitInferringTopSafeAreaFromTopLayoutGuideViewController &&
+        self.topLayoutGuideAdjustmentEnabled && ancestor == self.topLayoutGuideViewController;
 
     BOOL shouldObserveLayoutGuide = YES;
     if (@available(iOS 11.0, *)) {
@@ -672,6 +702,24 @@ static char *const kKVOContextMDCFlexibleHeaderViewController =
 
   [self.layoutDelegate flexibleHeaderViewController:self
                    flexibleHeaderViewFrameDidChange:headerView];
+}
+
+#pragma mark - Hairline support
+
+- (void)setShowsHairline:(BOOL)showsHairline {
+  self.hairline.hidden = !showsHairline;
+}
+
+- (BOOL)showsHairline {
+  return !self.hairline.hidden;
+}
+
+- (void)setHairlineColor:(UIColor *)hairlineColor {
+  self.hairline.color = hairlineColor;
+}
+
+- (UIColor *)hairlineColor {
+  return self.hairline.color;
 }
 
 @end

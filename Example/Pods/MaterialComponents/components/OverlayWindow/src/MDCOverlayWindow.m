@@ -17,6 +17,7 @@
 #import <objc/runtime.h>
 
 #import "MaterialApplication.h"
+#import "MaterialAvailability.h"
 
 /**
  A container view for overlay views.
@@ -81,6 +82,16 @@
   }
   return self;
 }
+
+#if MDC_AVAILABLE_SDK_IOS(13_0)
+- (instancetype)initWithWindowScene:(UIWindowScene *)windowScene {
+  self = [super initWithWindowScene:windowScene];
+  if (self) {
+    [self commonInit];
+  }
+  return self;
+}
+#endif  // MDC_AVAILABLE_SDK_IOS(13_0)
 
 - (void)commonInit {
   self.backgroundColor = [UIColor clearColor];

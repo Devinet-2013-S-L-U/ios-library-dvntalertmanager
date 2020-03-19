@@ -18,6 +18,16 @@
 #import "MaterialElevation.h"
 #import "MaterialShadowElevations.h"
 
+/** The visibility of the track tick marks. */
+typedef NS_ENUM(NSUInteger, MDCSliderTrackTickVisibility) {
+  /** Track tick marks are never shown. */
+  MDCSliderTrackTickVisibilityNever = 0,
+  /** Track tick marks are only shown when the thumb is pressed or dragging. */
+  MDCSliderTrackTickVisibilityWhenDragging = 1U,
+  /** Track tick marks are always shown. */
+  MDCSliderTrackTickVisibilityAlways = 2U,
+};
+
 @protocol MDCSliderDelegate;
 
 /**
@@ -38,7 +48,8 @@
      making the slider a snap to discrete values via @c numberOfDiscreteValues.
  */
 IB_DESIGNABLE
-@interface MDCSlider : UIControl <MDCElevatable, MDCElevationOverriding>
+@interface MDCSlider
+    : UIControl <MDCElevatable, MDCElevationOverriding, UIContentSizeCategoryAdjusting>
 
 /** When @c YES, the forState: APIs are enabled. Defaults to @c NO. */
 @property(nonatomic, assign, getter=isStatefulAPIEnabled) BOOL statefulAPIEnabled;
@@ -203,13 +214,29 @@ IB_DESIGNABLE
 /**
  The number of discrete values that the slider can take.
 
- If greater than or equal to 2, the thumb will snap to the nearest discrete value when the user
- lifts their finger or taps. The discrete values are evenly spaced between the @c minimumValue and
+ The discrete values are evenly spaced between the @c minimumValue and
  @c maximumValue. If 0 or 1, the slider's value will not change when the user releases the thumb.
 
  The default value is zero.
  */
 @property(nonatomic, assign) NSUInteger numberOfDiscreteValues;
+
+/**
+ If @c YES and @c numberOfDiscreteValues is greater than 1, the thumb will snap to the nearest
+ discrete value when the user drags the Thumb or taps.
+
+ Defaults to @c YES.
+
+ @note This property has no effect if @c numberOfDiscreteValues is less than 2.
+ */
+@property(nonatomic, assign, getter=isDiscrete) BOOL discrete;
+
+/**
+ Configures the visibility of the track tick marks.
+
+ The default value is @c MDCSliderTrackTickVisibilityWhenDragging.
+ */
+@property(nonatomic, assign) MDCSliderTrackTickVisibility trackTickVisibility;
 
 /**
  The value of the slider.
@@ -221,6 +248,11 @@ IB_DESIGNABLE
  The default value of this property is 0.
  */
 @property(nonatomic, assign) CGFloat value;
+
+/**
+ When @c NO, changes to the @c value property will never be animated. Defaults to @c YES.
+ */
+@property(nonatomic, assign) BOOL allowAnimatedValueChanges;
 
 /**
  Set the value of the slider, allowing you to animate the change visually.
@@ -288,6 +320,14 @@ IB_DESIGNABLE
 @property(nonatomic, assign) BOOL shouldDisplayDiscreteValueLabel;
 
 /**
+ Whether or not to display the thumb when dragging a discrete slider with a value label.
+ This only applies when @c shouldDisplayDiscreteValueLabel is set to @c YES.
+
+ Defaults to NO.
+ */
+@property(nonatomic, assign) BOOL shouldDisplayThumbWithDiscreteValueLabel;
+
+/**
  The color of the discrete value label's text.
 
  Resets to the default color.
@@ -317,6 +357,19 @@ IB_DESIGNABLE
  */
 @property(nonatomic, copy, nullable) void (^traitCollectionDidChangeBlock)
     (MDCSlider *_Nonnull slider, UITraitCollection *_Nullable previousTraitCollection);
+
+/**
+ The height of the track that the thumb moves along.
+
+ Default value is 2 points.
+ */
+@property(nonatomic, assign) CGFloat trackHeight;
+
+/** Whether the ends of the thumb track should be rounded. The default is NO. */
+@property(nonatomic, assign) BOOL trackEndsAreRounded;
+
+/** Whether the ends of the track are inset by the radius of the thumb. The default is NO. */
+@property(nonatomic, assign) BOOL trackEndsAreInset;
 
 #pragma mark - To be deprecated
 
@@ -366,6 +419,18 @@ IB_DESIGNABLE
  Defaults to @c NO
  */
 @property(nonatomic, assign) BOOL shouldEnableHapticsForAllDiscreteValues;
+
+/**
+ The font of the discrete value label.
+
+ This font will come into effect only when @c numberOfDiscreteValues is larger than 0 and when @c
+ shouldDisplayDiscreteValueLabel is
+ @c YES.
+
+ Defaults to [[MDCTypography fontLoader] regularFontOfSize:12].
+ Note: MDCTypography is planned for deprecation in the future and therefore this value may change.
+ */
+@property(nonatomic, strong, null_resettable) UIFont *discreteValueLabelFont;
 
 @end
 

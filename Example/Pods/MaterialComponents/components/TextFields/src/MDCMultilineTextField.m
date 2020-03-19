@@ -26,6 +26,11 @@
 #import "MaterialMath.h"
 #import "MaterialTypography.h"
 
+/** The key for localization of the @c clearButton accessibilityLabel. */
+static NSString *const kClearButtonKey = @"MaterialTextFieldClearButtonAccessibilityLabel";
+/** Table name within the bundle used for localizing accessibility values. */
+static NSString *const kAccessibilityLocalizationStringsTableName = @"MaterialTextField";
+
 @interface MDCMultilineTextField () {
   UIColor *_cursorColor;
 
@@ -127,6 +132,12 @@
   // TODO: (#4331) This needs to be converted to the new text scheme.
   self.font = [UIFont mdc_standardFontForMaterialTextStyle:MDCFontTextStyleBody1];
   self.clearButton.tintColor = [UIColor colorWithWhite:0 alpha:[MDCTypography captionFontOpacity]];
+  NSBundle *bundle = [NSBundle bundleForClass:[MDCMultilineTextField class]];
+  NSString *accessibilityLabel =
+      [bundle localizedStringForKey:kClearButtonKey
+                              value:@"Clear text"
+                              table:kAccessibilityLocalizationStringsTableName];
+  self.clearButton.accessibilityLabel = accessibilityLabel;
 
   _cursorColor = MDCTextInputCursorColor();
   [self applyCursorColor];
@@ -167,6 +178,10 @@
 
 - (BOOL)isFirstResponder {
   return self.textView.isFirstResponder;
+}
+
+- (BOOL)resignFirstResponder {
+  return [self.textView resignFirstResponder];
 }
 
 #pragma mark - TextView Implementation
@@ -257,10 +272,19 @@
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
+  self.sizeThatFitsWidthHint = size.width;
   CGSize sizeThatFits = [self intrinsicContentSize];
-  sizeThatFits.width = size.width;
-
+  sizeThatFits.width = self.sizeThatFitsWidthHint;
+  self.sizeThatFitsWidthHint = 0;
   return sizeThatFits;
+}
+
+- (void)setSizeThatFitsWidthHint:(CGFloat)sizeThatFitsWidthHint {
+  self.fundament.sizeThatFitsWidthHint = sizeThatFitsWidthHint;
+}
+
+- (CGFloat)sizeThatFitsWidthHint {
+  return self.fundament.sizeThatFitsWidthHint;
 }
 
 - (void)layoutSubviews {
@@ -719,6 +743,12 @@
     [_trailingView removeFromSuperview];
     [self addSubview:trailingView];
     _trailingView = trailingView;
+
+    // Remove constraints related to the previous trailingView.
+    self.trailingViewTrailing = nil;
+    self.trailingViewCenterY = nil;
+    self.textViewTrailingTrailingViewLeading = nil;
+
     [self setNeedsUpdateConstraints];
   }
 }
@@ -746,7 +776,7 @@
   [self.fundament didChange];
   CGSize currentSize = self.bounds.size;
   CGSize requiredSize = [self sizeThatFits:CGSizeMake(currentSize.width, CGFLOAT_MAX)];
-  if (currentSize.height != requiredSize.height && self.textView.delegate &&
+  if (currentSize.height != requiredSize.height && self.layoutDelegate &&
       [self.layoutDelegate respondsToSelector:@selector(multilineTextField:
                                                       didChangeContentSize:)]) {
     id<MDCMultilineTextInputLayoutDelegate> delegate =
@@ -771,6 +801,23 @@
   }
 
   return value;
+}
+
+- (NSString *)accessibilityLabel {
+  NSMutableArray *accessibilityStrings = [[NSMutableArray alloc] init];
+  if ([super accessibilityLabel].length > 0) {
+    [accessibilityStrings addObject:[super accessibilityLabel]];
+  } else if (self.placeholderLabel.accessibilityLabel.length > 0) {
+    [accessibilityStrings addObject:self.placeholderLabel.accessibilityLabel];
+  }
+  if (self.leadingUnderlineLabel.accessibilityLabel.length > 0) {
+    [accessibilityStrings addObject:self.leadingUnderlineLabel.accessibilityLabel];
+  }
+  if (self.trailingUnderlineLabel.accessibilityLabel.length > 0) {
+    [accessibilityStrings addObject:self.trailingUnderlineLabel.accessibilityLabel];
+  }
+  return accessibilityStrings.count > 0 ? [accessibilityStrings componentsJoinedByString:@", "]
+                                        : nil;
 }
 
 - (BOOL)mdc_adjustsFontForContentSizeCategory {

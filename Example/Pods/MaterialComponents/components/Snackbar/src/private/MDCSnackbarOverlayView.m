@@ -22,6 +22,7 @@
 #import "MDCSnackbarMessageViewInternal.h"
 #import "MaterialAnimationTiming.h"
 #import "MaterialApplication.h"
+#import "MaterialAvailability.h"
 #import "MaterialKeyboardWatcher.h"
 #import "MaterialOverlay.h"
 
@@ -29,7 +30,7 @@ NSString *const MDCSnackbarOverlayIdentifier = @"MDCSnackbar";
 
 // The time it takes to show or hide the Snackbar.
 NSTimeInterval const MDCSnackbarEnterTransitionDuration = 0.15;
-NSTimeInterval const MDCSnackbarExitTransitionDuration = 0.075;
+NSTimeInterval const MDCSnackbarExitTransitionDuration = 0.125;
 NSTimeInterval const MDCSnackbarLegacyTransitionDuration = 0.5;
 
 // The scaling starting point for presenting the new Snackbar.
@@ -49,10 +50,10 @@ static const CGFloat MDCSnackbarSideMargin_RegularWidth = 24;
 // The maximum height of the Snackbar.
 static const CGFloat kMaximumHeight = 80;
 
-#if defined(__IPHONE_10_0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0)
+#if MDC_AVAILABLE_SDK_IOS(10_0)
 @interface MDCSnackbarOverlayView () <CAAnimationDelegate>
 @end
-#endif
+#endif  // MDC_AVAILABLE_SDK_IOS(10_0)
 
 @interface MDCSnackbarOverlayView ()
 
@@ -118,6 +119,16 @@ static const CGFloat kMaximumHeight = 80;
  */
 @property(nonatomic) NSLayoutConstraint *snackbarOffscreenConstraint;
 
+/**
+ The constraint used to set the leading margin spacing of the Snackbar.
+ */
+@property(nonatomic) NSLayoutConstraint *snackbarLeadingMarginConstraint;
+
+/**
+ The constraint used to set the trailing margin spacing of the Snackbar.
+ */
+@property(nonatomic) NSLayoutConstraint *snackbarTrailingMarginConstraint;
+
 @end
 
 @implementation MDCSnackbarOverlayView
@@ -131,7 +142,9 @@ static const CGFloat kMaximumHeight = 80;
     _watcher = watcher;
     _containingView = [[UIView alloc] initWithFrame:frame];
     _containingView.translatesAutoresizingMaskIntoConstraints = NO;
-    _containingView.clipsToBounds = YES;
+    if (MDCSnackbarMessage.usesLegacySnackbar) {
+      _containingView.clipsToBounds = YES;
+    }
     [self addSubview:_containingView];
 
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -206,6 +219,34 @@ static const CGFloat kMaximumHeight = 80;
                                                       multiplier:1.0
                                                         constant:-[self dynamicBottomMargin]];
   [self addConstraint:self.bottomConstraint];
+}
+
+- (void)updateConstraints {
+  [super updateConstraints];
+
+  self.maximumHeightConstraint.constant = self.maximumHeight;
+
+  CGFloat sideMargin = [self sideMargin];
+  CGFloat leftMargin = sideMargin;
+  CGFloat rightMargin = sideMargin;
+
+  BOOL isRegularWidth = self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular;
+  BOOL isRegularHeight = self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular;
+  if (!isRegularWidth || !isRegularHeight) {
+    if (@available(iOS 11.0, *)) {
+      if (self.mdf_effectiveUserInterfaceLayoutDirection ==
+          UIUserInterfaceLayoutDirectionLeftToRight) {
+        leftMargin += self.mdc_safeAreaInsets.left;
+        rightMargin += self.mdc_safeAreaInsets.right;
+      } else {
+        leftMargin += self.mdc_safeAreaInsets.right;
+        rightMargin += self.mdc_safeAreaInsets.left;
+      }
+    }
+
+    _snackbarLeadingMarginConstraint.constant = leftMargin;
+    _snackbarTrailingMarginConstraint.constant = -1 * rightMargin;
+  }
 }
 
 - (void)dealloc {
@@ -336,21 +377,25 @@ static const CGFloat kMaximumHeight = 80;
           }
         }
 
-        [container addConstraint:[NSLayoutConstraint constraintWithItem:snackbarView
-                                                              attribute:NSLayoutAttributeLeading
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:container
-                                                              attribute:NSLayoutAttributeLeading
-                                                             multiplier:1.0
-                                                               constant:leftMargin]];
+        _snackbarLeadingMarginConstraint =
+            [NSLayoutConstraint constraintWithItem:snackbarView
+                                         attribute:NSLayoutAttributeLeading
+                                         relatedBy:NSLayoutRelationEqual
+                                            toItem:container
+                                         attribute:NSLayoutAttributeLeading
+                                        multiplier:1.0
+                                          constant:leftMargin];
+        [container addConstraint:_snackbarLeadingMarginConstraint];
 
-        [container addConstraint:[NSLayoutConstraint constraintWithItem:snackbarView
-                                                              attribute:NSLayoutAttributeTrailing
-                                                              relatedBy:NSLayoutRelationEqual
-                                                                 toItem:container
-                                                              attribute:NSLayoutAttributeTrailing
-                                                             multiplier:1.0
-                                                               constant:-1 * rightMargin]];
+        _snackbarTrailingMarginConstraint =
+            [NSLayoutConstraint constraintWithItem:snackbarView
+                                         attribute:NSLayoutAttributeTrailing
+                                         relatedBy:NSLayoutRelationEqual
+                                            toItem:container
+                                         attribute:NSLayoutAttributeTrailing
+                                        multiplier:1.0
+                                          constant:-1 * rightMargin];
+        [container addConstraint:_snackbarTrailingMarginConstraint];
       }
 
       _snackbarOnscreenConstraint = [NSLayoutConstraint constraintWithItem:snackbarView
@@ -447,7 +492,7 @@ static const CGFloat kMaximumHeight = 80;
 #pragma mark - Safe Area Insets
 
 - (void)safeAreaInsetsDidChange {
-  self.maximumHeightConstraint.constant = self.maximumHeight;
+  [self setNeedsUpdateConstraints];
   [self triggerSnackbarLayoutChange];
 }
 

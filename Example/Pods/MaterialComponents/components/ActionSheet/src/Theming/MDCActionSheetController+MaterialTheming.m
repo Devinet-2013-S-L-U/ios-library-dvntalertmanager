@@ -14,12 +14,13 @@
 
 #import "MDCActionSheetController+MaterialTheming.h"
 
+#import "MaterialAvailability.h"
 #import "MaterialColor.h"
 #import "MaterialShadowElevations.h"
 
 static const CGFloat kHighAlpha = (CGFloat)0.87;
 static const CGFloat kMediumAlpha = (CGFloat)0.6;
-static const CGFloat kInkAlpha = (CGFloat)0.16;
+static const CGFloat kRippleAlpha = (CGFloat)0.16;
 
 @implementation MDCActionSheetController (MaterialTheming)
 
@@ -57,10 +58,8 @@ static const CGFloat kInkAlpha = (CGFloat)0.16;
   self.imageRenderingMode = UIImageRenderingModeAlwaysTemplate;
   self.actionTintColor = [colorScheme.onSurfaceColor colorWithAlphaComponent:kMediumAlpha];
   self.actionTextColor = [colorScheme.onSurfaceColor colorWithAlphaComponent:kHighAlpha];
-  UIColor *rippleColor = [colorScheme.onSurfaceColor colorWithAlphaComponent:kInkAlpha];
-  self.inkColor = rippleColor;
-  self.rippleColor = rippleColor;
-#if defined(__IPHONE_13_0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0)
+  self.rippleColor = [colorScheme.onSurfaceColor colorWithAlphaComponent:kRippleAlpha];
+#if MDC_AVAILABLE_SDK_IOS(13_0)
   if (@available(iOS 13.0, *)) {
     self.traitCollectionDidChangeBlock = ^(MDCActionSheetController *_Nonnull actionSheet,
                                            UITraitCollection *_Nullable previousTraitCollection) {
@@ -77,7 +76,7 @@ static const CGFloat kInkAlpha = (CGFloat)0.16;
           }
         };
   }
-#endif
+#endif  // MDC_AVAILABLE_SDK_IOS(13_0)
 }
 
 - (void)applyBackgroundColorToActionSheet:(MDCActionSheetController *)actionSheet

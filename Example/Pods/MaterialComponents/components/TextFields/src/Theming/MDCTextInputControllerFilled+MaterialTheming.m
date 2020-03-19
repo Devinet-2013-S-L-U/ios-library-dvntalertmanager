@@ -15,7 +15,6 @@
 #import "MDCTextInputControllerFilled+MaterialTheming.h"
 
 #import <MaterialComponents/MaterialTextFields+ColorThemer.h>
-#import <MaterialComponents/MaterialTextFields+TypographyThemer.h>
 
 @implementation MDCTextInputControllerFilled (MaterialTheming)
 
@@ -33,7 +32,21 @@
 }
 
 - (void)applyTypographyThemeWithScheme:(nonnull id<MDCTypographyScheming>)typographyScheme {
-  [MDCTextFieldTypographyThemer applyTypographyScheme:typographyScheme toTextInputController:self];
+  self.inlinePlaceholderFont = typographyScheme.subtitle1;
+  self.leadingUnderlineLabelFont = typographyScheme.caption;
+  self.trailingUnderlineLabelFont = typographyScheme.caption;
+  if ([self conformsToProtocol:@protocol(MDCTextInputControllerFloatingPlaceholder)]) {
+    id<MDCTextInputControllerFloatingPlaceholder> floatingPlaceholderController =
+        (id<MDCTextInputControllerFloatingPlaceholder>)self;
+
+    // if caption.pointSize <= 0 there is no meaningful ratio so we fallback to default.
+    if (typographyScheme.caption.pointSize <= 0) {
+      floatingPlaceholderController.floatingPlaceholderScale = nil;
+    } else {
+      double ratio = typographyScheme.caption.pointSize / typographyScheme.subtitle1.pointSize;
+      floatingPlaceholderController.floatingPlaceholderScale = [NSNumber numberWithDouble:ratio];
+    }
+  }
 }
 
 @end

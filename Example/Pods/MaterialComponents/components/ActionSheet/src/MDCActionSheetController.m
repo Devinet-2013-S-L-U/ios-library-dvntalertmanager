@@ -14,6 +14,7 @@
 
 #import "MDCActionSheetController.h"
 
+#import "MaterialAvailability.h"
 #import "MaterialMath.h"
 #import "MaterialShadowElevations.h"
 #import "MaterialTypography.h"
@@ -47,6 +48,7 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
     _title = [title copy];
     _image = [image copy];
     _completionHandler = [handler copy];
+    _dividerColor = UIColor.clearColor;
   }
   return self;
 }
@@ -59,6 +61,8 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
   action.accessibilityLabel = self.accessibilityLabel;
   action.titleColor = self.titleColor;
   action.tintColor = self.tintColor;
+  action.dividerColor = self.dividerColor;
+  action.showsDivider = self.showsDivider;
   return action;
 }
 
@@ -151,11 +155,20 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
 
 - (void)addAction:(MDCActionSheetAction *)action {
   [_actions addObject:action];
+  if (self.alwaysAlignTitleLeadingEdges && action.image) {
+    self.addLeadingPaddingToCell = YES;
+  }
   [self updateTable];
 }
 
 - (NSArray<MDCActionSheetAction *> *)actions {
   return [_actions copy];
+}
+
+- (void)loadView {
+  [super loadView];
+
+  self.mdc_bottomSheetPresentationController.delegate = self;
 }
 
 - (void)viewDidLoad {
@@ -174,8 +187,8 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
   [self.view addSubview:self.headerDividerView];
 }
 
-- (void)viewWillLayoutSubviews {
-  [super viewWillLayoutSubviews];
+- (void)viewDidLayoutSubviews {
+  [super viewDidLayoutSubviews];
 
   if (self.tableView.contentSize.height > (CGRectGetHeight(self.view.bounds) / 2)) {
     self.mdc_bottomSheetPresentationController.preferredSheetHeight = [self openingSheetHeight];
@@ -321,14 +334,23 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
   cell.backgroundColor = self.backgroundColor;
   cell.actionFont = self.actionFont;
   cell.accessibilityIdentifier = action.accessibilityIdentifier;
-  cell.inkColor = self.inkColor;
   cell.rippleColor = self.rippleColor;
-  cell.enableRippleBehavior = self.enableRippleBehavior;
   cell.tintColor = action.tintColor ?: self.actionTintColor;
   cell.imageRenderingMode = self.imageRenderingMode;
   cell.addLeadingPadding = self.addLeadingPaddingToCell;
   cell.actionTextColor = action.titleColor ?: self.actionTextColor;
+  cell.contentEdgeInsets = self.contentEdgeInsets;
+  cell.dividerColor = action.dividerColor;
+  cell.showsDivider = action.showsDivider;
   return cell;
+}
+
+- (void)setContentEdgeInsets:(UIEdgeInsets)contentEdgeInsets {
+  if (UIEdgeInsetsEqualToEdgeInsets(_contentEdgeInsets, contentEdgeInsets)) {
+    return;
+  }
+  _contentEdgeInsets = contentEdgeInsets;
+  [self.tableView reloadData];
 }
 
 - (void)setTitle:(NSString *)title {
@@ -352,14 +374,14 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
   [super traitCollectionDidChange:previousTraitCollection];
 
-#if defined(__IPHONE_13_0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0)
+#if MDC_AVAILABLE_SDK_IOS(13_0)
   if (@available(iOS 13.0, *)) {
     if ([self.traitCollection
             hasDifferentColorAppearanceComparedToTraitCollection:previousTraitCollection]) {
       [self.tableView reloadData];
     }
   }
-#endif
+#endif  // MDC_AVAILABLE_SDK_IOS(13_0)
 
   if (self.traitCollectionDidChangeBlock) {
     self.traitCollectionDidChangeBlock(self, previousTraitCollection);
@@ -478,9 +500,13 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
 
 - (void)setAlwaysAlignTitleLeadingEdges:(BOOL)alignTitles {
   _alwaysAlignTitleLeadingEdges = alignTitles;
-  // Check to make sure at least one action has an image. If not then all actions will align already
-  // and we don't need to add padding.
-  self.addLeadingPaddingToCell = [self anyActionHasAnImage];
+  if (alignTitles) {
+    // Check to make sure at least one action has an image. If not then all actions will align
+    // already and we don't need to add padding.
+    self.addLeadingPaddingToCell = [self anyActionHasAnImage];
+  } else {
+    self.addLeadingPaddingToCell = NO;
+  }
   [self.tableView reloadData];
 }
 
@@ -493,30 +519,8 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
   return NO;
 }
 
-- (UIColor *)inkColor {
-  return _inkColor;
-}
-
-- (void)setInkColor:(UIColor *)inkColor {
-  _inkColor = inkColor;
-  [self.tableView reloadData];
-}
-
 - (void)setRippleColor:(UIColor *)rippleColor {
-  if (_rippleColor == rippleColor || [_rippleColor isEqual:rippleColor]) {
-    return;
-  }
   _rippleColor = rippleColor;
-
-  [self.tableView reloadData];
-}
-
-- (void)setEnableRippleBehavior:(BOOL)enableRippleBehavior {
-  if (_enableRippleBehavior == enableRippleBehavior) {
-    return;
-  }
-  _enableRippleBehavior = enableRippleBehavior;
-
   [self.tableView reloadData];
 }
 
@@ -530,6 +534,15 @@ static const CGFloat kDividerDefaultAlpha = (CGFloat)0.12;
 
 - (CGFloat)mdc_currentElevation {
   return self.elevation;
+}
+
+#pragma mark - MDCBottomSheetPresentationControllerDelegate
+
+- (void)bottomSheetPresentationControllerDidDismissBottomSheet:
+    (nonnull MDCBottomSheetController *)controller {
+  if ([self.delegate respondsToSelector:@selector(actionSheetControllerDidDismiss:)]) {
+    [self.delegate actionSheetControllerDidDismiss:self];
+  }
 }
 
 @end

@@ -20,6 +20,45 @@
 #import <UIKit/UIKit.h>
 
 @class MDCAlertAction;
+@class MDCAlertController;
+
+@protocol MDCAlertControllerDelegate <NSObject>
+
+@optional
+
+/**
+ Informs the receiver that the alert controller will appear on the screen or the application is
+ entering the foreground.
+ */
+- (void)alertController:(nonnull MDCAlertController *)alertController willAppear:(BOOL)animated;
+
+/**
+ Informs the receiver that the alert controller appeared on the screen or the application has
+ entered the foreground.
+ */
+- (void)alertController:(nonnull MDCAlertController *)alertController didAppear:(BOOL)animated;
+
+/**
+ Informs the receiver that the alert controller will disappear from the screen or the application is
+ entering the background.
+ */
+- (void)alertController:(nonnull MDCAlertController *)alertController willDisappear:(BOOL)animated;
+
+/**
+ Informs the receiver that the alert controller disappeared from the screen or the application has
+ entered the background.
+ */
+- (void)alertController:(nonnull MDCAlertController *)alertController didDisappear:(BOOL)animated;
+
+/**
+ Called on the delegate after the alert action is tapped by the user and while the alert is still on
+ the screen.
+ */
+- (void)alertController:(nonnull MDCAlertController *)alertController
+           didTapAction:(nonnull MDCAlertAction *)action
+              withEvent:(nonnull UIEvent *)event;
+
+@end
 
 /**
  MDCAlertController displays an alert message to the user, similar to UIAlertController.
@@ -29,7 +68,8 @@
  MDCAlertController class is intended to be used as-is and does not support subclassing. The view
  hierarchy for this class is private and must not be modified.
  */
-@interface MDCAlertController : UIViewController <MDCElevatable, MDCElevationOverriding>
+@interface MDCAlertController
+    : UIViewController <MDCElevatable, MDCElevationOverriding, UIContentSizeCategoryAdjusting>
 
 /**
  Convenience constructor to create and return a view controller for displaying an alert to the user.
@@ -52,13 +92,19 @@
 /** Alert controllers must be created with alertControllerWithTitle:message: */
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder NS_UNAVAILABLE;
 
+/**
+ An object conforming to @c MDCAlertControllerDelegate. When non-nil, the @c MDCAlertController will
+ call the appropriate @c MDCAlertControllerDelegate methods on this object.
+ */
+@property(nonatomic, weak, nullable) id<MDCAlertControllerDelegate> delegate;
+
 /** The font applied to the title of Alert Controller.*/
 @property(nonatomic, strong, nullable) UIFont *titleFont;
 
 /** The color applied to the title of Alert Controller.*/
 @property(nonatomic, strong, nullable) UIColor *titleColor;
 
-/** The alignment applied to the title of the Alert Controller.*/
+/** The alignment applied to the title of the Alert. Default to NSTextAlignmentNatural. */
 @property(nonatomic, assign) NSTextAlignment titleAlignment;
 
 /** An optional icon appearing above the title of the Alert Controller.*/
@@ -73,9 +119,16 @@
 /** The color applied to the message of Alert Controller.*/
 @property(nonatomic, strong, nullable) UIColor *messageColor;
 
-// b/117717380: Will be deprecated
-/** The font applied to the button of Alert Controller.*/
-@property(nonatomic, strong, nullable) UIFont *buttonFont;
+/** The alignment applied to the message of Alert Controller. Default to NSTextAlignmentNatural. */
+@property(nonatomic, assign) NSTextAlignment messageAlignment;
+
+/**
+ The font applied to the button of Alert Controller.
+
+ @note This property is deprecated and will be removed in an upcoming release.
+ */
+@property(nonatomic, strong, nullable)
+    UIFont *buttonFont __deprecated_msg("Please use buttonForAction: to set button properties.");
 
 // b/117717380: Will be deprecated
 /** The color applied to the button title text of Alert Controller.*/
@@ -114,8 +167,25 @@
  */
 @property(nonatomic, nullable, copy) NSString *title;
 
+/**
+ A custom accessibility label for the title.
+
+ When @c nil the title accessibilityLabel will be set to the value of the @c title.
+ */
+@property(nonatomic, nullable, copy) NSString *titleAccessibilityLabel;
+
 /** Descriptive text that summarizes a decision in a sentence of two. */
 @property(nonatomic, nullable, copy) NSString *message;
+
+/**
+ A custom accessibility label for the message.
+
+ When @c nil the message accessibilityLabel will be set to the value of the @c message.
+ */
+@property(nonatomic, nullable, copy) NSString *messageAccessibilityLabel;
+
+/** A custom accessibility label for the title icon view. */
+@property(nonatomic, nullable, copy) NSString *imageAccessibilityLabel;
 
 /**
  Accessory view that contains custom UI.
@@ -137,6 +207,28 @@
  accessory view's size if the alert's width changes.
  */
 - (void)setAccessoryViewNeedsLayout;
+
+/**
+ Duration of the dialog fade-in or fade-out presentation animation.
+
+ Defaults to 0.27 seconds.
+ */
+@property(nonatomic, assign) NSTimeInterval presentationOpacityAnimationDuration;
+
+/**
+ Duration of dialog scale-up or scale-down presentation animation.
+
+ Defaults to 0 seconds (no animation is performed).
+ */
+@property(nonatomic, assign) NSTimeInterval presentationScaleAnimationDuration;
+
+/**
+ The starting scale factor of the dialog during the presentation animation, between 0 and 1. The
+ "animate in" transition scales the dialog from this value to 1.0.
+
+ Defaults to 1.0 (no scaling is performed).
+ */
+@property(nonatomic, assign) CGFloat presentationInitialScaleFactor;
 
 /*
  Indicates whether the alert contents should automatically update their font when the device’s
@@ -182,6 +274,15 @@
  */
 @property(nonatomic, assign) BOOL adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable;
 
+/** MDCAlertController handles its own transitioning delegate. */
+- (void)setTransitioningDelegate:
+    (_Nullable id<UIViewControllerTransitioningDelegate>)transitioningDelegate NS_UNAVAILABLE;
+
+/** MDCAlertController.modalPresentationStyle is always UIModalPresentationCustom. */
+- (void)setModalPresentationStyle:(UIModalPresentationStyle)modalPresentationStyle NS_UNAVAILABLE;
+
+#pragma mark - Alert Actions
+
 /**
  The actions that the user can take in response to the alert.
 
@@ -202,14 +303,61 @@
  */
 - (void)addAction:(nonnull MDCAlertAction *)action;
 
-/** MDCAlertController handles its own transitioning delegate. */
-- (void)setTransitioningDelegate:
-    (_Nullable id<UIViewControllerTransitioningDelegate>)transitioningDelegate NS_UNAVAILABLE;
+// TODO(https://github.com/material-components/material-components-ios/issues/9891): Replace
+// MDCActionEmphasis with UIControlContentHorizontalAlignment after dropping support for iOS 10.
+/** Content alignment for Alert actions. */
+typedef NS_ENUM(NSInteger, MDCContentHorizontalAlignment) {
+  /** Actions are centered. */
+  MDCContentHorizontalAlignmentCenter = 0,
+  /** Actions are left aligned in LTR and right aligned in RTL.  */
+  MDCContentHorizontalAlignmentLeading = 1,
+  /** Actions are right aligned in LTR and left aligned in RTL.  */
+  MDCContentHorizontalAlignmentTrailing = 2,
+  /**
+   Actions fill the entire width of the alert (minus the insets). If more than one action is
+   presented, equal width is applied to all actions so they fill the space evenly.
+   */
+  MDCContentHorizontalAlignmentJustified = 3
+};
 
-/** MDCAlertController.modalPresentationStyle is always UIModalPresentationCustom. */
-- (void)setModalPresentationStyle:(UIModalPresentationStyle)modalPresentationStyle NS_UNAVAILABLE;
+/**
+ The alert actions alignment in horizontal layout.  This property controls both alignment and order
+ of the actions in the horizontal layout.  Actions that are added first, are presented first based
+ on the alignment: when alignment is trailing, the first action is presented on the trailing side
+ (right in LTR). For all other alignments, the action added first is presented on the leading side
+ (left in LTR).
+
+ Default value is @c MDCContentHorizontalAlignmentTrailing.
+ */
+@property(nonatomic, assign) MDCContentHorizontalAlignment actionsHorizontalAlignment;
+
+/**
+ The horizontal alignment of the alert's actions when in vertical layout. When not enough horizontal
+ space is available to present all actions, actions will layout vertically. That may happen in the
+ portrait orientation on smaller devices. Actions may have centered, leading, trailing or filled
+ alignment. In filled alignment, all actions will be as wide as the alert (minus insets).
+
+ @note: Actions that are added first will be displayed on the bottom, unless overriden by
+        orderVerticalActionsByEmphasis.
+
+ Default value is @c MDCContentHorizontalAlignmentCenter.
+ */
+@property(nonatomic, assign)
+    MDCContentHorizontalAlignment actionsHorizontalAlignmentInVerticalLayout;
+
+/**
+ Enables ordering actions by emphasis when they are vertically aligned. When set to @c YES,
+ horizontally trailing actions, which typically have higher emphasis, will be displayed on top when
+ presented vertically (for instance, in the portrait orientation on smaller devices). When set to @c
+ NO, the higher emphasis actions will be displayed on the bottom.
+
+ Default value is @c NO.
+*/
+@property(nonatomic, assign) BOOL orderVerticalActionsByEmphasis;
 
 @end
+
+#pragma mark - MDCAlertAction
 
 typedef NS_ENUM(NSInteger, MDCActionEmphasis) {
   /* Low emphasis attribute produces low emphasis appearance when attached to actions or buttons */

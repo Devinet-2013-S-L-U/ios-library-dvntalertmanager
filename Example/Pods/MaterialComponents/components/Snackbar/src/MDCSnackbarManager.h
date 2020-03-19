@@ -35,6 +35,13 @@
  */
 - (void)willPresentSnackbarWithMessageView:(nullable MDCSnackbarMessageView *)messageView;
 
+@optional
+
+/**
+ This method is called after a Snackbar's dismissal animation is finished.
+ */
+- (void)snackbarDidDisappear;
+
 @end
 
 /**
@@ -249,11 +256,12 @@
  If disabled, the font size will only be adjusted if a scaled font has been provided.
  This behavior most closely matches UIKit's.
 
- Default value is YES, but this flag will eventually default to NO and then be deprecated
- and deleted.
+ Default value is YES.
  */
-@property(nonatomic, assign) BOOL adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable;
-
+@property(nonatomic, assign)
+    BOOL adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable __deprecated_msg(
+        "Use UIFontMetrics and UIContentSizeCategoryAdjusting on iOS 11+ or MDCFontScaler on "
+        "earlier versions");
 /**
  If enabled, accessibilityViewIsModal will be enabled for all non-transient snackbar views by
  default. If accessibilityViewIsModal needs to be set for specific snackbar views,

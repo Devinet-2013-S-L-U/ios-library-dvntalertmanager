@@ -38,6 +38,16 @@ typedef NS_ENUM(NSInteger, MDCFlexibleHeaderShiftBehavior) {
    MDCFlexibleHeaderShiftBehaviorEnabled.
    */
   MDCFlexibleHeaderShiftBehaviorEnabledWithStatusBar,
+
+  /**
+   Allows the header to be shifted on- and off-screen only via the @c shiftHeaderOnScreenAnimated:
+   and @c shiftHeaderOffScreenAnimated APIs. Scroll events will not affect the visibility of the
+   header.
+
+   Analogous to UINavigationController's setNavigationBarHidden: behavior, in that the visibility of
+   the navigation bar persists regardless of the user's subsequent interactions.
+   */
+  MDCFlexibleHeaderShiftBehaviorHideable,
 };
 
 /** The importance of content contained within the flexible header view. */
@@ -67,6 +77,8 @@ typedef NS_ENUM(NSInteger, MDCFlexibleHeaderContentImportance) {
  @note If self.observesTrackingScrollViewScrollEvents is YES, then this property can only be
  MDCFlexibleHeaderShiftBehaviorDisabled. Attempts to set shiftBehavior to any other value if
  self.observesTrackingScrollViewScrollEvents is YES will result in an assertion being thrown.
+
+ Default: MDCFlexibleHeaderShiftBehaviorDisabled
  */
 @property(nonatomic) MDCFlexibleHeaderShiftBehavior shiftBehavior;
 
@@ -113,6 +125,11 @@ typedef NS_ENUM(NSInteger, MDCFlexibleHeaderContentImportance) {
 @property(nonatomic) BOOL statusBarHintCanOverlapHeader;
 
 /**
+ The minimum amount of header height to remain when `shiftBehavior` is enabled.
+ */
+@property(nonatomic) CGFloat minimumHeaderViewHeight;
+
+/**
  Hides the view by changing its alpha when the header shifts. Note that this only happens when the
  header shifting behavior is set to MDCFlexibleHeaderShiftBehaviorEnabled.
  */
@@ -128,6 +145,15 @@ typedef NS_ENUM(NSInteger, MDCFlexibleHeaderContentImportance) {
 
 /** Asks the receiver to take the header off-screen if it's currently on-screen. */
 - (void)shiftHeaderOffScreenAnimated:(BOOL)animated;
+
+/**
+ Indicates whether the header is or will be shifted offscreen.
+
+ @returns YES if the header has been asked to shift offscreen by @c -shiftHeaderOffScreenAnimated:
+ or if the user has fully shifted the header off-screen as a result of scrolling the tracking scroll
+ view.
+ */
+@property(nonatomic, readonly, getter=isShiftedOffscreen) BOOL shiftedOffscreen;
 
 #pragma mark - UIScrollViewDelegate APIs required for shift behavior
 

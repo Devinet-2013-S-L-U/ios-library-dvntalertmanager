@@ -50,6 +50,70 @@
             (nonnull MDCBottomDrawerPresentationController *)presentationController
                        transitionRatio:(CGFloat)transitionRatio;
 
+/**
+ This method is called when the y-offset of the visible contents of the drawer have changed. This
+ is triggered when the drawer is presented and dismissed as well as when the content is being
+ dragged interactively.
+
+ @param presentationController presentation controller of the bottom drawer
+ @param yOffset yOffset of the top of the drawer
+ */
+- (void)bottomDrawerTopDidChangeYOffset:
+            (nonnull MDCBottomDrawerPresentationController *)presentationController
+                                yOffset:(CGFloat)yOffset;
+
+/**
+ This method is called when the bottom drawer will begin animating to an open state. This is
+ triggered when the VC is being presented.
+
+ @param presentationController presentation controller of the bottom drawer
+ @param transitionCoordinator coordinator being used to animate the transition
+ @param targetYOffset y-Offset that the drawer will animate to
+
+ @discussion The target y-offset is calculated based upon the @c maximumInitialDrawerHeight and
+ @c preferredContentSize of the @c contentViewController. This value may not be the final offset
+ since that may change once the initial layout pass has completed. If the offset changes again then
+ @c bottomDrawerTopDidChangeYOffset:yOffset will be called with the updated value.
+ */
+- (void)bottomDrawerPresentTransitionWillBegin:
+            (nonnull MDCBottomDrawerPresentationController *)presentationController
+                               withCoordinator:(nonnull id<UIViewControllerTransitionCoordinator>)
+                                                   transitionCoordinator
+                                 targetYOffset:(CGFloat)targetYOffset;
+
+/**
+ This method is called when the bottom drawer has completed animating to an open state. This is
+ triggered when the VC is being presented.
+
+ @param presentationController presentation controller of the bottom drawer
+ */
+- (void)bottomDrawerPresentTransitionDidEnd:
+    (nonnull MDCBottomDrawerPresentationController *)presentationController;
+
+/**
+ This method is called when the bottom drawer will begin animating to a closed state. This is
+ triggered when the VC is being dismissed.
+
+ @param presentationController presentation controller of the bottom drawer
+ @param transitionCoordinator coordinator being used to animate the transition
+ @param targetYOffset y-Offset that the drawer will animate to
+
+ */
+- (void)bottomDrawerDismissTransitionWillBegin:
+            (nonnull MDCBottomDrawerPresentationController *)presentationController
+                               withCoordinator:(nonnull id<UIViewControllerTransitionCoordinator>)
+                                                   transitionCoordinator
+                                 targetYOffset:(CGFloat)targetYOffset;
+
+/**
+ This method is called when the bottom drawer has completed animating to a closed state. This is
+ triggered when the VC is being dismissed.
+
+ @param presentationController presentation controller of the bottom drawer
+ */
+- (void)bottomDrawerDismissTransitionDidEnd:
+    (nonnull MDCBottomDrawerPresentationController *)presentationController;
+
 @end
 
 /**
@@ -103,12 +167,61 @@
 @property(nonatomic, assign) CGFloat maximumInitialDrawerHeight;
 
 /**
+ A flag allowing clients to opt-out of the drawer closing when the user taps outside the content.
+
+ @default YES The drawer should dismiss on tap.
+ */
+@property(nonatomic, assign) BOOL dismissOnBackgroundTap;
+
+/**
+ A flag allowing clients to opt-in to handling background touch events.
+
+ @default NO The drawer will not forward touch events.
+
+ @discussion If set to YES and the delegate is an instance of @UIResponder, then the touch events
+ that are not handled by the drawer content (aka touches on the background view) will be forwarded
+ along to the delegate.
+
+ Note: @dismissOnBackgroundTap should also be set to NO so that the events will propagate properly
+ from the background tap through to the delegate. Setting @shouldForwardBackgroundTouchEvents to YES
+ will also set @dismissOnBackgroundTap to NO.
+ */
+@property(nonatomic, assign) BOOL shouldForwardBackgroundTouchEvents;
+
+/**
  A flag allowing clients to opt-in to the drawer adding additional height to the content to include
  the bottom safe area inset. This will remove the need for clients to calculate their content size
  with the bottom safe area when setting the preferredContentSize of the contentViewController.
  Defaults to NO.
  */
 @property(nonatomic, assign) BOOL shouldIncludeSafeAreaInContentHeight;
+
+/**
+ A flag allowing clients to opt-in to adding additional height to the initial presentation of the
+ drawer to include the bottom safe area inset. This will remove the need for clients to calculate
+ their desired maximum height with the bottom safe area when setting the maximumInitialDrawerHeight.
+ Defaults to NO.
+ */
+@property(nonatomic, assign) BOOL shouldIncludeSafeAreaInInitialDrawerHeight;
+
+/**
+ This flag allows clients to have the drawer content scroll below the status bar when no header is
+ provided.
+
+ Note: This flag is only applicable when @c headerViewController is nil. If @c headerViewController
+ is non-nil, setting this flag to YES will have no effect.
+
+ Defaults to NO.
+*/
+@property(nonatomic, assign) BOOL shouldUseStickyStatusBar;
+
+/**
+ Determines the behavior of the drawer when the content size changes.
+ If enabled, the drawer will automatically adjust the visible height as needed, otherwise the
+ visible height will not be changed to reflect the updated content height.
+ Defaults to NO.
+ */
+@property(nonatomic, assign) BOOL shouldAdjustOnContentSizeChange;
 
 /**
  A boolean value that indicates whether the drawer is currently the full height of the window.
