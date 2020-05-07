@@ -14,17 +14,18 @@
 
 #import "MDCAlertController.h"
 
-#import <MDFInternationalization/MDFInternationalization.h>
+#import "MaterialButtons.h"
+#import "MDCAlertController+Customize.h"
+#import "MDCAlertControllerDelegate.h"
 #import "MDCAlertControllerView.h"
 #import "MDCDialogPresentationController.h"
 #import "MDCDialogTransitionController.h"
-#import "MaterialButtons.h"
-#import "MaterialMath.h"
-#import "MaterialTypography.h"
 #import "UIViewController+MaterialDialogs.h"
+#import "MaterialTypography.h"
+#import "MaterialMath.h"
+#import <MDFInternationalization/MDFInternationalization.h>
 
 #import "private/MDCAlertActionManager.h"
-#import "private/MDCAlertController+Customize.h"
 #import "private/MDCAlertControllerView+Private.h"
 #import "private/MaterialDialogsStrings.h"
 #import "private/MaterialDialogsStrings_table.h"
@@ -74,10 +75,6 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
 
 @end
 
-@interface MDCAlertControllerView (Accessibility)
-@property(nonatomic, nullable, strong) UIImageView *titleIconImageView;
-@end
-
 @interface MDCAlertController ()
 
 @property(nonatomic, nullable, weak) MDCAlertControllerView *alertView;
@@ -97,6 +94,7 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
   CGSize _previousLayoutSize;
   BOOL _mdc_adjustsFontForContentSizeCategory;
   NSString *_imageAccessibilityLabel;
+  BOOL _alignIconWithTitle;
 }
 
 @synthesize mdc_overrideBaseElevation = _mdc_overrideBaseElevation;
@@ -117,20 +115,49 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
   return alertController;
 }
 
++ (nonnull instancetype)alertControllerWithTitle:(nullable NSString *)alertTitle
+                               attributedMessage:(nullable NSAttributedString *)attributedMessage {
+  MDCAlertController *alertController =
+      [[MDCAlertController alloc] initWithTitle:alertTitle attributedMessage:attributedMessage];
+
+  return alertController;
+}
+
 - (instancetype)init {
   return [self initWithTitle:nil message:nil];
 }
 
 - (nonnull instancetype)initWithTitle:(nullable NSString *)title
                               message:(nullable NSString *)message {
+  self = [self initWithTitle:title];
+  if (self) {
+    _message = [message copy];
+  }
+  return self;
+}
+
+- (nonnull instancetype)initWithTitle:(nullable NSString *)title
+                    attributedMessage:(nullable NSAttributedString *)attributedMessage {
+  self = [self initWithTitle:title];
+  if (self) {
+    _attributedMessage = [attributedMessage copy];
+  }
+  return self;
+}
+
+- (nonnull instancetype)initWithTitle:(nullable NSString *)title {
   self = [super initWithNibName:nil bundle:nil];
   if (self) {
     _transitionController = [[MDCDialogTransitionController alloc] init];
 
     _alertTitle = [title copy];
-    _message = [message copy];
     _titleAlignment = NSTextAlignmentNatural;
     _messageAlignment = NSTextAlignmentNatural;
+    _titleIconAlignment = _titleAlignment;
+    _alignIconWithTitle = YES;
+    _orderVerticalActionsByEmphasis = NO;
+    _actionsHorizontalAlignment = MDCContentHorizontalAlignmentTrailing;
+    _actionsHorizontalAlignmentInVerticalLayout = MDCContentHorizontalAlignmentCenter;
     _actionManager = [[MDCAlertActionManager alloc] init];
     _adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable = YES;
     _shadowColor = UIColor.blackColor;
@@ -140,10 +167,6 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
     super.modalPresentationStyle = UIModalPresentationCustom;
   }
   return self;
-}
-
-- (void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
@@ -196,10 +219,25 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
 - (void)setMessage:(NSString *)message {
   _message = [message copy];
   if (self.alertView) {
-    self.alertView.messageLabel.text = message;
-    self.preferredContentSize =
-        [self.alertView calculatePreferredContentSizeForBounds:CGRectInfinite.size];
+    [self messageDidChange];
   }
+}
+
+- (void)setAttributedMessage:(NSAttributedString *)attributedMessage {
+  _attributedMessage = [attributedMessage copy];
+  if (self.alertView) {
+    [self messageDidChange];
+  }
+}
+
+- (void)messageDidChange {
+  if (self.attributedMessage.length > 0) {
+    self.alertView.messageLabel.attributedText = self.attributedMessage;
+  } else {
+    self.alertView.messageLabel.text = self.message;
+  }
+  self.preferredContentSize =
+      [self.alertView calculatePreferredContentSizeForBounds:CGRectInfinite.size];
 }
 
 - (void)setMessageAccessibilityLabel:(NSString *)messageAccessibilityLabel {
@@ -381,8 +419,14 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
 
 - (void)setTitleAlignment:(NSTextAlignment)titleAlignment {
   _titleAlignment = titleAlignment;
+  if (_alignIconWithTitle) {
+    _titleIconAlignment = titleAlignment;
+  }
   if (self.alertView) {
     self.alertView.titleAlignment = titleAlignment;
+    if (_alignIconWithTitle) {
+      self.alertView.titleIconAlignment = titleAlignment;
+    }
   }
 }
 
@@ -397,6 +441,8 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
   _titleIcon = titleIcon;
   if (self.alertView) {
     self.alertView.titleIcon = titleIcon;
+    self.preferredContentSize =
+        [self.alertView calculatePreferredContentSizeForBounds:CGRectInfinite.size];
   }
 }
 
@@ -404,6 +450,8 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
   _titleIconView = titleIconView;
   if (self.alertView) {
     self.alertView.titleIconView = titleIconView;
+    self.preferredContentSize =
+        [self.alertView calculatePreferredContentSizeForBounds:CGRectInfinite.size];
   }
 }
 
@@ -411,6 +459,18 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
   _titleIconTintColor = titleIconTintColor;
   if (self.alertView) {
     self.alertView.titleIconTintColor = titleIconTintColor;
+  }
+}
+
+- (UIImageView *)titleIconImageView {
+  return self.alertView.titleIconImageView;
+}
+
+- (void)setTitleIconAlignment:(NSTextAlignment)titleIconAlignment {
+  _alignIconWithTitle = NO;
+  _titleIconAlignment = titleIconAlignment;
+  if (self.alertView) {
+    self.alertView.titleIconAlignment = titleIconAlignment;
   }
 }
 
@@ -627,7 +687,7 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
   if (CGRectGetWidth(self.view.bounds) != _previousLayoutSize.width ||
       CGRectGetHeight(self.view.bounds) != _previousLayoutSize.height) {
     CGSize currentPreferredContentSize = self.preferredContentSize;
-    CGSize contentSize = CGRectInfinite.size;
+    CGSize contentSize = CGRectStandardize(self.alertView.bounds).size;
     CGSize calculatedPreferredContentSize =
         [self.alertView calculatePreferredContentSizeForBounds:contentSize];
 
@@ -638,6 +698,10 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
 
     _previousLayoutSize = CGRectStandardize(self.alertView.bounds).size;
   }
+}
+
+- (BOOL)canBecomeFirstResponder {
+  return YES;
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size
@@ -683,7 +747,11 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
     self.alertView.titleLabel.adjustsFontForContentSizeCategory =
         self.adjustsFontForContentSizeCategory;
   }
-  self.alertView.messageLabel.text = self.message;
+  if (self.attributedMessage.length > 0) {
+    self.alertView.messageLabel.attributedText = self.attributedMessage;
+  } else {
+    self.alertView.messageLabel.text = self.message;
+  }
   self.alertView.titleLabel.accessibilityLabel = self.titleAccessibilityLabel ?: self.title;
   self.alertView.messageLabel.accessibilityLabel = self.messageAccessibilityLabel ?: self.message;
   self.alertView.titleIconImageView.accessibilityLabel = self.imageAccessibilityLabel;
@@ -715,12 +783,14 @@ static NSString *const kMaterialDialogsBundle = @"MaterialDialogs.bundle";
   self.alertView.messageAlignment = self.messageAlignment;
   self.alertView.titleIcon = self.titleIcon;
   self.alertView.titleIconTintColor = self.titleIconTintColor;
+  self.alertView.titleIconAlignment = self.titleIconAlignment;
   self.alertView.titleIconView = self.titleIconView;
   self.alertView.cornerRadius = self.cornerRadius;
   self.alertView.enableRippleBehavior = self.enableRippleBehavior;
-  self.orderVerticalActionsByEmphasis = NO;
-  self.actionsHorizontalAlignment = MDCContentHorizontalAlignmentTrailing;
-  self.actionsHorizontalAlignmentInVerticalLayout = MDCContentHorizontalAlignmentCenter;
+  self.alertView.orderVerticalActionsByEmphasis = self.orderVerticalActionsByEmphasis;
+  self.alertView.actionsHorizontalAlignment = self.actionsHorizontalAlignment;
+  self.alertView.actionsHorizontalAlignmentInVerticalLayout =
+      self.actionsHorizontalAlignmentInVerticalLayout;
 
   // Create buttons for the actions (if not already created) and apply default styling
   for (MDCAlertAction *action in self.actions) {

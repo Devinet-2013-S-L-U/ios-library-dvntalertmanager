@@ -26,6 +26,9 @@
 
 static const MDCFontTextStyle kTitleTextStyle = MDCFontTextStyleBody2;
 
+// KVO context
+static char *const kKVOContextMDCChipView = "kKVOContextMDCChipView";
+
 static const CGSize kMDCChipMinimumSizeDefault = (CGSize){(CGFloat)0, (CGFloat)32};
 
 // Creates a UIColor from a 24-bit RGB color encoded as an integer.
@@ -142,6 +145,7 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
   self.accessibilityTraits = UIAccessibilityTraitButton;
   _mdc_overrideBaseElevation = -1;
   _adjustsFontForContentSizeCategoryWhenScaledFontIsUnavailable = YES;
+  [self addObservers];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -235,11 +239,9 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
 }
 
 - (void)dealloc {
+  [self removeObservers];
   [self removeTarget:self action:NULL forControlEvents:UIControlEventAllEvents];
 
-  [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                  name:UIContentSizeCategoryDidChangeNotification
-                                                object:nil];
 }
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
@@ -592,6 +594,64 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
   [self updateAccessibility];
 }
 
+#pragma mark - Key-value observing
+
+- (void)addObservers {
+  for (NSString *keyPath in [self titleLabelKVOKeyPaths]) {
+    [self.titleLabel addObserver:self
+                      forKeyPath:keyPath
+                         options:NSKeyValueObservingOptionNew
+                         context:kKVOContextMDCChipView];
+  }
+  [self.imageView addObserver:self
+                   forKeyPath:NSStringFromSelector(@selector(image))
+                      options:NSKeyValueObservingOptionNew
+                      context:kKVOContextMDCChipView];
+}
+
+- (void)removeObservers {
+  for (NSString *keyPath in [self titleLabelKVOKeyPaths]) {
+    [self.titleLabel removeObserver:self forKeyPath:keyPath context:kKVOContextMDCChipView];
+  }
+  [self.imageView removeObserver:self
+                      forKeyPath:NSStringFromSelector(@selector(image))
+                         context:kKVOContextMDCChipView];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSKeyValueChangeKey, id> *)change
+                       context:(void *)context {
+  if (context == kKVOContextMDCChipView) {
+    if (!object) {
+      return;
+    }
+
+    id newValue = [object valueForKey:keyPath];
+    if (newValue == [NSNull null]) {
+      newValue = nil;
+    }
+
+    NSArray<NSString *> *titleLabelKeyPaths = [self titleLabelKVOKeyPaths];
+    for (NSString *titleLabelKeyPath in titleLabelKeyPaths) {
+      if ([titleLabelKeyPath isEqualToString:keyPath]) {
+        [self invalidateIntrinsicContentSize];
+      }
+    }
+
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(image))]) {
+      [self invalidateIntrinsicContentSize];
+    }
+  }
+}
+
+- (NSArray<NSString *> *)titleLabelKVOKeyPaths {
+  return @[
+    NSStringFromSelector(@selector(text)),
+    NSStringFromSelector(@selector(font)),
+  ];
+}
+
 #pragma mark - Custom touch handling
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(__unused UIEvent *)event {
@@ -603,6 +663,10 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
 
 - (void)setEnabled:(BOOL)enabled {
   [super setEnabled:enabled];
+
+  if (self.enableRippleBehavior && !enabled) {
+    [self.rippleView cancelAllRipplesAnimated:YES completion:nil];
+  }
 
   [self updateState];
 }
@@ -930,9 +994,6 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
 }
 
 - (void)startTouchEndedAnimationAtPoint:(CGPoint)point {
-  if (!self.enabled) {
-    return;
-  }
   [_inkView startTouchEndedAnimationAtPoint:point completion:nil];
 }
 

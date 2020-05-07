@@ -249,10 +249,6 @@ static const CGFloat kMaximumHeight = 80;
   }
 }
 
-- (void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 /**
  The bottom margin which is dependent on the keyboard and application-wide settings, and may
  change at any time during runtime.
@@ -489,6 +485,20 @@ static const CGFloat kMaximumHeight = 80;
   return [self dynamicBottomMargin] == 0;
 }
 
+- (void)configureActionButtonHitAreaInsets:(MDCSnackbarMessageView *)snackbarView {
+  for (MDCButton *button in snackbarView.actionButtons) {
+    UIView *buttonSuperview = button.superview;
+    if (buttonSuperview) {
+      CGFloat superViewHeight = CGRectGetHeight(buttonSuperview.frame);
+      if (superViewHeight > 0) {
+        CGFloat spaceAboveButton = CGRectGetMinY(button.frame);
+        CGFloat spaceBelowButton = superViewHeight - CGRectGetMaxY(button.frame);
+        button.hitAreaInsets = UIEdgeInsetsMake(-spaceAboveButton, 0, 0, -spaceBelowButton);
+      }
+    }
+  }
+}
+
 #pragma mark - Safe Area Insets
 
 - (void)safeAreaInsetsDidChange {
@@ -513,7 +523,7 @@ static const CGFloat kMaximumHeight = 80;
   self.snackbarView = snackbarView;  // Install the Snackbar.
   self.bottomConstraint.constant = -self.dynamicBottomMargin;
 
-  if (animated) {
+  if (animated && snackbarView) {
     [self slideInMessageView:snackbarView completion:completion];
   } else {
     if (completion) {
@@ -523,7 +533,7 @@ static const CGFloat kMaximumHeight = 80;
 }
 
 - (void)dismissSnackbarViewAnimated:(BOOL)animated completion:(void (^)(void))completion {
-  if (animated) {
+  if (animated && self.snackbarView) {
     [self slideOutMessageView:self.snackbarView
                    completion:^{
                      self.snackbarView = nil;  // Uninstall the Snackbar
@@ -580,12 +590,18 @@ static const CGFloat kMaximumHeight = 80;
                                    duration:duration
                              timingFunction:timingFunction];
   } else {
-    NSMutableArray *animations =
-        [NSMutableArray arrayWithObject:[snackbarView animateSnackbarOpacityFrom:fromContentOpacity
-                                                                              to:toContentOpacity]];
+    NSMutableArray *animations = [[NSMutableArray alloc] init];
+    CABasicAnimation *opacityAnimation = [snackbarView animateSnackbarOpacityFrom:fromContentOpacity
+                                                                               to:toContentOpacity];
+    if (opacityAnimation) {
+      [animations addObject:opacityAnimation];
+    }
     if (onscreen) {
-      [animations addObject:[snackbarView animateSnackbarScaleFrom:MDCSnackbarEnterStartingScale
-                                                           toScale:1]];
+      CABasicAnimation *scaleAnimation =
+          [snackbarView animateSnackbarScaleFrom:MDCSnackbarEnterStartingScale toScale:1];
+      if (scaleAnimation) {
+        [animations addObject:scaleAnimation];
+      }
     }
     animationsGroup.animations = animations;
     [snackbarView.layer addAnimation:animationsGroup forKey:@"snackbarAnimation"];
@@ -612,6 +628,8 @@ static const CGFloat kMaximumHeight = 80;
                 completion:(void (^)(void))completion {
   // Make sure that the Snackbar has been properly sized to calculate the translation value.
   [self triggerSnackbarLayoutChange];
+
+  [self configureActionButtonHitAreaInsets:snackbarView];
 
   [self slideMessageView:snackbarView
                 onscreen:YES

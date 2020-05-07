@@ -16,9 +16,10 @@
 
 #import <MDFInternationalization/MDFInternationalization.h>
 
-#import "MaterialApplication.h"
+#import "MDCButtonBarDelegate.h"
+#import "MDCAppBarButtonBarBuilder.h"
 #import "MaterialButtons.h"
-#import "private/MDCAppBarButtonBarBuilder.h"
+#import "MaterialApplication.h"
 
 static const CGFloat kButtonBarMaxHeight = 56;
 static const CGFloat kButtonBarMinHeight = 24;
@@ -568,5 +569,18 @@ static NSString *const kEnabledSelector = @"enabled";
   [self invalidateIntrinsicContentSize];
   [self setNeedsLayout];
 }
+
+#ifdef __IPHONE_13_4
+- (UIPointerStyle *)pointerInteraction:(UIPointerInteraction *)interaction
+                        styleForRegion:(UIPointerRegion *)region API_AVAILABLE(ios(13.4)) {
+  UIPointerStyle *pointerStyle = nil;
+  if (interaction.view) {
+    UITargetedPreview *targetedPreview = [[UITargetedPreview alloc] initWithView:interaction.view];
+    UIPointerEffect *highlightEffect = [UIPointerHighlightEffect effectWithPreview:targetedPreview];
+    pointerStyle = [UIPointerStyle styleWithEffect:highlightEffect shape:nil];
+  }
+  return pointerStyle;
+}
+#endif
 
 @end

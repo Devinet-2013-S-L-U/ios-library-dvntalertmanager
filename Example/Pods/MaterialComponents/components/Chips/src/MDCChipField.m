@@ -16,8 +16,9 @@
 
 #import <MDFInternationalization/MDFInternationalization.h>
 
-#import "MaterialMath.h"
+#import "MDCChipFieldDelegate.h"
 #import "MaterialTextFields.h"
+#import "MaterialMath.h"
 
 NSString *const MDCEmptyTextString = @"";
 NSString *const MDCChipDelimiterSpace = @" ";
@@ -62,10 +63,10 @@ const UIEdgeInsets MDCChipFieldDefaultContentEdgeInsets = {
 #pragma mark UIKeyInput
 
 - (void)deleteBackward {
-  [super deleteBackward];
   if (self.text.length == 0) {
     [self.deletionDelegate textFieldShouldRespondToDeleteBackward:self];
   }
+  [super deleteBackward];
 }
 
 #if MDC_CHIPFIELD_PRIVATE_API_BUG_FIX && \
@@ -158,10 +159,6 @@ const UIEdgeInsets MDCChipFieldDefaultContentEdgeInsets = {
   return self;
 }
 
-- (void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (void)commonMDCChipFieldInit {
   _chips = [NSMutableArray array];
   _delimiter = MDCChipFieldDelimiterDefault;
@@ -198,16 +195,21 @@ const UIEdgeInsets MDCChipFieldDefaultContentEdgeInsets = {
   if (isRTL) {
     textFieldFrame = MDFRectFlippedHorizontally(textFieldFrame, CGRectGetWidth(self.bounds));
   }
+  BOOL heightChanged = CGRectGetMinY(textFieldFrame) != CGRectGetMinY(self.textField.frame);
   self.textField.frame = textFieldFrame;
 
   [self updateTextFieldPlaceholderText];
+  [self invalidateIntrinsicContentSize];
+
+  if (heightChanged && [self.delegate respondsToSelector:@selector(chipFieldHeightDidChange:)]) {
+    [self.delegate chipFieldHeightDidChange:self];
+  }
 }
 
 - (void)updateTextFieldPlaceholderText {
   // Place holder label should be hidden if showPlaceholderWithChips is NO and there are chips.
   // MDCTextField sets the placeholderLabel opacity to 0 if the text field has no text.
-  self.textField.placeholderLabel.hidden =
-      (!self.showPlaceholderWithChips && self.chips.count > 0) || ![self isTextFieldEmpty];
+  self.textField.placeholderLabel.hidden = (!self.showPlaceholderWithChips && self.chips.count > 0);
 }
 
 + (UIFont *)textFieldFont {
@@ -254,8 +256,6 @@ const UIEdgeInsets MDCChipFieldDefaultContentEdgeInsets = {
   for (MDCChipView *chip in _chips) {
     [self addChipSubview:chip];
   }
-  [self notifyDelegateIfSizeNeedsToBeUpdated];
-  [self invalidateIntrinsicContentSize];
   [self setNeedsLayout];
 }
 
@@ -284,8 +284,6 @@ const UIEdgeInsets MDCChipFieldDefaultContentEdgeInsets = {
   }
 
   [self.textField setNeedsLayout];
-  [self notifyDelegateIfSizeNeedsToBeUpdated];
-  [self invalidateIntrinsicContentSize];
   [self setNeedsLayout];
 }
 
@@ -295,9 +293,7 @@ const UIEdgeInsets MDCChipFieldDefaultContentEdgeInsets = {
   if ([self.delegate respondsToSelector:@selector(chipField:didRemoveChip:)]) {
     [self.delegate chipField:self didRemoveChip:chip];
   }
-  [self notifyDelegateIfSizeNeedsToBeUpdated];
   [self.textField setNeedsLayout];
-  [self invalidateIntrinsicContentSize];
   [self setNeedsLayout];
 }
 
@@ -342,7 +338,6 @@ const UIEdgeInsets MDCChipFieldDefaultContentEdgeInsets = {
   if (!UIEdgeInsetsEqualToEdgeInsets(_contentEdgeInsets, contentEdgeInsets)) {
     _contentEdgeInsets = contentEdgeInsets;
     [self setNeedsLayout];
-    [self invalidateIntrinsicContentSize];
   }
 }
 
@@ -350,7 +345,6 @@ const UIEdgeInsets MDCChipFieldDefaultContentEdgeInsets = {
   if (_minTextFieldWidth != minTextFieldWidth) {
     _minTextFieldWidth = minTextFieldWidth;
     [self setNeedsLayout];
-    [self invalidateIntrinsicContentSize];
   }
 }
 
@@ -529,16 +523,6 @@ static inline UIBezierPath *MDCPathForClearButtonImageFrame(CGRect frame) {
   MDCChipView *chip = (MDCChipView *)deleteButton.superview;
   [self removeChip:chip];
   [self clearTextInput];
-}
-
-- (void)notifyDelegateIfSizeNeedsToBeUpdated {
-  if ([self.delegate respondsToSelector:@selector(chipFieldHeightDidChange:)]) {
-    CGSize currentSize = CGRectStandardize(self.bounds).size;
-    CGSize requiredSize = [self sizeThatFits:CGSizeMake(currentSize.width, CGFLOAT_MAX)];
-    if (currentSize.height != requiredSize.height) {
-      [self.delegate chipFieldHeightDidChange:self];
-    }
-  }
 }
 
 - (void)chipTapped:(id)sender {

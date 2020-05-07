@@ -15,6 +15,7 @@
 #import "MDCBottomDrawerContainerViewController.h"
 
 #import "MDCBottomDrawerHeader.h"
+#import "MDCBottomDrawerContainerViewControllerDelegate.h"
 #import "MDCBottomDrawerHeaderMask.h"
 #import "MDCBottomDrawerShadowedView.h"
 #import "MaterialApplication.h"
@@ -128,6 +129,9 @@ NSString *const kMDCBottomDrawerScrollViewAccessibilityIdentifier =
 // The presenting view's bounds after it has been standardized.
 @property(nonatomic, readonly) CGRect presentingViewBounds;
 
+// The y-offset for the view if the presenting view controller has been presented modally.
+@property(nonatomic, readonly) CGFloat presentingViewYOffset;
+
 // Whether the content height exceeds the visible height when it's first displayed.
 @property(nonatomic, readonly) BOOL contentScrollsToReveal;
 
@@ -226,7 +230,6 @@ NSString *const kMDCBottomDrawerScrollViewAccessibilityIdentifier =
   [self removeScrollViewObserver];
   [self.headerShadowLayer removeFromSuperlayer];
   self.headerShadowLayer = nil;
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)hideDrawer {
@@ -311,9 +314,10 @@ NSString *const kMDCBottomDrawerScrollViewAccessibilityIdentifier =
       self.contentHeaderTopInset - topAreaInsetForHeader + kScrollViewBufferForPerformance;
   CGFloat headerHeightWithoutInset = self.contentHeaderHeight - topAreaInsetForHeader;
   CGFloat contentDiff = contentYOffset - drawerOffset;
+  CGFloat bottomSafeAreaInset = [self bottomSafeAreaInsetsToAdjustContainerHeight];
   CGFloat maxScrollOrigin = self.trackingScrollView.contentSize.height -
-                            CGRectGetHeight(self.presentingViewBounds) + headerHeightWithoutInset -
-                            kScrollViewBufferForPerformance;
+                            CGRectGetHeight(self.presentingViewBounds) + headerHeightWithoutInset +
+                            bottomSafeAreaInset - kScrollViewBufferForPerformance;
   BOOL scrollingUpInFull = contentDiff < 0 && CGRectGetMinY(self.trackingScrollView.bounds) > 0;
 
   if (CGRectGetMinY(self.scrollView.bounds) >= drawerOffset || scrollingUpInFull) {
@@ -377,7 +381,7 @@ NSString *const kMDCBottomDrawerScrollViewAccessibilityIdentifier =
 
 - (CGFloat)maximumInitialDrawerHeight {
   if ([self shouldPresentFullScreen]) {
-    return self.presentingViewBounds.size.height;
+    return self.presentingViewBounds.size.height + self.presentingViewYOffset;
   }
   return _maximumInitialDrawerHeight + [self bottomSafeAreaInsetsToAdjustInitialDrawerHeight];
 }
@@ -561,19 +565,15 @@ NSString *const kMDCBottomDrawerScrollViewAccessibilityIdentifier =
 }
 
 - (void)setupLayout {
-  // Layout the clipping view and the scroll view.
-  if (self.currentlyFullscreen) {
-    CGRect scrollViewFrame = self.presentingViewBounds;
-    self.scrollView.frame = scrollViewFrame;
-  } else {
-    CGRect scrollViewFrame = self.presentingViewBounds;
-    if (self.animatingPresentation) {
-      CGFloat heightSurplusForSpringAnimationOvershooting =
-          self.presentingViewBounds.size.height / 2;
-      scrollViewFrame.size.height += heightSurplusForSpringAnimationOvershooting;
-    }
-    self.scrollView.frame = scrollViewFrame;
+  // Layout the scroll view.
+  CGRect scrollViewFrame = self.presentingViewBounds;
+  if (!self.currentlyFullscreen && self.animatingPresentation) {
+    CGFloat heightSurplusForSpringAnimationOvershooting = self.presentingViewBounds.size.height / 2;
+    scrollViewFrame.size.height += heightSurplusForSpringAnimationOvershooting;
   }
+  // Adjust height of scroll view to account for non-fullscreen presentation styles.
+  scrollViewFrame.size.height += self.presentingViewYOffset;
+  self.scrollView.frame = scrollViewFrame;
 
   // Layout the top header's bottom shadow.
   [self setUpHeaderBottomShadowIfNeeded];
@@ -987,7 +987,8 @@ NSString *const kMDCBottomDrawerScrollViewAccessibilityIdentifier =
 
 - (void)cacheLayoutCalculationsWithAddedContentHeight:(CGFloat)addedContentHeight {
   CGFloat contentHeaderHeight = self.contentHeaderHeight;
-  CGFloat containerHeight = self.presentingViewBounds.size.height;
+  // Adjust height of container to account for non-fullscreen presentation styles.
+  CGFloat containerHeight = self.presentingViewBounds.size.height + self.presentingViewYOffset;
   CGFloat contentHeight = self.contentViewController.preferredContentSize.height +
                           [self bottomSafeAreaInsetsToAdjustContainerHeight];
   if ([self shouldPresentFullScreen]) {
@@ -1086,6 +1087,14 @@ NSString *const kMDCBottomDrawerScrollViewAccessibilityIdentifier =
   return CGRectStandardize(self.originalPresentingViewController.view.bounds);
 }
 
+- (CGFloat)presentingViewYOffset {
+  CGFloat yOffset = CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.presentingViewBounds);
+  if (yOffset > 0 && self.traitCollection.verticalSizeClass == UIUserInterfaceSizeClassRegular) {
+    return yOffset;
+  }
+  return 0;
+}
+
 - (BOOL)contentScrollsToReveal {
   return self.contentHeightSurplus > kEpsilon;
 }
@@ -1123,8 +1132,11 @@ NSString *const kMDCBottomDrawerScrollViewAccessibilityIdentifier =
 }
 
 - (CGFloat)headerAnimationDistance {
+  // `contentHeightSurplus` already accounts for the `presentingViewYOffset` but the constant
+  // `kHeaderAnimationDistanceAddedDistanceFromTopSafeAreaInset` does not, so it is adjusted here.
   CGFloat headerAnimationDistance =
-      MIN(kHeaderAnimationDistanceAddedDistanceFromTopSafeAreaInset, self.contentHeightSurplus);
+      MIN(kHeaderAnimationDistanceAddedDistanceFromTopSafeAreaInset + self.presentingViewYOffset,
+          self.contentHeightSurplus);
   if (self.contentReachesFullscreen) {
     headerAnimationDistance += self.topSafeAreaInset;
   }
