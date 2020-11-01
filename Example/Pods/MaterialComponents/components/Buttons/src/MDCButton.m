@@ -33,6 +33,7 @@
 static const CGFloat MDCButtonMinimumTouchTargetHeight = 48;
 static const CGFloat MDCButtonMinimumTouchTargetWidth = 48;
 static const CGFloat MDCButtonDefaultCornerRadius = 2.0;
+static const CGFloat kDefaultRippleAlpha = (CGFloat)0.12;
 
 static const NSTimeInterval MDCButtonAnimationDuration = 0.2;
 
@@ -65,7 +66,7 @@ static inline CGSize CGSizeShrinkWithInsets(CGSize size, UIEdgeInsets edgeInsets
                     MAX(0, size.height - (edgeInsets.top + edgeInsets.bottom)));
 }
 
-static NSAttributedString *uppercaseAttributedString(NSAttributedString *string) {
+static NSAttributedString *UppercaseAttributedString(NSAttributedString *string) {
   // Store the attributes.
   NSMutableArray<NSDictionary *> *attributes = [NSMutableArray array];
   [string enumerateAttributesInRange:NSMakeRange(0, [string length])
@@ -111,9 +112,13 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
 
   BOOL _mdc_adjustsFontForContentSizeCategory;
   BOOL _cornerRadiusObserverAdded;
+  CGFloat _inkMaxRippleRadius;
 }
 @property(nonatomic, strong, readonly, nonnull) MDCStatefulRippleView *rippleView;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 @property(nonatomic, strong) MDCInkView *inkView;
+#pragma clang diagnostic pop
 @property(nonatomic, readonly, strong) MDCShapedShadowLayer *layer;
 @property(nonatomic, assign) BOOL accessibilityTraitsIncludesButton;
 @property(nonatomic, assign) BOOL enableTitleFontForState;
@@ -209,7 +214,10 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
   _shadowColors[@(UIControlStateNormal)] = [UIColor colorWithCGColor:self.layer.shadowColor];
 
   // Set up ink layer.
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
   _inkView = [[MDCInkView alloc] initWithFrame:self.bounds];
+#pragma clang diagnostic pop
   _inkView.usesLegacyInkRipple = NO;
   [self insertSubview:_inkView belowSubview:self.imageView];
   // UIButton has a drag enter/exit boundary that is outside of the frame of the button itself.
@@ -230,7 +238,8 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
   _inkView.inkColor = [UIColor colorWithWhite:1 alpha:(CGFloat)0.2];
 
   _rippleView = [[MDCStatefulRippleView alloc] initWithFrame:self.bounds];
-  _rippleView.rippleColor = [UIColor colorWithWhite:1 alpha:(CGFloat)0.12];
+  _rippleColor = [UIColor colorWithWhite:0 alpha:kDefaultRippleAlpha];
+  _rippleView.rippleColor = [UIColor colorWithWhite:0 alpha:(CGFloat)0.12];
 
   // Default content insets
   // The default contentEdgeInsets are set here (instead of above, as they were previously) because
@@ -337,6 +346,7 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
   } else {
     CGRect bounds = CGRectStandardize(self.bounds);
     bounds = CGRectOffset(bounds, self.inkViewOffset.width, self.inkViewOffset.height);
+    bounds = UIEdgeInsetsInsetRect(bounds, self.rippleEdgeInsets);
     _inkView.frame = bounds;
     self.rippleView.frame = bounds;
   }
@@ -375,6 +385,20 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
 - (CGSize)sizeThatFits:(CGSize)size {
   CGSize givenSizeWithInsets = CGSizeShrinkWithInsets(size, _visibleAreaInsets);
   CGSize superSize = [super sizeThatFits:givenSizeWithInsets];
+
+  // TODO(b/171816831): revisit this in a future iOS version to verify reproducibility.
+  // Because of a UIKit bug in iOS 13 and 14 (current), buttons that have both an image and text
+  // will not return an appropriately large size from [super sizeThatFits:]. In this case, we need
+  // to expand the width. The number 1 was chosen somewhat arbitrarily, but based on some spot
+  // testing, adding the smallest amount of extra width possible seems to fix the issue.
+#if defined(__IPHONE_13_0) && (__IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_13_0)
+  if (@available(iOS 13.0, *)) {
+    if (UIAccessibilityIsBoldTextEnabled() && [self imageForState:UIControlStateNormal] &&
+        [self titleForState:UIControlStateNormal]) {
+      superSize.width += 1;
+    }
+  }
+#endif
 
   if (self.minimumSize.height > 0) {
     superSize.height = MAX(self.minimumSize.height, superSize.height);
@@ -559,7 +583,7 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
   }
 
   if (_uppercaseTitle) {
-    title = uppercaseAttributedString(title);
+    title = UppercaseAttributedString(title);
   }
   [super setAttributedTitle:title forState:state];
 }
@@ -621,6 +645,12 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
       (inkStyle == MDCInkStyleUnbounded) ? MDCRippleStyleUnbounded : MDCRippleStyleBounded;
 }
 
+- (void)setRippleStyle:(MDCRippleStyle)rippleStyle {
+  _rippleStyle = rippleStyle;
+
+  self.rippleView.rippleStyle = rippleStyle;
+}
+
 - (UIColor *)inkColor {
   return _inkView.inkColor;
 }
@@ -630,14 +660,35 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
   [self.rippleView setRippleColor:inkColor forState:MDCRippleStateHighlighted];
 }
 
+- (void)setRippleColor:(UIColor *)rippleColor {
+  _rippleColor = rippleColor ?: [UIColor colorWithWhite:0 alpha:kDefaultRippleAlpha];
+  [self.rippleView setRippleColor:_rippleColor forState:MDCRippleStateHighlighted];
+}
+
+- (CGFloat)inkMaxRippleRadius {
+  return _inkMaxRippleRadius;
+}
+
 - (void)setInkMaxRippleRadius:(CGFloat)inkMaxRippleRadius {
   _inkMaxRippleRadius = inkMaxRippleRadius;
   _inkView.maxRippleRadius = inkMaxRippleRadius;
   self.rippleView.maximumRadius = inkMaxRippleRadius;
 }
 
+- (void)setRippleMaximumRadius:(CGFloat)rippleMaximumRadius {
+  _rippleMaximumRadius = rippleMaximumRadius;
+
+  self.rippleView.maximumRadius = rippleMaximumRadius;
+}
+
 - (void)setInkViewOffset:(CGSize)inkViewOffset {
   _inkViewOffset = inkViewOffset;
+  [self setNeedsLayout];
+}
+
+- (void)setRippleEdgeInsets:(UIEdgeInsets)rippleEdgeInsets {
+  _rippleEdgeInsets = rippleEdgeInsets;
+
   [self setNeedsLayout];
 }
 
@@ -1037,7 +1088,7 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
 - (void)updateInkForShape {
   CGRect boundingBox = CGPathGetBoundingBox(self.layer.shapeLayer.path);
   self.inkView.maxRippleRadius =
-      (CGFloat)(MDCHypot(CGRectGetHeight(boundingBox), CGRectGetWidth(boundingBox)) / 2 + 10);
+      (CGFloat)(hypot(CGRectGetHeight(boundingBox), CGRectGetWidth(boundingBox)) / 2 + 10);
   self.inkView.layer.masksToBounds = NO;
   self.rippleView.layer.masksToBounds = NO;
 }
@@ -1155,9 +1206,9 @@ static NSAttributedString *uppercaseAttributedString(NSAttributedString *string)
     CGFloat additionalRequiredHeight =
         MAX(0, CGRectGetHeight(self.bounds) - visibleAreaSize.height);
     CGFloat additionalRequiredWidth = MAX(0, CGRectGetWidth(self.bounds) - visibleAreaSize.width);
-    visibleAreaInsets.top = MDCCeil(additionalRequiredHeight * 0.5f);
+    visibleAreaInsets.top = ceil(additionalRequiredHeight * 0.5f);
     visibleAreaInsets.bottom = additionalRequiredHeight - visibleAreaInsets.top;
-    visibleAreaInsets.left = MDCCeil(additionalRequiredWidth * 0.5f);
+    visibleAreaInsets.left = ceil(additionalRequiredWidth * 0.5f);
     visibleAreaInsets.right = additionalRequiredWidth - visibleAreaInsets.left;
   }
 

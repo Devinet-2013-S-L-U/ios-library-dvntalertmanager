@@ -18,10 +18,12 @@
 
 #import <MDFInternationalization/MDFInternationalization.h>
 
-#import "MaterialMath.h"
+#import "MDCBaseTextFieldDelegate.h"
 #import "MaterialTextControlsPrivate+BaseStyle.h"
 #import "MaterialTextControlsPrivate+Shared.h"
 #import "MaterialTextControlsPrivate+TextFields.h"
+
+static char *const kKVOContextMDCBaseTextField = "kKVOContextMDCBaseTextField";
 
 @interface MDCBaseTextField () <MDCTextControlTextField>
 
@@ -47,7 +49,6 @@
 @synthesize containerStyle = _containerStyle;
 @synthesize assistiveLabelDrawPriority = _assistiveLabelDrawPriority;
 @synthesize customAssistiveLabelDrawPriority = _customAssistiveLabelDrawPriority;
-@synthesize preferredContainerHeight = _preferredContainerHeight;
 
 #pragma mark Object Lifecycle
 
@@ -73,6 +74,11 @@
   [self setUpLabel];
   [self setUpAssistiveLabels];
   [self observeContentSizeCategoryNotifications];
+  [self observeAssistiveLabelKeyPaths];
+}
+
+- (void)dealloc {
+  [self removeObservers];
 }
 
 #pragma mark View Setup
@@ -98,7 +104,7 @@
 - (void)setUpAssistiveLabels {
   self.assistiveLabelDrawPriority = MDCTextControlAssistiveLabelDrawPriorityTrailing;
   self.assistiveLabelView = [[MDCTextControlAssistiveLabelView alloc] init];
-  CGFloat assistiveFontSize = MDCRound([UIFont systemFontSize] * (CGFloat)0.75);
+  CGFloat assistiveFontSize = round([UIFont systemFontSize] * (CGFloat)0.75);
   UIFont *assistiveFont = [UIFont systemFontOfSize:assistiveFontSize];
   self.assistiveLabelView.leadingAssistiveLabel.font = assistiveFont;
   self.assistiveLabelView.trailingAssistiveLabel.font = assistiveFont;
@@ -108,6 +114,21 @@
 - (void)setUpLabel {
   self.label = [[UILabel alloc] init];
   [self addSubview:self.label];
+}
+
+#pragma mark UIResponder Overrides
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+  BOOL canPerformAction = [super canPerformAction:action withSender:sender];
+  if ([self.baseTextFieldDelegate
+          respondsToSelector:@selector(baseTextField:
+                                 shouldPerformAction:withSender:canPerformAction:)]) {
+    return [self.baseTextFieldDelegate baseTextField:self
+                                 shouldPerformAction:action
+                                          withSender:sender
+                                    canPerformAction:canPerformAction];
+  }
+  return canPerformAction;
 }
 
 #pragma mark UIView Overrides
@@ -258,7 +279,8 @@
                                        textRowHeight:self.normalFont.lineHeight
                                     numberOfTextRows:self.numberOfLinesOfVisibleText
                                              density:0
-                            preferredContainerHeight:self.preferredContainerHeight];
+                            preferredContainerHeight:self.preferredContainerHeight
+                              isMultilineTextControl:NO];
 }
 
 - (CGFloat)clampedCustomAssistiveLabelDrawPriority:(CGFloat)customPriority {
@@ -622,10 +644,18 @@
   } else if (labelPosition == MDCTextControlLabelPositionFloating) {
     labelColor = colorViewModel.floatingLabelColor;
   }
-  self.textColor = colorViewModel.textColor;
-  self.leadingAssistiveLabel.textColor = colorViewModel.leadingAssistiveLabelColor;
-  self.trailingAssistiveLabel.textColor = colorViewModel.trailingAssistiveLabelColor;
-  self.label.textColor = labelColor;
+  if (![self.textColor isEqual:colorViewModel.textColor]) {
+    self.textColor = colorViewModel.textColor;
+  }
+  if (![self.leadingAssistiveLabel.textColor isEqual:colorViewModel.leadingAssistiveLabelColor]) {
+    self.leadingAssistiveLabel.textColor = colorViewModel.leadingAssistiveLabelColor;
+  }
+  if (![self.trailingAssistiveLabel.textColor isEqual:colorViewModel.trailingAssistiveLabelColor]) {
+    self.trailingAssistiveLabel.textColor = colorViewModel.trailingAssistiveLabelColor;
+  }
+  if (![self.label.textColor isEqual:labelColor]) {
+    self.label.textColor = labelColor;
+  }
 }
 
 - (void)setTextControlColorViewModel:(MDCTextControlColorViewModel *)colorViewModel
@@ -674,6 +704,26 @@
   }
 
   return nil;
+}
+
+- (UIBezierPath *)accessibilityPath {
+  return [UIBezierPath bezierPathWithRect:self.accessibilityFrame];
+}
+
+- (CGRect)accessibilityFrame {
+  if (self.window) {
+    CGRect bounds = self.bounds;
+    CGFloat boundsMinY = CGRectGetMinY(bounds);
+    CGFloat floatingLabelMinY = CGRectGetMinY(self.layout.labelFrameFloating);
+    if (floatingLabelMinY < boundsMinY) {
+      CGFloat difference = boundsMinY - floatingLabelMinY;
+      bounds.origin.y = boundsMinY - difference;
+      bounds.size.height = bounds.size.height + difference;
+    }
+    return [self convertRect:bounds toCoordinateSpace:self.window.screen.coordinateSpace];
+  } else {
+    return [super accessibilityFrame];
+  }
 }
 
 #pragma mark Color Accessors
@@ -733,6 +783,81 @@
 - (nonnull UIColor *)trailingAssistiveLabelColorForState:(MDCTextControlState)state {
   MDCTextControlColorViewModel *colorViewModel = [self textControlColorViewModelForState:state];
   return colorViewModel.trailingAssistiveLabelColor;
+}
+
+#pragma mark UIKeyInput
+
+- (void)deleteBackward {
+  BOOL shouldDeleteBackward = YES;
+  if ([self.baseTextFieldDelegate
+          respondsToSelector:@selector(baseTextFieldShouldDeleteBackward:)]) {
+    shouldDeleteBackward = [self.baseTextFieldDelegate baseTextFieldShouldDeleteBackward:self];
+  }
+
+  if (shouldDeleteBackward) {
+    [super deleteBackward];
+    if ([self.baseTextFieldDelegate
+            respondsToSelector:@selector(baseTextFieldDidDeleteBackward:)]) {
+      [self.baseTextFieldDelegate baseTextFieldDidDeleteBackward:self];
+    }
+  }
+}
+
+#pragma mark - Key-value observing
+
+- (void)observeAssistiveLabelKeyPaths {
+  for (NSString *keyPath in [MDCBaseTextField assistiveLabelKVOKeyPaths]) {
+    [self.leadingAssistiveLabel addObserver:self
+                                 forKeyPath:keyPath
+                                    options:NSKeyValueObservingOptionNew
+                                    context:kKVOContextMDCBaseTextField];
+    [self.trailingAssistiveLabel addObserver:self
+                                  forKeyPath:keyPath
+                                     options:NSKeyValueObservingOptionNew
+                                     context:kKVOContextMDCBaseTextField];
+  }
+}
+
+- (void)removeObservers {
+  for (NSString *keyPath in [MDCBaseTextField assistiveLabelKVOKeyPaths]) {
+    [self.leadingAssistiveLabel removeObserver:self
+                                    forKeyPath:keyPath
+                                       context:kKVOContextMDCBaseTextField];
+    [self.trailingAssistiveLabel removeObserver:self
+                                     forKeyPath:keyPath
+                                        context:kKVOContextMDCBaseTextField];
+  }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSKeyValueChangeKey, id> *)change
+                       context:(void *)context {
+  if (context == kKVOContextMDCBaseTextField) {
+    if (object != self.leadingAssistiveLabel && object != self.trailingAssistiveLabel) {
+      return;
+    }
+
+    for (NSString *assistiveLabelKeyPath in [MDCBaseTextField assistiveLabelKVOKeyPaths]) {
+      if ([assistiveLabelKeyPath isEqualToString:keyPath]) {
+        [self invalidateIntrinsicContentSize];
+        [self setNeedsLayout];
+        break;
+      }
+    }
+  }
+}
+
++ (NSArray<NSString *> *)assistiveLabelKVOKeyPaths {
+  static NSArray<NSString *> *keyPaths = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    keyPaths = @[
+      NSStringFromSelector(@selector(text)),
+      NSStringFromSelector(@selector(font)),
+    ];
+  });
+  return keyPaths;
 }
 
 @end
