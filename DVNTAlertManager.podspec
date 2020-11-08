@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   
   s.name             = 'DVNTAlertManager'
-  s.version          = '1.1.6'
+  s.version          = '1.1.7'
   s.summary          = 'An amazing library that allows you to easily create Alerts.'
   s.description      = 'This library allows you to create different kinds of alerts easily using different designs (iOS default style or Meterial).'
   s.homepage         = 'https://www.devinet.es'
@@ -10,14 +10,14 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/devinet_es'
   s.platform         = :ios, '10.0'
   s.ios.deployment_target = '10.0'
-  s.swift_versions   = ['3.0', '4.0', '4.1', '4.2', '5.0', '5.1']
+  s.swift_versions   = ['3.0', '4.0', '4.1', '4.2', '5.0', '5.1', '5.2']
   s.source           = { :git => 'https://bitbucket.org/Devinet_Team/ios-library-dvntalertmanager.git', :tag => s.version.to_s }
   s.frameworks       = 'UIKit'
   s.source_files     = 'Sources/DVNTAlertManager/Classes/**/*'
   s.exclude_files    = 'Sources/DVNTAlertManager/**/*.plist'
   s.resource_bundles = { 'DVNTAlertManagerResources' => ['Sources/DVNTAlertManager/Assets/**/*.strings'] }
   
-  s.dependency 'MaterialComponents', '~>118.2.0'
+  s.dependency 'MaterialComponents', '~>119.0.0'
   s.dependency 'DVNTStringExtension', '~>1.0.6'
   s.dependency 'DVNTUIWindowExtension', '~>1.0.6'
 end
