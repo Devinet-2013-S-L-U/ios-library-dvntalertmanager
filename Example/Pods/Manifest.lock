@@ -2,7 +2,7 @@ PODS:
   - DVNTAlertManager (1.1.7):
     - DVNTStringExtension (~> 1.0.6)
     - DVNTUIWindowExtension (~> 1.0.6)
-    - MaterialComponents
+    - MaterialComponents (~> 119.0.0)
   - DVNTStringExtension (1.0.6)
   - DVNTUIWindowExtension (1.0.6)
   - MaterialComponents (119.0.0):
@@ -665,7 +665,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DVNTAlertManager: 0107cdafbc0d8a43695568440f3d79c189917dc6
+  DVNTAlertManager: dbc0eeb0136828d3f16f28a49c1632c554f14882
   DVNTStringExtension: 55d7b68da9bd0b1aa00d80fc91a1d0c0ecb890e3
   DVNTUIWindowExtension: 9feb16327d7311a01998bb1e4aee7cfee6e8e8f0
   MaterialComponents: 69a725e28406a97816441dea4ec6ec38265a08bb

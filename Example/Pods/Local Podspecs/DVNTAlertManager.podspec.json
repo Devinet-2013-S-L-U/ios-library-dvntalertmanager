@@ -21,7 +21,8 @@
     "4.1",
     "4.2",
     "5.0",
-    "5.1"
+    "5.1",
+    "5.2"
   ],
   "source": {
     "git": "https://bitbucket.org/Devinet_Team/ios-library-dvntalertmanager.git",
@@ -37,7 +38,7 @@
   },
   "dependencies": {
     "MaterialComponents": [
-
+      "~>119.0.0"
     ],
     "DVNTStringExtension": [
       "~>1.0.6"
@@ -46,5 +47,5 @@
       "~>1.0.6"
     ]
   },
-  "swift_version": "5.1"
+  "swift_version": "5.2"
 }
