@@ -387,6 +387,7 @@
 #import "MDCTextControlHorizontalPositioningReference.h"
 #import "MDCTextControlLabelAnimation.h"
 #import "MDCTextControlLabelPosition.h"
+#import "MDCTextControlPlaceholderSupport.h"
 #import "MDCTextControlVerticalPositioningReference.h"
 #import "UIBezierPath+MDCTextControlStyle.h"
 #import "MaterialTextControlsPrivate+TextFields.h"
