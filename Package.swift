@@ -11,7 +11,7 @@ let package = Package(
             targets: ["DVNTAlertManager"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/material-components/material-components-ios", from: "120.0.0"),
+        .package(url: "https://github.com/material-components/material-components-ios", from: "122.0.0"),
     ],
     targets: [
         .target(
