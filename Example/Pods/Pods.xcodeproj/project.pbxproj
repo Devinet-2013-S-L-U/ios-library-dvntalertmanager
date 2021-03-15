@@ -6739,6 +6739,37 @@
 			};
 			name = Debug;
 		};
+		049F2C467D0B0020BA1A876D26506441 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86EC3C110422A4CF1D7FBB2C4232E54A /* MotionAnimator.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MotionAnimator/MotionAnimator-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MotionAnimator/MotionAnimator-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MotionAnimator/MotionAnimator.modulemap";
+				PRODUCT_MODULE_NAME = MotionAnimator;
+				PRODUCT_NAME = MotionAnimator;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		08C6DBDF38F2B44745B7F9819F0DECDC /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C63BD563F556A5BE8B790AD263CB1495 /* MaterialComponents.release.xcconfig */;
@@ -7103,6 +7134,38 @@
 			};
 			name = Debug;
 		};
+		6481C2DA2597055D5CF1BA810E278353 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3711740B1B1E50CDE8A5A515BE87A930 /* MotionAnimator.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MotionAnimator/MotionAnimator-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MotionAnimator/MotionAnimator-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MotionAnimator/MotionAnimator.modulemap";
+				PRODUCT_MODULE_NAME = MotionAnimator;
+				PRODUCT_NAME = MotionAnimator;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		65CBCAE43365223C993B8690BE337C4A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F1FD1299842F44AD26C44236C4ED0547 /* DVNTAlertManager.debug.xcconfig */;
@@ -7167,38 +7230,6 @@
 			};
 			name = Release;
 		};
-		7D5A129AA02DA978E2692D7F3888B815 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 474CC069EB0EE83CD0AE5442F6595654 /* MotionInterchange.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/MotionInterchange/MotionInterchange-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MotionInterchange/MotionInterchange-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MotionInterchange/MotionInterchange.modulemap";
-				PRODUCT_MODULE_NAME = MotionInterchange;
-				PRODUCT_NAME = MotionInterchange;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		85F020C08B432C5EEC94376876266AC7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4CB2FDB7DB5675FBEBE027E4C12F302D /* MaterialComponents.debug.xcconfig */;
@@ -7246,38 +7277,6 @@
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
-		};
-		927399F900164CAF904C7E54F34C5A45 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3711740B1B1E50CDE8A5A515BE87A930 /* MotionAnimator.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/MotionAnimator/MotionAnimator-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MotionAnimator/MotionAnimator-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MotionAnimator/MotionAnimator.modulemap";
-				PRODUCT_MODULE_NAME = MotionAnimator;
-				PRODUCT_NAME = MotionAnimator;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		9A7FF65E8DB0C2BE6E8FAACD456192B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -7474,37 +7473,6 @@
 			};
 			name = Debug;
 		};
-		A664CC5FB941ECD38D642EA592AD7BFE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 86EC3C110422A4CF1D7FBB2C4232E54A /* MotionAnimator.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/MotionAnimator/MotionAnimator-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MotionAnimator/MotionAnimator-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MotionAnimator/MotionAnimator.modulemap";
-				PRODUCT_MODULE_NAME = MotionAnimator;
-				PRODUCT_NAME = MotionAnimator;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		A84730C5C534D0F905FC487D96915A1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 497070C5D2FA931FC0F3BB693EE96B94 /* MDFInternationalization.debug.xcconfig */;
@@ -7610,6 +7578,38 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BAA7CDA23909811881974B34F93F43FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 474CC069EB0EE83CD0AE5442F6595654 /* MotionInterchange.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MotionInterchange/MotionInterchange-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MotionInterchange/MotionInterchange-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MotionInterchange/MotionInterchange.modulemap";
+				PRODUCT_MODULE_NAME = MotionInterchange;
+				PRODUCT_NAME = MotionInterchange;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -7781,23 +7781,7 @@
 			};
 			name = Debug;
 		};
-		EE24A3A1C913AE355F47EEB2CF7C653B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C63BD563F556A5BE8B790AD263CB1495 /* MaterialComponents.release.xcconfig */;
-			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MaterialComponents";
-				IBSC_MODULE = MaterialComponents;
-				INFOPLIST_FILE = "Target Support Files/MaterialComponents/ResourceBundle-MaterialIcons_ic_check-MaterialComponents-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				PRODUCT_NAME = MaterialIcons_ic_check;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		FB914706E1F4067E51B2B2C250EF5816 /* Debug */ = {
+		EB3E0D8FDD30A547D25F6B668D108C03 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CA114D294EB4F4E6EA313F60F1FC4568 /* MotionInterchange.debug.xcconfig */;
 			buildSettings = {
@@ -7813,7 +7797,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MotionInterchange/MotionInterchange-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MotionInterchange/MotionInterchange-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MotionInterchange/MotionInterchange.modulemap";
 				PRODUCT_MODULE_NAME = MotionInterchange;
@@ -7827,6 +7811,22 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		EE24A3A1C913AE355F47EEB2CF7C653B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C63BD563F556A5BE8B790AD263CB1495 /* MaterialComponents.release.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MaterialComponents";
+				IBSC_MODULE = MaterialComponents;
+				INFOPLIST_FILE = "Target Support Files/MaterialComponents/ResourceBundle-MaterialIcons_ic_check-MaterialComponents-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PRODUCT_NAME = MaterialIcons_ic_check;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -7960,8 +7960,8 @@
 		92938ED64164E4E741C67CDA72D19988 /* Build configuration list for PBXNativeTarget "MotionInterchange" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FB914706E1F4067E51B2B2C250EF5816 /* Debug */,
-				7D5A129AA02DA978E2692D7F3888B815 /* Release */,
+				EB3E0D8FDD30A547D25F6B668D108C03 /* Debug */,
+				BAA7CDA23909811881974B34F93F43FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -8032,8 +8032,8 @@
 		FCACC3069D5F356679C394D42C03A57B /* Build configuration list for PBXNativeTarget "MotionAnimator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A664CC5FB941ECD38D642EA592AD7BFE /* Debug */,
-				927399F900164CAF904C7E54F34C5A45 /* Release */,
+				049F2C467D0B0020BA1A876D26506441 /* Debug */,
+				6481C2DA2597055D5CF1BA810E278353 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
