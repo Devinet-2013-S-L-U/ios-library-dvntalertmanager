@@ -41,7 +41,7 @@ public class DVNTAlertManager
         self.baseColor = color
         
         if let loadingView = self.loadingView {
-            switch self.loadingView {
+            switch self.alertStyle {
             case .iOS:
                 for view in loadingView.subviews {
                     if view is UIActivityIndicatorView {
@@ -87,7 +87,7 @@ public class DVNTAlertManager
                             }
                             
                             if let loadingView = self.loadingView {
-                                switch self.loadingView {
+                                switch self.alertStyle {
                                 case .iOS:
                                     var found = false
                                     for view in loadingView.subviews {
@@ -123,7 +123,7 @@ public class DVNTAlertManager
         if self.isShowingLoadingView {
             DispatchQueue.main.async {
                 if let keyWindow = UIApplication.shared.keyWindow, let loadingView = self.loadingView {
-                    switch self.loadingView {
+                    switch self.alertStyle {
                     case .iOS:
                         for view in loadingView.subviews {
                             if view is UIActivityIndicatorView {
@@ -147,7 +147,7 @@ public class DVNTAlertManager
             if let keyWindow = UIApplication.shared.keyWindow {
                 keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                     if let currentViewController = currentViewController {
-                        switch self.loadingView {
+                        switch self.alertStyle {
                         case .iOS:
                             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
                             let buttonText = String.localize("general_ok", fromClass: DVNTAlertManager.self, forResource: "DVNTAlertManagerResources", ofType: "bundle").capitalized
@@ -166,7 +166,7 @@ public class DVNTAlertManager
             if let keyWindow = UIApplication.shared.keyWindow {
                 keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                     if let currentViewController = currentViewController {
-                        switch self.loadingView {
+                        switch self.alertStyle {
                         case .iOS:
                             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
                             let buttonText = String.localize("general_ok", fromClass: DVNTAlertManager.self, forResource: "DVNTAlertManagerResources", ofType: "bundle").capitalized
@@ -185,7 +185,7 @@ public class DVNTAlertManager
             if let keyWindow = UIApplication.shared.keyWindow {
                 keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                     if let currentViewController = currentViewController {
-                        switch self.loadingView {
+                        switch self.alertStyle {
                         case .iOS:
                             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
                             alertController.addAction(UIAlertAction(title: buttonActionText, style: .destructive) { (action) in buttonTouched(0) })
@@ -204,7 +204,7 @@ public class DVNTAlertManager
             if let keyWindow = UIApplication.shared.keyWindow {
                 keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                     if let currentViewController = currentViewController {
-                        switch self.loadingView {
+                        switch self.alertStyle {
                         case .iOS:
                             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
                             alertController.addAction(UIAlertAction(title: buttonActionText, style: .default) { (action) in buttonTouched(0) })
