@@ -99,7 +99,7 @@ public class DVNTAlertManager
                                         }
                                     }
                                     if !found {
-                                        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+                                        let activityIndicator = UIActivityIndicatorView(style: .large)
                                         activityIndicator.color = self.baseColor
                                         activityIndicator.frame = CGRect(x: ((loadingView.frame.width / 2) - (activityIndicator.frame.width / 2)), y: ((loadingView.frame.height / 2) - (activityIndicator.frame.height / 2)), width: activityIndicator.frame.width, height: activityIndicator.frame.height)
                                         loadingView.addSubview(activityIndicator)
