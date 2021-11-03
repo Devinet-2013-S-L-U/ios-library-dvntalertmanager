@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,57 +17,44 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="RcM-fk-ysI">
-                                <rect key="frame" x="0.0" y="241.5" width="375" height="204"/>
+                                <rect key="frame" x="0.0" y="277.5" width="375" height="112"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9S-oH-m4E">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9S-oH-m4E">
                                         <rect key="frame" x="131.5" y="0.0" width="112" height="30"/>
                                         <state key="normal" title="Show alert (iOS)"/>
                                         <connections>
                                             <action selector="showIOSStyledAlertButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="iBE-f7-vLh"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9KO-v4-A7K">
-                                        <rect key="frame" x="116" y="46" width="143" height="30"/>
-                                        <state key="normal" title="Show alert (Material)"/>
-                                        <connections>
-                                            <action selector="showMaterialStyledAlertButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Yke-bJ-QwI"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLP-v2-h0B">
-                                        <rect key="frame" x="67.5" y="92" width="240" height="20"/>
+                                        <rect key="frame" x="67.5" y="46" width="240" height="20"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="aut-yt-jBf"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xR9-Cy-4Er">
-                                        <rect key="frame" x="90" y="128" width="195" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xR9-Cy-4Er">
+                                        <rect key="frame" x="90" y="82" width="195" height="30"/>
                                         <state key="normal" title="Show loading indicator (iOS)"/>
                                         <connections>
                                             <action selector="showiOSLoadingIndicator:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="mZo-zG-M18"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXR-8q-Cw1">
-                                        <rect key="frame" x="74.5" y="174" width="226" height="30"/>
-                                        <state key="normal" title="Show loading indicator (Material)"/>
-                                        <connections>
-                                            <action selector="showMaterialLoadingIndicator:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ufj-hS-pmy"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Du6-rZ-9Dc"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="RcM-fk-ysI" firstAttribute="leading" secondItem="Du6-rZ-9Dc" secondAttribute="leading" id="cjD-fK-A0k"/>
                             <constraint firstItem="RcM-fk-ysI" firstAttribute="trailing" secondItem="Du6-rZ-9Dc" secondAttribute="trailing" id="eRN-US-mG3"/>
                             <constraint firstItem="RcM-fk-ysI" firstAttribute="centerY" secondItem="Du6-rZ-9Dc" secondAttribute="centerY" id="pYB-X8-Obf"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Du6-rZ-9Dc"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="138" y="133"/>
         </scene>
     </scenes>
 </document>
