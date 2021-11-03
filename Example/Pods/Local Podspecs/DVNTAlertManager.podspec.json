@@ -1,6 +1,6 @@
 {
   "name": "DVNTAlertManager",
-  "version": "1.2.3",
+  "version": "1.2.5",
   "summary": "An amazing library that allows you to easily create Alerts.",
   "description": "This library allows you to create different kinds of alerts easily using different designs (iOS default style only).",
   "homepage": "https://www.devinet.es",
@@ -13,7 +13,7 @@
   },
   "social_media_url": "https://twitter.com/devinet_es",
   "platforms": {
-    "ios": "14.4"
+    "ios": "12.0"
   },
   "swift_versions": [
     "3.0",
@@ -29,7 +29,7 @@
   ],
   "source": {
     "git": "https://bitbucket.org/Devinet_Team/ios-library-dvntalertmanager.git",
-    "tag": "1.2.3"
+    "tag": "1.2.5"
   },
   "frameworks": "UIKit",
   "source_files": "Sources/DVNTAlertManager/Classes/**/*",
