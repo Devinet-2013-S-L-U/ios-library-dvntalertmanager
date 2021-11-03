@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DVNTStringExtension",
+        "repositoryURL": "https://bitbucket.org/Devinet_Team/ios-library-dvntstringextension",
+        "state": {
+          "branch": null,
+          "revision": "0a74c37dd174d81c8895c83541eb312a1d40bea9",
+          "version": "1.0.6"
+        }
+      },
+      {
+        "package": "DVNTUIWindowExtension",
+        "repositoryURL": "https://bitbucket.org/Devinet_Team/ios-library-dvntuiwindowextension",
+        "state": {
+          "branch": null,
+          "revision": "a2933470841da01402b182f40bc58a6f668f8a3f",
+          "version": "1.0.6"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
