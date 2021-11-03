@@ -6,6 +6,7 @@
 //  Copyright © 2019 Devinet 2013, S.L.U. All rights reserved.
 //
 
+import UIKit
 import DVNTStringExtension
 import DVNTUIWindowExtension
 
@@ -99,7 +100,12 @@ public class DVNTAlertManager
                                         }
                                     }
                                     if !found {
-                                        let activityIndicator = UIActivityIndicatorView(style: .large)
+                                        var activityIndicator: UIActivityIndicatorView!
+                                        if #available(iOS 13.0, *) {
+                                            activityIndicator = UIActivityIndicatorView(style: .large)
+                                        } else {
+                                            activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+                                        }
                                         activityIndicator.color = self.baseColor
                                         activityIndicator.frame = CGRect(x: ((loadingView.frame.width / 2) - (activityIndicator.frame.width / 2)), y: ((loadingView.frame.height / 2) - (activityIndicator.frame.height / 2)), width: activityIndicator.frame.width, height: activityIndicator.frame.height)
                                         loadingView.addSubview(activityIndicator)
