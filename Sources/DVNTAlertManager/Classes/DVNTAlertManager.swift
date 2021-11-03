@@ -74,7 +74,7 @@ public class DVNTAlertManager
     {
         if !self.isShowingLoadingView {
             DispatchQueue.main.async {
-                if let keyWindow = UIApplication.shared.keyWindow {
+                if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
                     keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                         if let currentViewController = currentViewController {
                             if self.loadingView == nil {
@@ -122,7 +122,7 @@ public class DVNTAlertManager
     {
         if self.isShowingLoadingView {
             DispatchQueue.main.async {
-                if let keyWindow = UIApplication.shared.keyWindow, let loadingView = self.loadingView {
+                if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }), let loadingView = self.loadingView {
                     switch self.alertStyle {
                     case .iOS:
                         for view in loadingView.subviews {
@@ -144,7 +144,7 @@ public class DVNTAlertManager
     public func showBasicAlert(title: String, message: String)
     {
         DispatchQueue.main.async {
-            if let keyWindow = UIApplication.shared.keyWindow {
+            if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
                 keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                     if let currentViewController = currentViewController {
                         switch self.alertStyle {
@@ -163,7 +163,7 @@ public class DVNTAlertManager
     public func showBasicAlertWithAction(title: String, message: String, buttonTouched: @escaping (Int) -> Void)
     {
         DispatchQueue.main.async {
-            if let keyWindow = UIApplication.shared.keyWindow {
+            if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
                 keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                     if let currentViewController = currentViewController {
                         switch self.alertStyle {
@@ -182,7 +182,7 @@ public class DVNTAlertManager
     public func showAlertWithTwoOptions(title: String, message: String, buttonActionText: String, cancelButtonText: String, buttonTouched: @escaping (Int) -> Void)
     {
         DispatchQueue.main.async {
-            if let keyWindow = UIApplication.shared.keyWindow {
+            if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
                 keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                     if let currentViewController = currentViewController {
                         switch self.alertStyle {
@@ -201,7 +201,7 @@ public class DVNTAlertManager
     public func showAlertWithThreeOptions(title: String, message: String, buttonActionText: String, buttonAction2Text: String, cancelButtonText: String, buttonTouched: @escaping (Int) -> Void)
     {
         DispatchQueue.main.async {
-            if let keyWindow = UIApplication.shared.keyWindow {
+            if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
                 keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                     if let currentViewController = currentViewController {
                         switch self.alertStyle {
@@ -221,7 +221,7 @@ public class DVNTAlertManager
     public func showAlertWithTextField(title: String, message: String, textFieldPlaceholder: String, buttonActionText: String, cancelButtonText: String, buttonTouched: @escaping (Int, String?) -> Void)
     {
         DispatchQueue.main.async {
-            if let keyWindow = UIApplication.shared.keyWindow {
+            if let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) {
                 keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                     if let currentViewController = currentViewController {
                         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
