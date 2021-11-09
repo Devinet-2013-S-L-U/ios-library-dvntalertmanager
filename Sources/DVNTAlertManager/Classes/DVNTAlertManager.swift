@@ -156,7 +156,11 @@ public class DVNTAlertManager
                         switch self.alertStyle {
                         case .iOS:
                             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                            #if SWIFT_PACKAGE
                             let buttonText = String.localize("general_ok", fromBundle: .module).capitalized
+                            #else
+                            let buttonText = String.localize("general_ok", fromClass: DVNTAlertManager.self, forResource: "DVNTAlertManagerResources", ofType: "bundle").capitalized
+                            #endif
                             alertController.addAction(UIAlertAction(title: buttonText, style: .default))
                             currentViewController.present(alertController, animated: true, completion: nil)
                         }
@@ -175,7 +179,11 @@ public class DVNTAlertManager
                         switch self.alertStyle {
                         case .iOS:
                             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                            #if SWIFT_PACKAGE
                             let buttonText = String.localize("general_ok", fromBundle: .module).capitalized
+                            #else
+                            let buttonText = String.localize("general_ok", fromClass: DVNTAlertManager.self, forResource: "DVNTAlertManagerResources", ofType: "bundle").capitalized
+                            #endif
                             alertController.addAction(UIAlertAction(title: buttonText, style: .default) { (action) in buttonTouched(0) })
                             currentViewController.present(alertController, animated: true, completion: nil)
                         }
