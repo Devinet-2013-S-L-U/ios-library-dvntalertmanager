@@ -5,6 +5,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://bitbucket.org/Devinet_Team/ios-pod-repo.git'
 
 target 'DVNTAlertManager_Example' do
-  #pod 'DVNTAlertManager', :path => '../'
+  pod 'DVNTAlertManager', :path => '../'
   
 end

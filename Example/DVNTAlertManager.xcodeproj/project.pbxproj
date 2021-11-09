@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,6 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		9B438051273A9AA5007E5A0A /* DVNTAlertManager in Frameworks */ = {isa = PBXBuildFile; productRef = 9B438050273A9AA5007E5A0A /* DVNTAlertManager */; };
 		DD1339954C35FBFE338B0A1A /* Pods_DVNTAlertManager_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98DE870AE051A3D6403D73C /* Pods_DVNTAlertManager_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +40,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD1339954C35FBFE338B0A1A /* Pods_DVNTAlertManager_Example.framework in Frameworks */,
-				9B438051273A9AA5007E5A0A /* DVNTAlertManager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +135,6 @@
 			);
 			name = DVNTAlertManager_Example;
 			packageProductDependencies = (
-				9B438050273A9AA5007E5A0A /* DVNTAlertManager */,
 			);
 			productName = DVNTAlertManager;
 			productReference = 607FACD01AFB9204008FA782 /* DVNTAlertManager_Example.app */;
@@ -170,7 +167,6 @@
 			);
 			mainGroup = 607FACC71AFB9204008FA782;
 			packageReferences = (
-				9B43804F273A9AA5007E5A0A /* XCRemoteSwiftPackageReference "ios-library-dvntalertmanager" */,
 			);
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
 			projectDirPath = "";
@@ -353,8 +349,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -367,10 +362,7 @@
 				DEVELOPMENT_TEAM = BM7GLKW999;
 				INFOPLIST_FILE = DVNTAlertManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -386,10 +378,7 @@
 				DEVELOPMENT_TEAM = BM7GLKW999;
 				INFOPLIST_FILE = DVNTAlertManager/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -419,25 +408,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		9B43804F273A9AA5007E5A0A /* XCRemoteSwiftPackageReference "ios-library-dvntalertmanager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://bitbucket.org/Devinet_Team/ios-library-dvntalertmanager";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		9B438050273A9AA5007E5A0A /* DVNTAlertManager */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9B43804F273A9AA5007E5A0A /* XCRemoteSwiftPackageReference "ios-library-dvntalertmanager" */;
-			productName = DVNTAlertManager;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 607FACC81AFB9204008FA782 /* Project object */;
 }
