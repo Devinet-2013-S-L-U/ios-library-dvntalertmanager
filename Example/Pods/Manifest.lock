@@ -1,5 +1,5 @@
 PODS:
-  - DVNTAlertManager (1.2.5):
+  - DVNTAlertManager (1.2.6):
     - DVNTStringExtension (~> 1.0.6)
     - DVNTUIWindowExtension (~> 1.0.6)
   - DVNTStringExtension (1.0.6)
@@ -18,10 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DVNTAlertManager: 39dce68d8292cc45cc6d3bc54c49cb2896ab0f84
+  DVNTAlertManager: 7e0e8fa5810eecc802db574df8ce74777a284063
   DVNTStringExtension: 55d7b68da9bd0b1aa00d80fc91a1d0c0ecb890e3
   DVNTUIWindowExtension: 9feb16327d7311a01998bb1e4aee7cfee6e8e8f0
 
-PODFILE CHECKSUM: ffc664de3f7bf59635a03d849bf22daa634d356f
+PODFILE CHECKSUM: f682ebdd86dce88a21b4cddcdbf6ad01f424aa46
 
 COCOAPODS: 1.11.2

@@ -1,4 +1,5 @@
 use_frameworks!
+platform :ios, '12.0'
 
 source 'https://github.com/CocoaPods/Specs.git'
 source 'https://bitbucket.org/Devinet_Team/ios-pod-repo.git'
