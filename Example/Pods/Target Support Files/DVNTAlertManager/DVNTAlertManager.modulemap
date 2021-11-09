@@ -1,6 +1,0 @@
-framework module DVNTAlertManager {
-  umbrella header "DVNTAlertManager-umbrella.h"
-
-  export *
-  module * { export * }
-}

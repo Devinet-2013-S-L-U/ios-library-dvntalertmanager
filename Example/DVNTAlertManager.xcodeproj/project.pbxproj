@@ -128,13 +128,14 @@
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				A05EDFE47B6D763342DE0F1B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = DVNTAlertManager_Example;
+			packageProductDependencies = (
+			);
 			productName = DVNTAlertManager;
 			productReference = 607FACD01AFB9204008FA782 /* DVNTAlertManager_Example.app */;
 			productType = "com.apple.product-type.application";
@@ -165,6 +166,8 @@
 				Base,
 			);
 			mainGroup = 607FACC71AFB9204008FA782;
+			packageReferences = (
+			);
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -188,28 +191,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A05EDFE47B6D763342DE0F1B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DVNTAlertManager_Example/Pods-DVNTAlertManager_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/DVNTAlertManager/DVNTAlertManager.framework",
-				"${BUILT_PRODUCTS_DIR}/DVNTStringExtension/DVNTStringExtension.framework",
-				"${BUILT_PRODUCTS_DIR}/DVNTUIWindowExtension/DVNTUIWindowExtension.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DVNTAlertManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DVNTStringExtension.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DVNTUIWindowExtension.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DVNTAlertManager_Example/Pods-DVNTAlertManager_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C112419F0D134F412B307603 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
