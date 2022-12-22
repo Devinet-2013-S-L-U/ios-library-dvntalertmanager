@@ -1,3 +1,27 @@
-PODFILE CHECKSUM: e4c28295006f6497907fce49dfe6efca92efdc70
+PODS:
+  - DVNTAlertManager (1.2.10):
+    - DVNTStringExtension (~> 1.1.4)
+    - DVNTUIWindowExtension (~> 1.0.14)
+  - DVNTStringExtension (1.1.4)
+  - DVNTUIWindowExtension (1.0.14)
 
-COCOAPODS: 1.11.2
+DEPENDENCIES:
+  - DVNTAlertManager (from `../`)
+
+SPEC REPOS:
+  https://bitbucket.org/Devinet_Team/ios-pod-repo.git:
+    - DVNTStringExtension
+    - DVNTUIWindowExtension
+
+EXTERNAL SOURCES:
+  DVNTAlertManager:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DVNTAlertManager: d8ac99746a696a9d22250ccb06e6ba88f8b9b861
+  DVNTStringExtension: 25b6d4231ada204471297196cf27a53cef5a241b
+  DVNTUIWindowExtension: dd64bc1edcbb91207c368860a2bc4fc113740998
+
+PODFILE CHECKSUM: c9e8c8d2d5ae13a8ac254fc0f656b16fcb117c47
+
+COCOAPODS: 1.11.3
