@@ -75,7 +75,7 @@ public class DVNTAlertManager
     {
         if !self.isShowingLoadingView {
             DispatchQueue.main.async {
-                if let keyWindow = UIApplication.shared.connectedScenes.flatMap { ($0 as? UIWindowScene)?.windows ?? [] }.first { $0.isKeyWindow } {
+                if let keyWindow = UIApplication.shared.connectedScenes.flatMap { (($0 as? UIWindowScene)?.windows ?? []) }.first { $0.isKeyWindow } {
                     keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                         if let currentViewController = currentViewController {
                             if self.loadingView == nil {
