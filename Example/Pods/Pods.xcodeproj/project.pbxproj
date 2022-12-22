@@ -27,7 +27,7 @@
 		46EB2E00000750 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46EB2E00000260 /* Foundation.framework */; };
 		46EB2E000007C0 /* Pods-DVNTAlertManager_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 46EB2E000007B0 /* Pods-DVNTAlertManager_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		46EB2E00000810 /* Pods-DVNTAlertManager_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EB2E00000800 /* Pods-DVNTAlertManager_Example-dummy.m */; };
-		46EB2E000008A0 /* DVNTAlertManager-DVNTAlertManagerResources in Resources */ = {isa = PBXBuildFile; fileRef = 413B7402FDAF85CFD4C5D0AD2CFB17B9 /* DVNTAlertManager-DVNTAlertManagerResources */; };
+		46EB2E000008A0 /* DVNTAlertManagerResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 413B7402FDAF85CFD4C5D0AD2CFB17B9 /* DVNTAlertManagerResources.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +76,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		413B7402FDAF85CFD4C5D0AD2CFB17B9 /* DVNTAlertManager-DVNTAlertManagerResources */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "DVNTAlertManager-DVNTAlertManagerResources"; path = DVNTAlertManagerResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		46EB2E000000E0 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		413B7402FDAF85CFD4C5D0AD2CFB17B9 /* DVNTAlertManagerResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DVNTAlertManagerResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		46EB2E000000E0 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		46EB2E000000F0 /* DVNTAlertManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DVNTAlertManager.swift; path = Sources/DVNTAlertManager/Classes/DVNTAlertManager.swift; sourceTree = "<group>"; };
 		46EB2E00000100 /* DVNTStringExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DVNTStringExtension.swift; path = Sources/DVNTStringExtension/Classes/DVNTStringExtension.swift; sourceTree = "<group>"; };
 		46EB2E00000110 /* DVNTUIWindowExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DVNTUIWindowExtension.swift; path = Sources/DVNTUIWindowExtension/Classes/DVNTUIWindowExtension.swift; sourceTree = "<group>"; };
@@ -86,9 +86,9 @@
 		46EB2E00000150 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		46EB2E00000160 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		46EB2E00000170 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		46EB2E00000190 /* DVNTAlertManager.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = DVNTAlertManager.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		46EB2E000001A0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		46EB2E000001B0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		46EB2E00000190 /* DVNTAlertManager.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = DVNTAlertManager.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		46EB2E000001A0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		46EB2E000001B0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		46EB2E00000260 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		46EB2E00000320 /* ResourceBundle-DVNTAlertManagerResources-DVNTAlertManager-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-DVNTAlertManagerResources-DVNTAlertManager-Info.plist"; sourceTree = "<group>"; };
 		46EB2E00000340 /* DVNTAlertManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DVNTAlertManager.debug.xcconfig; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				9257DA070213F94361B8212FBBA033F7 /* DVNTAlertManager */,
-				413B7402FDAF85CFD4C5D0AD2CFB17B9 /* DVNTAlertManager-DVNTAlertManagerResources */,
+				413B7402FDAF85CFD4C5D0AD2CFB17B9 /* DVNTAlertManagerResources.bundle */,
 				F499BA28F349F15B75C37F9C610BBD4B /* DVNTStringExtension */,
 				C47EB46F3403D144A9D6D300BC4DABE9 /* DVNTUIWindowExtension */,
 				5C55372D42B2B2469C730078C7B5D41C /* Pods-DVNTAlertManager_Example */,
@@ -249,7 +249,6 @@
 				46EB2E00000100 /* DVNTStringExtension.swift */,
 				46EB2E00000480 /* Support Files */,
 			);
-			name = DVNTStringExtension;
 			path = DVNTStringExtension;
 			sourceTree = "<group>";
 		};
@@ -260,7 +259,6 @@
 				46EB2E00000120 /* UIApplicationExtension.swift */,
 				46EB2E000005E0 /* Support Files */,
 			);
-			name = DVNTUIWindowExtension;
 			path = DVNTUIWindowExtension;
 			sourceTree = "<group>";
 		};
@@ -419,7 +417,7 @@
 			);
 			name = "DVNTAlertManager-DVNTAlertManagerResources";
 			productName = DVNTAlertManagerResources;
-			productReference = 413B7402FDAF85CFD4C5D0AD2CFB17B9 /* DVNTAlertManager-DVNTAlertManagerResources */;
+			productReference = 413B7402FDAF85CFD4C5D0AD2CFB17B9 /* DVNTAlertManagerResources.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		953105EE8756F18C2A854DDFCBB2C2C4 /* DVNTStringExtension */ = {
@@ -487,6 +485,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					4D96E03F143E4250A289726CC8D22514 = {
+						DevelopmentTeam = BM7GLKW999;
+					};
+				};
 			};
 			buildConfigurationList = 46EB2E00000030 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -518,7 +521,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46EB2E000008A0 /* DVNTAlertManager-DVNTAlertManagerResources in Resources */,
+				46EB2E000008A0 /* DVNTAlertManagerResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,8 +778,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -850,6 +852,7 @@
 			baseConfigurationReference = 46EB2E00000350 /* DVNTAlertManager.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DVNTAlertManager";
+				DEVELOPMENT_TEAM = BM7GLKW999;
 				IBSC_MODULE = DVNTAlertManager;
 				INFOPLIST_FILE = "Target Support Files/DVNTAlertManager/ResourceBundle-DVNTAlertManagerResources-DVNTAlertManager-Info.plist";
 				PRODUCT_NAME = DVNTAlertManagerResources;
@@ -865,6 +868,7 @@
 			baseConfigurationReference = 46EB2E00000340 /* DVNTAlertManager.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/DVNTAlertManager";
+				DEVELOPMENT_TEAM = BM7GLKW999;
 				IBSC_MODULE = DVNTAlertManager;
 				INFOPLIST_FILE = "Target Support Files/DVNTAlertManager/ResourceBundle-DVNTAlertManagerResources-DVNTAlertManager-Info.plist";
 				PRODUCT_NAME = DVNTAlertManagerResources;
