@@ -122,10 +122,10 @@
 		46EB2E000007E0 /* Pods-DVNTAlertManager_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DVNTAlertManager_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		46EB2E000007F0 /* Pods-DVNTAlertManager_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DVNTAlertManager_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		46EB2E00000800 /* Pods-DVNTAlertManager_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DVNTAlertManager_Example-dummy.m"; sourceTree = "<group>"; };
-		5C55372D42B2B2469C730078C7B5D41C /* Pods-DVNTAlertManager_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-DVNTAlertManager_Example"; path = Pods_DVNTAlertManager_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9257DA070213F94361B8212FBBA033F7 /* DVNTAlertManager */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DVNTAlertManager; path = DVNTAlertManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C47EB46F3403D144A9D6D300BC4DABE9 /* DVNTUIWindowExtension */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DVNTUIWindowExtension; path = DVNTUIWindowExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F499BA28F349F15B75C37F9C610BBD4B /* DVNTStringExtension */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DVNTStringExtension; path = DVNTStringExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C55372D42B2B2469C730078C7B5D41C /* Pods_DVNTAlertManager_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DVNTAlertManager_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9257DA070213F94361B8212FBBA033F7 /* DVNTAlertManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DVNTAlertManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C47EB46F3403D144A9D6D300BC4DABE9 /* DVNTUIWindowExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DVNTUIWindowExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F499BA28F349F15B75C37F9C610BBD4B /* DVNTStringExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DVNTStringExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,11 +189,11 @@
 		46EB2E00000020 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9257DA070213F94361B8212FBBA033F7 /* DVNTAlertManager */,
+				9257DA070213F94361B8212FBBA033F7 /* DVNTAlertManager.framework */,
 				413B7402FDAF85CFD4C5D0AD2CFB17B9 /* DVNTAlertManagerResources.bundle */,
-				F499BA28F349F15B75C37F9C610BBD4B /* DVNTStringExtension */,
-				C47EB46F3403D144A9D6D300BC4DABE9 /* DVNTUIWindowExtension */,
-				5C55372D42B2B2469C730078C7B5D41C /* Pods-DVNTAlertManager_Example */,
+				F499BA28F349F15B75C37F9C610BBD4B /* DVNTStringExtension.framework */,
+				C47EB46F3403D144A9D6D300BC4DABE9 /* DVNTUIWindowExtension.framework */,
+				5C55372D42B2B2469C730078C7B5D41C /* Pods_DVNTAlertManager_Example.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -400,7 +400,7 @@
 			);
 			name = DVNTAlertManager;
 			productName = DVNTAlertManager;
-			productReference = 9257DA070213F94361B8212FBBA033F7 /* DVNTAlertManager */;
+			productReference = 9257DA070213F94361B8212FBBA033F7 /* DVNTAlertManager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4D96E03F143E4250A289726CC8D22514 /* DVNTAlertManager-DVNTAlertManagerResources */ = {
@@ -435,7 +435,7 @@
 			);
 			name = DVNTStringExtension;
 			productName = DVNTStringExtension;
-			productReference = F499BA28F349F15B75C37F9C610BBD4B /* DVNTStringExtension */;
+			productReference = F499BA28F349F15B75C37F9C610BBD4B /* DVNTStringExtension.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9F50EF2B5A7ED4D89607FB8BA2027554 /* DVNTUIWindowExtension */ = {
@@ -453,7 +453,7 @@
 			);
 			name = DVNTUIWindowExtension;
 			productName = DVNTUIWindowExtension;
-			productReference = C47EB46F3403D144A9D6D300BC4DABE9 /* DVNTUIWindowExtension */;
+			productReference = C47EB46F3403D144A9D6D300BC4DABE9 /* DVNTUIWindowExtension.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		AC94DAC07E0229BF24A301125B8EAC7E /* Pods-DVNTAlertManager_Example */ = {
@@ -474,7 +474,7 @@
 			);
 			name = "Pods-DVNTAlertManager_Example";
 			productName = Pods_DVNTAlertManager_Example;
-			productReference = 5C55372D42B2B2469C730078C7B5D41C /* Pods-DVNTAlertManager_Example */;
+			productReference = 5C55372D42B2B2469C730078C7B5D41C /* Pods_DVNTAlertManager_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -484,7 +484,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					4D96E03F143E4250A289726CC8D22514 = {
 						DevelopmentTeam = BM7GLKW999;
@@ -692,6 +692,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -758,6 +759,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -788,7 +790,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 46EB2E00000350 /* DVNTAlertManager.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -820,7 +821,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 46EB2E00000340 /* DVNTAlertManager.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -883,7 +883,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 46EB2E000004A0 /* DVNTStringExtension.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -915,7 +914,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 46EB2E00000490 /* DVNTStringExtension.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -946,7 +944,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 46EB2E00000600 /* DVNTUIWindowExtension.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -978,7 +975,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 46EB2E000005F0 /* DVNTUIWindowExtension.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1010,7 +1006,6 @@
 			baseConfigurationReference = 46EB2E00000770 /* Pods-DVNTAlertManager_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1044,7 +1039,6 @@
 			baseConfigurationReference = 46EB2E00000780 /* Pods-DVNTAlertManager_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
