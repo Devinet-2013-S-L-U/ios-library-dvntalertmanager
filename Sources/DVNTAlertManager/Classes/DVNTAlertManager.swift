@@ -75,7 +75,16 @@ public class DVNTAlertManager
     {
         if !self.isShowingLoadingView {
             DispatchQueue.main.async {
-                if let keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first {
+                
+                var keyWindow: UIWindow?
+                
+                if #available(iOS 13.0, *) {
+                    keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first
+                }else{
+                    keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+                }
+                
+                if let keyWindow = keyWindow {
                     keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                         if let currentViewController = currentViewController {
                             if self.loadingView == nil {
@@ -128,7 +137,15 @@ public class DVNTAlertManager
     {
         if self.isShowingLoadingView {
             DispatchQueue.main.async {
-                if let keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first, let loadingView = self.loadingView {
+                var keyWindow: UIWindow?
+                
+                if #available(iOS 13.0, *) {
+                    keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first
+                }else{
+                    keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+                }
+                
+                if let keyWindow = keyWindow, let loadingView = self.loadingView {
                     switch self.alertStyle {
                     case .iOS:
                         for view in loadingView.subviews {
@@ -150,7 +167,15 @@ public class DVNTAlertManager
     public func showBasicAlert(title: String, message: String)
     {
         DispatchQueue.main.async {
-            if let keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first {
+            var keyWindow: UIWindow?
+            
+            if #available(iOS 13.0, *) {
+                keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first
+            }else{
+                keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+            }
+            
+            if let keyWindow = keyWindow {
                 keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                     if let currentViewController = currentViewController {
                         switch self.alertStyle {
@@ -173,7 +198,15 @@ public class DVNTAlertManager
     public func showBasicAlertWithAction(title: String, message: String, buttonTouched: @escaping (Int) -> Void)
     {
         DispatchQueue.main.async {
-            if let keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first {
+            var keyWindow: UIWindow?
+            
+            if #available(iOS 13.0, *) {
+                keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first
+            }else{
+                keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+            }
+            
+            if let keyWindow = keyWindow {
                 keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                     if let currentViewController = currentViewController {
                         switch self.alertStyle {
@@ -196,7 +229,15 @@ public class DVNTAlertManager
     public func showAlertWithTwoOptions(title: String, message: String, buttonActionText: String, cancelButtonText: String, buttonTouched: @escaping (Int) -> Void)
     {
         DispatchQueue.main.async {
-            if let keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first {
+            var keyWindow: UIWindow?
+            
+            if #available(iOS 13.0, *) {
+                keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first
+            }else{
+                keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+            }
+            
+            if let keyWindow = keyWindow {
                 keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                     if let currentViewController = currentViewController {
                         switch self.alertStyle {
@@ -215,7 +256,15 @@ public class DVNTAlertManager
     public func showAlertWithThreeOptions(title: String, message: String, buttonActionText: String, buttonAction2Text: String, cancelButtonText: String, buttonTouched: @escaping (Int) -> Void)
     {
         DispatchQueue.main.async {
-            if let keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first {
+            var keyWindow: UIWindow?
+            
+            if #available(iOS 13.0, *) {
+                keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first
+            }else{
+                keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+            }
+            
+            if let keyWindow = keyWindow {
                 keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                     if let currentViewController = currentViewController {
                         switch self.alertStyle {
@@ -235,7 +284,15 @@ public class DVNTAlertManager
     public func showAlertWithTextField(title: String, message: String, textFieldPlaceholder: String, buttonActionText: String, cancelButtonText: String, buttonTouched: @escaping (Int, String?) -> Void)
     {
         DispatchQueue.main.async {
-            if let keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first {
+            var keyWindow: UIWindow?
+            
+            if #available(iOS 13.0, *) {
+                keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first
+            }else{
+                keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+            }
+            
+            if let keyWindow = keyWindow {
                 keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
                     if let currentViewController = currentViewController {
                         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
