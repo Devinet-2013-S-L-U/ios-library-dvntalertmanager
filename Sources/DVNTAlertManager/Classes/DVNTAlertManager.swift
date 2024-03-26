@@ -24,6 +24,7 @@ public class DVNTAlertManager
     fileprivate var baseColor: UIColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
     fileprivate var alertStyle: AlertStyleType = .iOS
     fileprivate var isShowingLoadingView: Bool = false
+    fileprivate var iOSNativeAlertButtonColor: UIColor?
     fileprivate var loadingViewBackgroundColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.7)
     
     private init()
@@ -58,6 +59,11 @@ public class DVNTAlertManager
     public func setInkColor(_ color: UIColor)
     {
         self.inkColor = color
+    }
+    
+    public func iOSNativeAlertButtonColor(_ color: UIColor?)
+    {
+        self.iOSNativeAlertButtonColor = color
     }
     
     public func setLoadingViewBackgroundColor(_ color: UIColor)
@@ -187,6 +193,9 @@ public class DVNTAlertManager
                             let buttonText = String.localize("general_ok", fromClass: DVNTAlertManager.self, forResource: "DVNTAlertManagerResources", ofType: "bundle").capitalized
                             #endif
                             alertController.addAction(UIAlertAction(title: buttonText, style: .default))
+                            if let iOSNativeAlertButtonColor = self.iOSNativeAlertButtonColor {
+                                alertController.view.tintColor = iOSNativeAlertButtonColor
+                            }
                             currentViewController.present(alertController, animated: true, completion: nil)
                         }
                     }
@@ -218,6 +227,9 @@ public class DVNTAlertManager
                             let buttonText = String.localize("general_ok", fromClass: DVNTAlertManager.self, forResource: "DVNTAlertManagerResources", ofType: "bundle").capitalized
                             #endif
                             alertController.addAction(UIAlertAction(title: buttonText, style: .default) { (action) in buttonTouched(0) })
+                            if let iOSNativeAlertButtonColor = self.iOSNativeAlertButtonColor {
+                                alertController.view.tintColor = iOSNativeAlertButtonColor
+                            }
                             currentViewController.present(alertController, animated: true, completion: nil)
                         }
                     }
@@ -243,8 +255,13 @@ public class DVNTAlertManager
                         switch self.alertStyle {
                         case .iOS:
                             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                            alertController.addAction(UIAlertAction(title: buttonActionText, style: .destructive) { (action) in buttonTouched(0) })
                             alertController.addAction(UIAlertAction(title: cancelButtonText, style: .default) { (action) in buttonTouched(1) })
+                            
+                            if let iOSNativeAlertButtonColor = self.iOSNativeAlertButtonColor {
+                                alertController.view.tintColor = iOSNativeAlertButtonColor
+                            }
+                            
+                            alertController.addAction(UIAlertAction(title: buttonActionText, style: .destructive) { (action) in buttonTouched(0) })
                             currentViewController.present(alertController, animated: true, completion: nil)
                         }
                     }
@@ -272,6 +289,11 @@ public class DVNTAlertManager
                             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
                             alertController.addAction(UIAlertAction(title: buttonActionText, style: .default) { (action) in buttonTouched(0) })
                             alertController.addAction(UIAlertAction(title: buttonAction2Text, style: .default) { (action) in buttonTouched(1) })
+                            
+                            if let iOSNativeAlertButtonColor = self.iOSNativeAlertButtonColor {
+                                alertController.view.tintColor = iOSNativeAlertButtonColor
+                            }
+                            
                             alertController.addAction(UIAlertAction(title: cancelButtonText, style: .destructive) { (action) in buttonTouched(2) })
                             currentViewController.present(alertController, animated: true, completion: nil)
                         }
@@ -303,6 +325,11 @@ public class DVNTAlertManager
                         alertController.addAction(UIAlertAction(title: buttonActionText, style: .default, handler: { action in
                             buttonTouched(0, alertController.textFields?.first?.text)
                         }))
+                        
+                        if let iOSNativeAlertButtonColor = self.iOSNativeAlertButtonColor {
+                            alertController.view.tintColor = iOSNativeAlertButtonColor
+                        }
+                        
                         alertController.addAction(UIAlertAction(title: cancelButtonText, style: .cancel) { (action) in buttonTouched(1, nil) })
                         currentViewController.present(alertController, animated: true, completion: nil)
                     }
