@@ -19,6 +19,8 @@ class ViewController: UIViewController
         
         self.alertManager.setInkColor(.white)
         self.alertManager.setBaseColor(.green)
+        self.alertManager.setIOSNativeAlertButtonColor(.orange)
+        self.alertManager.setShouldOverrideCancelAndDestructiveButtons(true)
     }
     
     // MARK: - IBActions
@@ -26,7 +28,10 @@ class ViewController: UIViewController
     @IBAction func showIOSStyledAlertButtonAction(_ sender: Any)
     {
         self.alertManager.setAlertStyle(.iOS)
-        self.alertManager.showBasicAlert(title: "Hey", message: "This is an iOS styled alert")
+        //self.alertManager.showBasicAlert(title: "Hey", message: "This is an iOS styled alert")
+        self.alertManager.showAlertWithTwoOptions(title: "a", message: "b", buttonActionText: "OK", cancelButtonText: "CANCEL") { index in
+            print("index")
+        }
     }
     
     @IBAction func showiOSLoadingIndicator(_ sender: Any)
