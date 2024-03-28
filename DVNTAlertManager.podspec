@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   
   s.name             = 'DVNTAlertManager'
-  s.version          = '1.3.2'
+  s.version          = '1.3.3'
   s.summary          = 'An amazing library that allows you to easily create Alerts.'
   s.description      = 'This library allows you to create different kinds of alerts easily using different designs (iOS default style only).'
   s.homepage         = 'https://www.devinet.es'
