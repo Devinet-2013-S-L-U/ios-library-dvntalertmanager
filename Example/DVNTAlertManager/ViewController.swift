@@ -28,10 +28,7 @@ class ViewController: UIViewController
     @IBAction func showIOSStyledAlertButtonAction(_ sender: Any)
     {
         self.alertManager.setAlertStyle(.iOS)
-        //self.alertManager.showBasicAlert(title: "Hey", message: "This is an iOS styled alert")
-        self.alertManager.showAlertWithTwoOptions(title: "a", message: "b", buttonActionText: "OK", cancelButtonText: "CANCEL") { index in
-            print("index")
-        }
+        self.alertManager.showBasicAlert(title: "Hey", message: "This is an iOS styled alert")
     }
     
     @IBAction func showiOSLoadingIndicator(_ sender: Any)
