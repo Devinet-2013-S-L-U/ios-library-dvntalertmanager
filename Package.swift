@@ -12,8 +12,8 @@ let package = Package(
             targets: ["DVNTAlertManager"]),
     ],
     dependencies: [
-        .package(url: "https://bitbucket.org/Devinet_Team/ios-library-dvntstringextension", from: "1.1.2"),
-        .package(url: "https://bitbucket.org/Devinet_Team/ios-library-dvntuiwindowextension", from: "1.0.6")
+        .package(url: "https://github.com/Devinet-2013-S-L-U/ios-library-dvntstringextension.git", from: "1.1.5"),
+        .package(url: "https://github.com/Devinet-2013-S-L-U/ios-library-dvntuiwindowextension.git", from: "1.1.0")
     ],
     targets: [
         .target(
