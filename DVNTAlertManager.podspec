@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.summary          = 'An amazing library that allows you to easily create Alerts.'
   s.description      = 'This library allows you to create different kinds of alerts easily using different designs (iOS default style only).'
   s.homepage         = 'https://www.devinet.es'
-  s.license          = { :type => 'Copyright (c) 2024 Devinet 2013, S.L.U.', :file => 'LICENSE' }
+  s.license          = { :type => 'Copyright (c) 2025 Devinet 2013, S.L.U.', :file => 'LICENSE' }
   s.author           = { 'Raúl Vidal Muiños' => 'contacto@devinet.es' }
   s.social_media_url = 'https://twitter.com/devinet_es'
 
