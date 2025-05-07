@@ -376,4 +376,51 @@ public class DVNTAlertManager
             }
         }
     }
+    
+    public func showAlertWithTextField(title: String, message: String, textFieldPlaceholder: String, primaryButtonActionText: String, secondaryButtonActionText: String, cancelButtonText: String, buttonTouched: @escaping (Int, String?) -> Void)
+    {
+        DispatchQueue.main.async {
+            var keyWindow: UIWindow?
+            
+            if #available(iOS 13.0, *) {
+                keyWindow = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first
+            }else{
+                keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+            }
+            
+            if let keyWindow = keyWindow {
+                keyWindow.getVisibleViewController(completed: {(currentViewController) -> Void in
+                    if let currentViewController = currentViewController {
+                        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                        alertController.addTextField(configurationHandler: { textField in
+                            textField.placeholder = textFieldPlaceholder
+                        })
+                        
+                        let primaryAction = UIAlertAction(title: primaryButtonActionText, style: .default, handler: { action in
+                            buttonTouched(0, alertController.textFields?.first?.text)
+                        })
+                        let secondaryAction = UIAlertAction(title: secondaryButtonActionText, style: .default, handler: { action in
+                            buttonTouched(1, alertController.textFields?.first?.text)
+                        })
+                        let cancelAction = UIAlertAction(title: cancelButtonText, style: .cancel) { (action) in buttonTouched(2, nil) }
+                        
+                        if let iOSNativeAlertButtonColor = self.iOSNativeAlertButtonColor {
+                            primaryAction.setValue(iOSNativeAlertButtonColor, forKey: "titleTextColor")
+                            secondaryAction.setValue(iOSNativeAlertButtonColor, forKey: "titleTextColor")
+                            
+                            if self.shouldOverrideCancelAndDestructiveButtons {
+                                cancelAction.setValue(iOSNativeAlertButtonColor, forKey: "titleTextColor")
+                            }
+                        }
+                        
+                        alertController.addAction(primaryAction)
+                        alertController.addAction(secondaryAction)
+                        alertController.addAction(cancelAction)
+                        
+                        currentViewController.present(alertController, animated: true, completion: nil)
+                    }
+                })
+            }
+        }
+    }
 }
